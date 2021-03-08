@@ -51,6 +51,10 @@ class ProfilController extends CI_Controllers {
                 $this->session->set_userdata('id',$profil->getId());
                 $this->session->set_userdata('firstname',$profil->getFirstname());
                 $this->session->set_userdata('lastname',$profil->getLastname());
+                //Si admin
+                if ($profil->getAdmin()) {
+                    
+                }
                 redirect('ProfilController/index');
             }
             else {
@@ -71,7 +75,7 @@ class ProfilController extends CI_Controllers {
             $_SESSION['lastname']
         );
         delete_cookie('autolog');
-
+        redirect('ProfilController/list_appointments');
     }
 
     public function update() {
@@ -118,5 +122,10 @@ class ProfilController extends CI_Controllers {
         setcookie('autolog',$token,time()+$tokenTime,'/');
         $this->ProfilManager->upateToken($token);
         return $token;
+    }
+
+    private function render($file) {
+        $this->load->view('templates/header');
+        $this->load->view('patients/');
     }
 }

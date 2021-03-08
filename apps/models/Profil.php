@@ -16,7 +16,6 @@ class Profil {
     private $drivingLicenceObtainDate;
     public $admin;
 
-
     public function __construct($data = null) {
         if ($data != null) hydrate($ada);        
     }
