@@ -27,17 +27,14 @@ class CarManager extends CI_Models {
         // return $this->db->get($this->table);
     }
 
-    public function updatecar(int $id, array $data) {
-		$this->db->set('picture',$data['picture']);
-		$this->db->set('licenceplate',$data['licenceplate']);
-		$this->db->set('detail',$data['detail']);
-		$this->db->set('mileage',$data['mileage']);
-		$this->db->set('disponibility',$data['disponibility']);
-		$this->db->where('id',$id);
-		$this->db->update('cars');
+    public function updateCar(int $id, array $data) {
+        $this->db->where('id',$id);
+        $this->db->update($this->table,$data);
     }
 
-	public function deletecar(int $id) {
-		$this->db->delete('cars', array('id'=>$id));  
+	public function deleteCar(int $id) {
+        $this->db->where('id',$id);
+        $this->db->delete($this->table);  
     }
+
 }
