@@ -2,7 +2,7 @@
 
 	<h3 class="text-center">INSCRIPTION</h3>
 
-	<div id="listLogin" class="row">
+	<div id="listSignIn" class="row">
 
 	<?= form_open('url','class="col-12"'); ?>
 
@@ -50,11 +50,11 @@
 			<h3>informations supplémentaire :</h3>
 
 				<label class="col-12">Votre numéro de permis :</label>
-					<input type="text" class="form-control" id="drivinglicence" name="drivinglicence" value="<?php if(isset($config['drivinglicence'])){ echo '';}?>">
+					<input type="text" class="form-control" id="drivinglicense" name="drivinglicense" value="<?php if(isset($config['drivinglicense'])){ echo '';}?>">
 				<span class="help-block"><?= '';//error ?></span>
 
 				<label class="col-12">Date obtention du permis :</label>
-					<input type="date" class="form-control" id="drivinglicenceObtainDate" name="drivinglicenceObtainDate" value="<?php if(isset($config['drivinglicenceObtainDate'])){ echo '';}?>">
+					<input type="date" class="form-control" id="drivinglicenseObtainDate" name="drivinglicenseObtainDate" value="<?php if(isset($config['drivinglicenseObtainDate'])){ echo '';}?>">
 				<span class="help-block"><?= '';//error ?></span>
 
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitSignIn']); ?>
