@@ -35,14 +35,6 @@ h3 {
     margin-bottom: inherit !important;
 }
 
-/* index */
-
-#linkVehicle
-{
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-}
-
 #loginbutton
 {   
     font-family: 'Roboto', sans-serif;
@@ -50,6 +42,14 @@ h3 {
     text-decoration: none;
     color: black;
     background-color : #FF9900;
+}
+
+/* index */
+
+#linkVehicle
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
 }
 
 /* cookie */
@@ -132,6 +132,13 @@ h3 {
 
 /* sign in */
 
+#formSignIn 
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 #listSignIn 
 {
     margin-left: 10%;
@@ -141,6 +148,7 @@ h3 {
 #submitSignIn
 {
     margin-top: 5%;
+    margin-bottom: 10%;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     color: black;
@@ -149,6 +157,13 @@ h3 {
 }
 
 /*user Option */
+
+#formUser 
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
 
 #listUser 
 {
@@ -267,4 +282,54 @@ h3 {
     border-color: #FF9900 !important;
 }
 
-/*  */
+/* registerRent */
+
+#formRentAdmin
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#registerRentAdmin
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitRentAdmin
+{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+/* registerReturn */
+
+#formReturnAdmin 
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#registerReturnAdmin
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitReturnAdmin
+{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
