@@ -11,7 +11,7 @@ class Car {
     private $licencePlate;
 
     public function __construct($data = null) {
-        if ($data != null) hydrate($ada);        
+        if ($data != null) hydrate($data);        
     }
 
     private function hydrate($data) {

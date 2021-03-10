@@ -13,7 +13,7 @@ class Options {
         foreach ($req->result() as $row) {
             $data[$row['name']] = $row['value'];
         }
-        $this->hydrate($ada);
+        $this->hydrate($dada);
     }
 
     private function hydrate($data) {

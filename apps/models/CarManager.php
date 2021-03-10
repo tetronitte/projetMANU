@@ -1,6 +1,6 @@
 <?php
 
-class CarManager extends CI_Models {
+class CarManager extends CI_Model {
     
     private $table;
 
