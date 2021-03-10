@@ -16,4 +16,4 @@
 	    </ul>
 </div>
 </nav>
-<hr>
+<div id="hrbar" class="col-12"></div>

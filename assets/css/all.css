@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+body
+{
+    background-size: cover;
+    background-image: url('../img/background.png');
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 80px !important;
+}
+
+h2 {
+    padding-top: 3%;
+    font-family: 'Electrolize', sans-serif;
+}
+
+h3 {
+    font-size: 50px !important;
+    font-family: 'PT Sans', sans-serif;
+}
+
+#hrbar {
+    height: 15px !important;
+    background-color: #FF9900;
+    margin-top: inherit !important;
+    margin-bottom: inherit !important;
+}
+
+#loginbutton
+{   
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    background-color : #FF9900;
+}

@@ -1,0 +1,21 @@
+#listAllVehicle
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#searchVehicleDiv 
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2%;
+}
+
+#searchVehicleButton 
+{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}

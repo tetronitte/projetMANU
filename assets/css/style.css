@@ -4,6 +4,8 @@
 /*font-family: 'Electrolize', sans-serif;*/
 /*font-family: 'PT Sans', sans-serif;*/
 
+
+/* everywhere */
 body
 {
     background-size: cover;
@@ -33,13 +35,6 @@ h3 {
     margin-bottom: inherit !important;
 }
 
-
-#linkVehicle
-{
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-}
-
 #loginbutton
 {   
     font-family: 'Roboto', sans-serif;
@@ -49,13 +44,15 @@ h3 {
     background-color : #FF9900;
 }
 
-hr 
+/* index */
+
+#linkVehicle
 {
-    height: 15px !important;
-    background-color : #FF9900;
-    margin-top: inherit !important;
-    margin-bottom: inherit !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
 }
+
+/* cookie */
 
 #cookie
 {
@@ -84,6 +81,8 @@ hr
     border-color: #FF9900 !important;
 }
 
+/* listVehicles */
+
 #searchIndexDiv
 {
     margin-left: auto;
@@ -105,6 +104,8 @@ hr
     margin-left: 10%;
     margin-right: 10%;
 }
+
+/* login */
 
 #listLogin 
 {
@@ -129,6 +130,15 @@ hr
     border-color: #FF9900 !important;
 }
 
+/* signin */
+
+#formSignIn 
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 #listSignIn 
 {
     margin-left: 10%;
@@ -138,11 +148,21 @@ hr
 #submitSignIn
 {
     margin-top: 5%;
+    margin-bottom: 10%;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     color: black;
     background-color: #FF9900;
     border-color: #FF9900 !important;
+}
+
+/*userOption */
+
+#formUser 
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #listUser 
@@ -162,11 +182,25 @@ hr
     border-color: #FF9900 !important;
 }
 
+#redirectUpdatePassword 
+{
+    margin-bottom: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+/* userRent */
+
 #listRentUserVehicles
 {
     margin-left: 10%;
     margin-right: 10%;
 }
+
+/* adminRent */
 
 #listAdminRent 
 {
@@ -210,6 +244,8 @@ hr
     border-color: #FF9900 !important;
 }
 
+/* adminClients */
+
 #listAllClient
 {
     margin-left: 10%;
@@ -232,6 +268,8 @@ hr
     border-color: #FF9900 !important;
 }
 
+/* adminVehicles */
+
 #listAllVehicle
 {
     margin-left: 10%;
@@ -247,6 +285,84 @@ hr
 
 #searchVehicleButton 
 {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+/* registerRent */
+
+#formRentAdmin
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#registerRentAdmin
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitRentAdmin
+{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+/* registerReturn */
+
+#formReturnAdmin 
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#registerReturnAdmin
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitReturnAdmin
+{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+/* updatePassword */
+
+#formUpdatepassword
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#updatePassword
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitUserPwd
+{
+    margin-top: 5%;
+    margin-bottom: 10%;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     color: black;
