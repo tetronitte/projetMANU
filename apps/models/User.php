@@ -1,6 +1,6 @@
 <?php
 
-class Profil {
+class User {
 
     private $id;
     private $lastname;
@@ -12,8 +12,8 @@ class Profil {
     private $city;
     private $birthdate;
     private $token;
-    private $drivingLicence;
-    private $drivingLicenceObtainDate;
+    private $drivingLicense;
+    private $drivingLicenseObtainDate;
     public $admin;
 
     public function __construct($data = null) {
@@ -42,8 +42,8 @@ class Profil {
     public function setFirstname(string $firstname) {
         $this->firstname = $firstname;
     }
-    public function setDrivingLicence(string $drivingLicence) {
-        $this->drivingLicence = $drivingLicence;
+    public function setDrivingLicense(string $drivingLicense) {
+        $this->drivingLicense = $drivingLicense;
     }
     public function setMail(string $mail) {
         $this->mail = $mail;
@@ -66,8 +66,8 @@ class Profil {
     public function setToken(string $token) {
         $this->token = $token;
     }
-    public function setDrivingLicenceObtainDate(date $drivingLicenceObtainDate) {
-        $this->drivingLicenceObtainDate = $drivingLicenceObtainDate;
+    public function setDrivingLicenseObtainDate(date $drivingLicenseObtainDate) {
+        $this->drivingLicenseObtainDate = $drivingLicenseObtainDate;
     }
     public function setAdmin(bool $admin) {
         $this->admin = $admin;
@@ -86,8 +86,8 @@ class Profil {
     public function getFirstname() {
         return $this->firstname;
     }
-    public function getDrivingLicence() {
-        return $this->driving_licence;
+    public function getDrivingLicense() {
+        return $this->driving_license;
     }
     public function getMail() {
         return $this->mail;
@@ -110,8 +110,8 @@ class Profil {
     public function getToken() {
         return $this->token ;
     }
-    public function getDrivingLicenceObtainDate() {
-        return $this->drivingLicenceObtainDate;
+    public function getDrivingLicenseObtainDate() {
+        return $this->drivingLicenseObtainDate;
     }
     public function getAdmin( ) {
         return $this->admin;

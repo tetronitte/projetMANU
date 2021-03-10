@@ -1,6 +1,6 @@
 <?php
 
-class ProfilController extends CI_Controllers {
+class UserController extends CI_Controller {
 
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -12,59 +12,79 @@ class ProfilController extends CI_Controllers {
                 "mail" => $this->input->post('mail'),
                 "pwd" => $this->input->post('pwd'),
                 "verifPwd" => $this->input->post('verifPwd'),
-                "adress" => $this->input->post('adress'),
+                "address" => $this->input->post('address'),
                 "city" => $this->input->post('city'),
-                "drivingLicence" => $this->input->post('drivingLicence'),
-                "drivingLicenceObtainDate" => $this->input->post('drivingLicenceObtainDate')
+                "drivingLicense" => $this->input->post('drivingLicense'),
+                "drivingLicenseObtainDate" => $this->input->post('drivingLicenseObtainDate')
             );
             if($this->form_validation->run('register')) {
-                $this->ProfilManager->insert($dataProfil);
-                redirect('ProfilController/index');
+                $password = password_hash($dataProfil['pwd'],PASSWORD_DEFAULT);
+                $dataProfil['pwd'] = $password;
+                unset($dataProfil['verifPwd']);
+
+                $this->UserManager->insertProfil($dataProfil);
+                
+                redirect('UserController/index');
             }
             else {
                 $dataContents['profil'] = $dataProfil;
-                $dataContents['errors'] = '';
-                $this->render('register',$dataContents);
+                $this->load->view('test',$dataContents);
             }
         }
         else {
-            $this->render('register');
+            $this->render('test');
         }
     }
 
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $dataProfil = array(
+            $dataUser = array(
                 "mail" => $this->input->post('firstname'),
                 "pwd" => $this->input->post('pwd'),
                 "autolog" => $this->input->post('autolog')
             );
             if($this->form_validation->run('login')) {
-                $req = $this->ProfilManager->get($dataProfil['mail']);
-                $profil = new Profil($req->result());
-                //Création du token si autoload check
-                if ($dataProfil['autolog'] = 'on') {
-                    $token = $this->createToken();
-                    $profil->setToken($token);
+                $req = $this->UserManager->get($dataUser['mail']);
+                if ($req->num_rows() == 0) {
+                    $user = new User($req->result());
+                    if (password_verify($dataUser['pwd'],$user->getPwd())) {
+                        //Création du token si autoload check
+                        if ($dataUser['autolog'] == 'on') {
+                            $token = $this->createToken();
+                            $user->setToken($token);
+                        }
+                        //Créer la session
+                        $this->session->set_userdata('id',$user->getId());
+                        $this->session->set_userdata('firstname',$user->getFirstname());
+                        $this->session->set_userdata('lastname',$user->getLastname());
+                        //Si admin
+                        if ($user->getAdmin()) {
+                            
+                        }
+                        redirect('UserController/index');
+                    }
+                    else {
+                        unset($dataUser['autolog']);
+                        $dataContents['user'] = $dataUser;
+                        $dataContents['errors'] = 'Identifiant ou mot de passe incorrect';
+                        $this->render('test',$dataContents);
+                    }
                 }
-                //Créer la session
-                $this->session->set_userdata('id',$profil->getId());
-                $this->session->set_userdata('firstname',$profil->getFirstname());
-                $this->session->set_userdata('lastname',$profil->getLastname());
-                //Si admin
-                if ($profil->getAdmin()) {
-                    
+                else {
+                    unset($dataUser['autolog']);
+                    $dataContents['user'] = $dataUser;
+                    $dataContents['errors'] = 'Identifiant ou mot de passe incorrect';
+                    $this->render('test',$dataContents);
                 }
-                redirect('ProfilController/index');
             }
             else {
-                $dataContents['profil'] = $dataProfil;
-                $dataContents['errors'] = '';
-                $this->render('login',$dataContents);
+                unset($dataUser['autolog']);
+                $dataContents['user'] = $dataUser;
+                $this->render('test',$dataContents);
             }
         }
         else {
-            $this->render('login');
+            $this->render('test');
         }
     }
 
@@ -75,7 +95,7 @@ class ProfilController extends CI_Controllers {
             $_SESSION['lastname']
         );
         delete_cookie('autolog');
-        redirect('ProfilController/list_appointments');
+        redirect('UserController/list_appointments');
     }
 
     public function update() {
@@ -94,8 +114,8 @@ class ProfilController extends CI_Controllers {
                 "drivingLicenceObtainDate" => $this->input->post('drivingLicenceObtainDate')
             );
             if($this->form_validation->run('register')) {
-                $this->ProfilManager->update($dataProfil);
-                redirect('ProfilController/index');
+                $this->UserManager->update($dataProfil);
+                redirect('UserController/index');
             }
             else {
                 $dataContents['profil'] = $dataProfil;
@@ -114,6 +134,10 @@ class ProfilController extends CI_Controllers {
         $this->render('register',$profil);
     }
 
+    public function index() {
+        $this->render('test');
+    }
+
     private function createToken() {
         $options = new Options();
         $tokenSize = $options->getTokenSize();
@@ -125,7 +149,7 @@ class ProfilController extends CI_Controllers {
     }
 
     private function render($file) {
-        $this->load->view('templates/header');
-        $this->load->view('patients/');
+        //$this->load->view('templates/header');
+        $this->load->view($file);
     }
 }

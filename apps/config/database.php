@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost; dbname=hospitalE2N; charset=utf8;',
+	'dsn'	=> 'mysql:host=localhost; dbname=locaauto; charset=utf8;',
 	'hostname' => 'localhost',
 	'username' => 'phpmyadmin',
 	'password' => 'root',
-	'database' => 'hospitalE2N',
+	'database' => 'locaauto',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
