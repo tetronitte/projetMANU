@@ -134,5 +134,6 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(
     'User','UserManager',
-    'Car','CarManager'    
+    'Model','ModelManager',
+    'Car','CarManager'        
 );

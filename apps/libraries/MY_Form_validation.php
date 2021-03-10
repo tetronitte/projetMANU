@@ -31,8 +31,8 @@ class MY_Form_validation extends CI_Form_validation {
         return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,18}$/',$pwd);
     }
 
-    public function regexDrivingLicense(string $pwd) {
-        return preg_match('/^[0-9]{12}$/',$pwd);
+    public function regexDrivingLicense(string $str) {
+        return preg_match('/^[0-9]{12}$/',$str);
     }
 
     public function sizePassword(string $pwd) {
@@ -43,5 +43,9 @@ class MY_Form_validation extends CI_Form_validation {
     public function isEqualPassword(string $pwd, string $vpwd) {
         if ($_POST['pwd'] == $_POST['verifPwd']) return true;
         else return false;
+    }
+
+    public function regexPostal(string $postal) {
+        return preg_match('/^[0-9]{5}$/',$pwd);
     }
 }

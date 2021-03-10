@@ -3,15 +3,15 @@
 class Car {
     
     private $id;
-    private $brand;
     private $picture;
-    private $model;
     private $details;
     private $mileage;
-    private $licencePlate;
+    private $licensePlate;
+    private $disponibility;
+    private $model;
 
     public function __construct($data = null) {
-        if ($data != null) hydrate($data);        
+        if ($data != null) $this->hydrate($data);        
     }
 
     private function hydrate($data) {
@@ -30,10 +30,7 @@ class Car {
     public function setId(int $id) {
         $this->id = $id;
     }
-    public function setBrand(string $brand) {
-        $this->brand = $brand;
-    }
-    public function setModel(string $model) {
+    public function setModel(Model $model) { 
         $this->model = $model;
     }
     public function setPicture(string $picture) {
@@ -45,19 +42,19 @@ class Car {
     public function setMileage(int $mileage) {
         $this->mileage = $mileage;
     }
-    public function setLicencePlate(string $licencePlate) {
-        $this->licencePlate = $licencePlate;
+    public function setLicensePlate(string $licensePlate) {
+        $this->licensePlate = $licensePlate;
+    }
+    public function setDisponibility(bool $disponibility) {
+        $this->disponibility = $disponibility;
     }
 
     // =======================================================
     //                         GETTERS
     // =======================================================
 
-    public function getId(int $id) {
-        return $this->id = $id;
-    }
-    public function getBrand() {
-        return $this->brand;
+    public function getId() {
+        return $this->id;
     }
     public function getModel() {
         return $this->model;
@@ -71,7 +68,10 @@ class Car {
     public function getMileage() {
         return $this->mileage;
     }
-    public function getLicencePlate() {
-        return $this->licencePlate;
+    public function getLicensePlate() {
+        return $this->licensePlate;
+    }
+    public function getDisponibility() {
+        return $this->disponibility;
     }
 }

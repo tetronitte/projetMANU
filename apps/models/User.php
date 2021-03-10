@@ -8,8 +8,9 @@ class User {
     private $mail;
     private $pwd;
     private $phone;
-    private $adress;
+    private $address;
     private $city;
+    private $postal;
     private $birthdate;
     private $token;
     private $drivingLicense;
@@ -48,8 +49,11 @@ class User {
     public function setMail(string $mail) {
         $this->mail = $mail;
     }
-    public function setAdress(string $adress) {
-        $this->adress = $adress;
+    public function setAddress(string $address) {
+        $this->address = $address;
+    }
+    public function setPostal(string $postal) {
+        $this->postal = $postal;
     }
     public function setCity(string $city) {
         $this->city = $city;
@@ -92,8 +96,11 @@ class User {
     public function getMail() {
         return $this->mail;
     }
-    public function getAdress() {
-        return $this->adress;
+    public function getAddress() {
+        return $this->address;
+    }
+    public function getPostal() {
+        return $this->postal;
     }
     public function getCity() {
         return $this->city;

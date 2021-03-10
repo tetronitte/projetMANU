@@ -9,7 +9,8 @@ class CarManager extends CI_Model {
         $this->table = 'cars';
     }
 
-    public function getAllProfil() {
+    public function getAllCars() {
+        $this->db->select('id, picture, licensePlate, mileage, disponibility, details, modelsId AS model');
         return $this->db->get($this->table);
     }
 

@@ -15,6 +15,7 @@ class UserController extends CI_Controller {
                 "pwd" => $this->input->post('pwd'),
                 "verifPwd" => $this->input->post('verifPwd'),
                 "address" => $this->input->post('address'),
+                "postal" => $this->input-post('postal'),
                 "city" => $this->input->post('city'),
                 "drivingLicense" => $this->input->post('drivingLicense'),
                 "drivingLicenseObtainDate" => $this->input->post('drivingLicenseObtainDate')
@@ -104,38 +105,40 @@ class UserController extends CI_Controller {
 
     public function update() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $dataProfil = array(
+            $dataUser = array(
                 "firstname" => $this->input->post('firstname'),
                 "lastname" => $this->input->post('lastname'),
                 "birthdate" => $this->input->post('birthdate'),
                 "phone" => $this->input->post('phone'),
                 "mail" => $this->input->post('mail'),
                 "pwd" => $this->input->post('pwd'),
-                "verifPwd" => $this->input->post('verifPwd'),
-                "adress" => $this->input->post('adress'),
+                "address" => $this->input->post('address'),
                 "city" => $this->input->post('city'),
-                "drivingLicence" => $this->input->post('drivingLicence'),
-                "drivingLicenceObtainDate" => $this->input->post('drivingLicenceObtainDate')
+                "postal" => $this->input->post('postal'),
+                "drivingLicense" => $this->input->post('drivingLicense'),
+                "drivingLicenseObtainDate" => $this->input->post('drivingLicenseObtainDate')
             );
-            if($this->form_validation->run('register')) {
-                $this->UserManager->update($dataProfil);
-                redirect('UserController/index');
+            if($this->form_validation->run('update')) {
+                $this->UserManager->update($dataUser);
+                redirect('UserController/profil');
             }
             else {
-                $dataContents['profil'] = $dataProfil;
-                $dataContents['errors'] = '';
-                $this->render('register',$dataContents);
+                $dataContent['user'] = $dataUser;
+                $this->render('userProfil',$dataContent);
             }
         }
         else {
-            $this->render('register');
+            $this->render('userProfil');
         }
     }
 
     public function profil() {
-        $req = $this->db->getProfil($this->session->id);
-        $profil = new Profil($req->result());
-        $this->render('register',$profil);
+        $dataContent['title'] = 'Profil';
+        $dataContent['css'] = 'userProfil';
+        $req = $this->UserManager->getUserById((int)$this->session->id);
+        $profil = new User($req->result()[0]);
+        $dataContent['profil'] = $profil;
+        $this->render('profil',$dataContent);
     }
 
     public function index() {
@@ -156,7 +159,7 @@ class UserController extends CI_Controller {
         return $token;
     }
 
-    private function render($file,$data) {
+    private function render($file, $data) {
         $this->load->view('templates/header',$data);
         $this->load->view('templates/navbar',$data);
         $this->load->view($file,$data);
