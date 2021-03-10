@@ -6,7 +6,7 @@
 
 	<?= form_open('url','class="col-12"'); ?>
 
-		<div class="form-group text-center" id="formLogin">
+		<div class="form-group text-center" id="formSignin">
 			<div id="hrbar" class="col-12"></div>
 			<h3>informations de base :</h3>
 

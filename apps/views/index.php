@@ -4,13 +4,13 @@
 		<div id="carouselIndexControls" class="carousel slide col-6 offset-3" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="d-block w-100" src="img/1.jpg" alt="First slide"> <!-- mettre un script php sur src ? -->
+					<img class="d-block w-100" src="<?= base_url('assets/img/1.jpg')?>" alt="First slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="img/2.jpg" alt="Second slide">
+					<img class="d-block w-100" src="<?= base_url('assets/img/2.jpg')?>" alt="Second slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="img/3.jpg" alt="Third slide">
+					<img class="d-block w-100" src="<?= base_url('assets/img/3.jpg')?>" alt="Third slide">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselIndexControls" role="button" data-slide="prev">
