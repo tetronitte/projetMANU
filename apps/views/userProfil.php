@@ -35,11 +35,11 @@
 			<span class="help-block"><?= '';//error ?></span>
 
 			<label class="col-12">Changer votre numéro de permis de conduire :</label>
-				<input type="text" class="form-control" id="drivingLicence" name="drivingLicence" value="<?php if(isset($config['drivingLicence'])){ echo '';}?>">
+				<input type="text" class="form-control" id="drivingLicense" name="drivingLicense" value="<?php if(isset($config['drivingLicense'])){ echo '';}?>">
 			<span class="help-block"><?= '';//error ?></span>
 
 			<label class="col-12">Changer votre date d'obtention de votre permis de conduire :</label>
-				<input type="date" class="form-control" id="drivingLicenceObtainDate" name="drivingLicenceObtainDate" value="<?php if(isset($config['drivingLicenceObtainDate'])){ echo '';}?>">
+				<input type="date" class="form-control" id="drivingLicenseObtainDate" name="drivingLicenseObtainDate" value="<?php if(isset($config['drivingLicenseObtainDate'])){ echo '';}?>">
 			<span class="help-block"><?= '';//error ?></span>
 
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitUserOption']); ?>
