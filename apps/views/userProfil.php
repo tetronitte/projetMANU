@@ -10,14 +10,6 @@
 				<input type="email" class="form-control" id="mail" name="mailchange" value="<?php if(isset($config['mail'])){ echo '';};?>">
 			<span class="help-block"><?= '';//error ?></span>
 
-			<label class="col-12">Changer le mot de passe :</label>
-				<input type="text" class="form-control" id="pwd" name="pwd" value="<?php if(isset($config['pwd'])){ echo '';}?>">
-			<span class="help-block"><?= '';//error ?></span>
-
-			<label class="col-12">Confirmer le mot de passe :</label>
-				<input type="text" class="form-control" id="pwd" name="pwd" value="<?php if(isset($config['pwd'])){ echo '';}?>">
-			<span class="help-block"><?= '';//error ?></span>
-
 			<label class="col-12">Changer votre numéro téléphone :</label>
 				<input type="text" class="form-control" id="phone" name="phone" value="<?php if(isset($config['phone'])){ echo '';}?>">
 			<span class="help-block"><?= '';//error ?></span>
@@ -44,6 +36,10 @@
 
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitUserOption']); ?>
 	<?= form_close() ?>
+			<div class="text-center">
+				<?= anchor("'url'", "Changer de mot de passe ?",['class' => 'btn btn-warning', 'id' => 'submitUserOption']); ?>
+			</div>
 		</div>
 	</div>
+
 </div>
