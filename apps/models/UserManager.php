@@ -23,12 +23,12 @@ class UserManager extends CI_Model {
         return $this->db->get($this->table);
     }
 
-    public function updateUser($data, $id) {
+    public function updateUser($data, int $id) {
         $this->db->where('id',$id);
         $this->db->update($this->table,$data);
     }
 
-    public function deleteUser($id) {
+    public function deleteUser(int $id) {
         $this->db->where('id',$id);
         $this->db->delete($this->table);
     }
@@ -41,5 +41,10 @@ class UserManager extends CI_Model {
     public function updateToken(int $id, string $token) {
         $this->db->where('id',$id);
         $this->db->update($this->table,['tokenAutolog' => $token]);
+    }
+
+    public function updatePassword(int $id, string $password) {
+        $this->db->where('id',$id);
+        $this->db->update($this->table,['pwd' => $password]);
     }
 }

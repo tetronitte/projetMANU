@@ -91,7 +91,7 @@ class User {
         return $this->firstname;
     }
     public function getDrivingLicense() {
-        return $this->driving_license;
+        return $this->drivingLicense;
     }
     public function getMail() {
         return $this->mail;

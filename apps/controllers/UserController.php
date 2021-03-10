@@ -15,7 +15,7 @@ class UserController extends CI_Controller {
                 "pwd" => $this->input->post('pwd'),
                 "verifPwd" => $this->input->post('verifPwd'),
                 "address" => $this->input->post('address'),
-                "postal" => $this->input-post('postal'),
+                "postal" => $this->input->post('postal'),
                 "city" => $this->input->post('city'),
                 "drivingLicense" => $this->input->post('drivingLicense'),
                 "drivingLicenseObtainDate" => $this->input->post('drivingLicenseObtainDate')
@@ -104,6 +104,8 @@ class UserController extends CI_Controller {
     }
 
     public function update() {
+        $dataContent['title'] = 'Profil';
+        $dataContent['css'] = 'userProfil';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataUser = array(
                 "firstname" => $this->input->post('firstname'),
@@ -111,7 +113,6 @@ class UserController extends CI_Controller {
                 "birthdate" => $this->input->post('birthdate'),
                 "phone" => $this->input->post('phone'),
                 "mail" => $this->input->post('mail'),
-                "pwd" => $this->input->post('pwd'),
                 "address" => $this->input->post('address'),
                 "city" => $this->input->post('city'),
                 "postal" => $this->input->post('postal'),
@@ -128,7 +129,7 @@ class UserController extends CI_Controller {
             }
         }
         else {
-            $this->render('userProfil');
+            redirect('UserController/profil');
         }
     }
 
@@ -136,9 +137,40 @@ class UserController extends CI_Controller {
         $dataContent['title'] = 'Profil';
         $dataContent['css'] = 'userProfil';
         $req = $this->UserManager->getUserById((int)$this->session->id);
-        $profil = new User($req->result()[0]);
-        $dataContent['profil'] = $profil;
-        $this->render('profil',$dataContent);
+        $user = new User($req->result()[0]);
+        $dataContent['user'] = $user;
+        $this->render('userProfil',$dataContent);
+    }
+
+    public function updatePassword() {
+        $dataContent['title'] = 'Modification mot de passe';
+        $dataContent['css'] = 'updatePassword';
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $dataUser = array(
+                "oldPwd" => $this->input->post('oldPwd'),
+                "pwd" => $this->input->post('pwd'),
+                "verifPwd" => $this->input->post('verifPwd')
+            );
+            if ($this->form_validation->run('updatePassword')) {
+                $req = $this->UserManager->getUserById((int)$this->session->id);
+                $user = new User($req->result()[0]);
+                if (password_verify($dataUser['oldPwd'],$user->getPwd())) {
+                    $password = password_hash($dataUser['pwd'],PASSWORD_DEFAULT);
+                    $this->UserManager->updatePassword((int)$this->session->id, $password);
+                    redirect('UserController/profil');
+                }
+                else {
+                    $dataContent['error'] = 'Mot de passe incorrect';
+                    $this->render('updatePassword',$dataContent);
+                }
+            }
+            else {
+                $this->render('updatePassword',$dataContent);
+            }
+        }
+        else {
+            $this->render('updatePassword',$dataContent);
+        }
     }
 
     public function index() {
