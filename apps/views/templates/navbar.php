@@ -12,5 +12,7 @@
 			</li>
 	    </ul>
 </div>
-<div id="hrbar" class="col-12"></div>
 </nav>
+<div class ="row">
+	<div id="hrbar" class="col-12"></div>
+</div>
