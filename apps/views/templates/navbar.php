@@ -8,9 +8,9 @@
 				<?= anchor("'url'", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 			<li class="nav-item col offset-lg-6">
-				<?= anchor("'url'", "Inscription/Login",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
+				<?= anchor("'url'", "Login/Inscription",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 			</li>
 	    </ul>
 </div>
+<div id="hrbar" class="col-12"></div>
 </nav>
-<hr>
