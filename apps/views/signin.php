@@ -30,9 +30,13 @@
 					<input type="tel" class="form-control" id="phone" name="phone" value="<?php if(isset($profil)) echo $profil['phone']?>">
 				<span class="help-block"><?= form_error('phone') ?></span>
 
-				<label class="col-12">Votre code postal :</label>
+				<label class="col-12">Votre ville :</label>
 					<input type="text" class="form-control" id="city" name="city" value="<?php if(isset($user)) echo $user['city']?>">
 				<span class="help-block"><?= form_error('city') ?></span>
+
+				<label class="col-12">Votre code postal :</label>
+					<input type="text" class="form-control" id="postal" name="postal" value="<?php if(isset($user)) echo $user['postal']?>">
+				<span class="help-block"><?= form_error('postal') ?></span>
 
 				<label class="col-12">Votre adresse :</label>
 					<input type="text" class="form-control" id="address" name="address" value="<?php if(isset($user)) echo $user['address']?>">

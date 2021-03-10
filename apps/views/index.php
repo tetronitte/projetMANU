@@ -23,5 +23,5 @@
 			</a>
 		</div>
 	</div>
-	<h2 class='text-center'>Le premier site fran�ais de location automobile !<h2>
+	<h2 class='text-center'>Le premier site français de location automobile !<h2>
 </div>

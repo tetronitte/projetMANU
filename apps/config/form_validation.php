@@ -27,6 +27,11 @@ $config = array(
             'rules' => 'required|regexName'
         ),
         array(
+            'field' => 'phone',
+            'label' => 'phone',
+            'rules' => 'required|regexPhone'
+        ),
+        array(
             'field' => 'postal',
             'label' => 'postal',
             'rules' => 'required|regexPostal'
@@ -71,23 +76,13 @@ $config = array(
     ),
     'update' => array(
         array(
-            'field' => 'lastname',
-            'label' => 'lastname',
-            'rules' => 'required|regexName'
-        ),
-        array(
-            'field' => 'firstname',
-            'label' => 'firstname',
-            'rules' => 'required|regexName'
-        ),
-        array(
-            'field' => 'birthdate',
-            'label' => 'birthdate',
-            'rules' => 'required|regexDate|checkMajority'
-        ),
-        array(
-            'fiabel' => 'mail',
+            'field' => 'mail',
             'rules' => 'required|valid_email|is_unique[users.mail]'
+        ),
+        array(
+            'field' => 'phone',
+            'label' => 'phone',
+            'rules' => 'required|regexPhone'
         ),
         array(
             'field' => 'city',
@@ -105,11 +100,6 @@ $config = array(
             'rules' => 'required'
         ),
         array(
-            'field' => 'pwd',
-            'label' => 'pwd',
-            'rules' => 'required|sizePassword|regexPassword'
-        ),
-        array(
             'field' => 'drivingLicense',
             'label' => 'drivingLicense',
             'rules' => 'required|regexDrivingLicense'
@@ -118,6 +108,23 @@ $config = array(
             'field' => 'drivingLicenseObtainDate',
             'label' => 'drivingLicenseObtainDate',
             'rules' => 'required|regexDate'
+        )
+    ),
+    'updatePassword' => array(
+        array(
+            'field' => 'oldPwd',
+            'label' => 'oldPwd',
+            'rules' => 'required|sizePassword|regexPassword'
+        ),
+        array(
+            'field' => 'pwd',
+            'label' => 'pwd',
+            'rules' => 'required|sizePassword|regexPassword'
+        ),
+        array(
+            'field' => 'verifPwd',
+            'label' => 'verifPwd',
+            'rules' => 'required|sizePassword|regexPassword|isEqualPassword[pwd]'
         )
     )
 );
