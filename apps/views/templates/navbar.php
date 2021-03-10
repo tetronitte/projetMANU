@@ -5,10 +5,13 @@
 <div class="collapse navbar-collapse row" id="navbarNav"><!-- modifier col pour le responsive et faire du php pour if loggedin remplacer le bouton login -->
 		<ul class="navbar-nav col-12">
 			<li class="nav-item col-lg-2">
-				<?= anchor("'url'", "Nos v�hicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+				<?= anchor("'url'", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
-			<li class="nav-item col offset-lg-6">
-				<?= anchor("'url'", "Inscription/Login",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
+			<li class="nav-item col">
+				<?= anchor("UserController/login", "Inscription/Login",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
+			</li>
+			<li class="nav-item col">
+				<?= anchor("UserController/signout", "Déconnexion",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 			</li>
 	    </ul>
 </div>

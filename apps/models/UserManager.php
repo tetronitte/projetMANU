@@ -9,33 +9,37 @@ class UserManager extends CI_Model {
         $this->table = 'users';
     }
 
-    public function getAllProfil() {
+    public function getAllUser() {
         return $this->db->get($this->table);
     }
 
-    public function getProfil(int $id = null, string $mail = '') {
+    public function getUserById(int $id) {
+        $this->db->where('id',$id);
+        return $this->db->get($this->table);
+    }
+
+    public function getUserByMail(string $mail) {
         $this->db->where('mail',$mail);
-        $this->db->or_where('id',$id);
         return $this->db->get($this->table);
     }
 
-    public function updateProfil($data, $id) {
+    public function updateUser($data, $id) {
         $this->db->where('id',$id);
         $this->db->update($this->table,$data);
     }
 
-    public function deleteProfil($id) {
+    public function deleteUser($id) {
         $this->db->where('id',$id);
         $this->db->delete($this->table);
     }
 
-    public function insertProfil($data) {
+    public function insertUser($data) {
         $this->db->insert($this->table,$data);
         return $this->db->insert_id();
     }
 
-    public function updateToken(string $token) {
+    public function updateToken(int $id, string $token) {
         $this->db->where('id',$id);
-        $this->db->update($this->table,['token' => $token]);
+        $this->db->update($this->table,['tokenAutolog' => $token]);
     }
 }

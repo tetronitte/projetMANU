@@ -41,7 +41,7 @@ class MY_Form_validation extends CI_Form_validation {
     }
 
     public function isEqualPassword(string $pwd, string $vpwd) {
-        if ($pwd == $vpwd) return true;
+        if ($_POST['pwd'] == $_POST['verifPwd']) return true;
         else return false;
     }
 }

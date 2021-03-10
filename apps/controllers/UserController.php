@@ -2,9 +2,11 @@
 
 class UserController extends CI_Controller {
 
-    public function register() {
+    public function signin() {
+        $dataContent['title'] = 'Inscription';
+        $dataContent['css'] = 'style';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $dataProfil = array(
+            $dataUser = array(
                 "firstname" => $this->input->post('firstname'),
                 "lastname" => $this->input->post('lastname'),
                 "birthdate" => $this->input->post('birthdate'),
@@ -18,39 +20,41 @@ class UserController extends CI_Controller {
                 "drivingLicenseObtainDate" => $this->input->post('drivingLicenseObtainDate')
             );
             if($this->form_validation->run('register')) {
-                $password = password_hash($dataProfil['pwd'],PASSWORD_DEFAULT);
-                $dataProfil['pwd'] = $password;
-                unset($dataProfil['verifPwd']);
+                $password = password_hash($dataUser['pwd'],PASSWORD_DEFAULT);
+                $dataUser['pwd'] = $password;
+                unset($dataUser['verifPwd']);
 
-                $this->UserManager->insertProfil($dataProfil);
+                $this->UserManager->insertUser($dataUser);
                 
                 redirect('UserController/index');
             }
             else {
-                $dataContents['profil'] = $dataProfil;
-                $this->load->view('test',$dataContents);
+                $dataContent['user'] = $dataUser;
+                $this->render('signin',$dataContent);
             }
         }
         else {
-            $this->render('test');
+            $this->render('signin',$dataContent);
         }
     }
 
     public function login() {
+        $dataContent['title'] = 'Connexion';
+        $dataContent['css'] = 'style';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataUser = array(
-                "mail" => $this->input->post('firstname'),
+                "mail" => $this->input->post('mail'),
                 "pwd" => $this->input->post('pwd'),
                 "autolog" => $this->input->post('autolog')
             );
             if($this->form_validation->run('login')) {
-                $req = $this->UserManager->get($dataUser['mail']);
-                if ($req->num_rows() == 0) {
-                    $user = new User($req->result());
+                $req = $this->UserManager->getUserByMail($dataUser['mail']);
+                if ($req->num_rows() == 1) {
+                    $user = new User($req->result()[0]);
                     if (password_verify($dataUser['pwd'],$user->getPwd())) {
                         //Création du token si autoload check
-                        if ($dataUser['autolog'] == 'on') {
-                            $token = $this->createToken();
+                        if ($dataUser['autolog'] == 'accept') {
+                            $token = $this->createToken($user->getId());
                             $user->setToken($token);
                         }
                         //Créer la session
@@ -59,32 +63,32 @@ class UserController extends CI_Controller {
                         $this->session->set_userdata('lastname',$user->getLastname());
                         //Si admin
                         if ($user->getAdmin()) {
-                            
+                            $this->session->set_userdata('admin',1);
                         }
                         redirect('UserController/index');
                     }
                     else {
                         unset($dataUser['autolog']);
-                        $dataContents['user'] = $dataUser;
-                        $dataContents['errors'] = 'Identifiant ou mot de passe incorrect';
-                        $this->render('test',$dataContents);
+                        $dataContent['user'] = $dataUser;
+                        $dataContent['errors'] = 'Identifiant ou mot de passe incorrect';
+                        $this->render('login',$dataContent);
                     }
                 }
                 else {
                     unset($dataUser['autolog']);
-                    $dataContents['user'] = $dataUser;
-                    $dataContents['errors'] = 'Identifiant ou mot de passe incorrect';
-                    $this->render('test',$dataContents);
+                    $dataContent['user'] = $dataUser;
+                    $dataContent['errors'] = 'Identifiant ou mot de passe incorrect';
+                    $this->render('login',$dataContent);
                 }
             }
             else {
                 unset($dataUser['autolog']);
-                $dataContents['user'] = $dataUser;
-                $this->render('test',$dataContents);
+                $dataContent['user'] = $dataUser;
+                $this->render('login',$dataContent);
             }
         }
         else {
-            $this->render('test');
+            $this->render('login',$dataContent);
         }
     }
 
@@ -95,7 +99,7 @@ class UserController extends CI_Controller {
             $_SESSION['lastname']
         );
         delete_cookie('autolog');
-        redirect('UserController/list_appointments');
+        redirect('UserController/index');
     }
 
     public function update() {
@@ -135,21 +139,27 @@ class UserController extends CI_Controller {
     }
 
     public function index() {
-        $this->render('test');
+        $dataContent['title'] = 'index';
+        $dataContent['css'] = 'style';
+        $this->render('index',$dataContent);
     }
 
-    private function createToken() {
-        $options = new Options();
-        $tokenSize = $options->getTokenSize();
-        $tokenTime = $options->getTokenTime();
+    private function createToken(int $id) {
+        // $options = new Options();
+        // $tokenSize = $options->getTokenSize();
+        // $tokenTime = $options->getTokenTime();
+        $tokenSize = 64;
+        $tokenTime = 3600;
         $token = bin2hex(random_bytes($tokenSize));
         setcookie('autolog',$token,time()+$tokenTime,'/');
-        $this->ProfilManager->upateToken($token);
+        $this->UserManager->updateToken($id,$token);
         return $token;
     }
 
-    private function render($file) {
-        //$this->load->view('templates/header');
-        $this->load->view($file);
+    private function render($file,$data) {
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/navbar',$data);
+        $this->load->view($file,$data);
+        $this->load->view('templates/footer',$data);
     }
 }

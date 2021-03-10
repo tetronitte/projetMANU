@@ -17,7 +17,7 @@ class User {
     public $admin;
 
     public function __construct($data = null) {
-        if ($data != null) hydrate($ada);        
+        if ($data != null) $this->hydrate($data);        
     }
 
     private function hydrate($data) {
@@ -54,7 +54,7 @@ class User {
     public function setCity(string $city) {
         $this->city = $city;
     }
-    public function setBirthdate(date $birthdate) {
+    public function setBirthdate(string $birthdate) {
         $this->birthdate = $birthdate;
     }
     public function setPwd(string $pwd) {
@@ -66,7 +66,7 @@ class User {
     public function setToken(string $token) {
         $this->token = $token;
     }
-    public function setDrivingLicenseObtainDate(date $drivingLicenseObtainDate) {
+    public function setDrivingLicenseObtainDate(string $drivingLicenseObtainDate) {
         $this->drivingLicenseObtainDate = $drivingLicenseObtainDate;
     }
     public function setAdmin(bool $admin) {

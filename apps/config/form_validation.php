@@ -25,7 +25,7 @@ $config = array(
         array(
             'field' => 'mail',
             'label' => 'mail',
-            'rules' => 'valid_email|is_unique[users.mail]|required'
+            'rules' => 'required|valid_email|is_unique[users.mail]'
         )
         ,
         array(
@@ -35,8 +35,8 @@ $config = array(
         )
         ,
         array(
-            'field' => 'adress',
-            'label' => 'adress',
+            'field' => 'address',
+            'label' => 'address',
             'rules' => 'required'
         )
         ,

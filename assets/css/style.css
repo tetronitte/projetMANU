@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+/*font-family: 'Electrolize', sans-serif;*/
+/*font-family: 'PT Sans', sans-serif;*/
+
+body
+{
+    background-size: cover;
+    background-image: url('../img/background.png');
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 80px !important;
+}
+
+h2 {
+    padding-top: 3%;
+    font-family: 'Electrolize', sans-serif;
+}
+
+h3 {
+    font-size: 50px !important;
+    font-family: 'PT Sans', sans-serif;
+}
+
+#hrbar {
+    height: 15px !important;
+    background-color: #FF9900;
+    margin-top: inherit !important;
+    margin-bottom: inherit !important;
+}
+
+
+#linkVehicle
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+}
+
+#loginbutton
+{   
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    background-color : #FF9900;
+}
+
+hr 
+{
+    height: 15px !important;
+    background-color : #FF9900;
+    margin-top: inherit !important;
+    margin-bottom: inherit !important;
+}
+
+#cookie
+{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#yesCookie
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    background-color : #FF9900;
+    height: 50px;
+    border-color: #FF9900 !important;
+}
+
+#noCookie
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    background-color : #FF9900;
+    height: 50px;
+    border-color: #FF9900 !important;
+}
+
+#searchIndexDiv
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2%;
+}
+
+#searchIndexButton
+{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color : #FF9900;
+    border-color: #FF9900 !important;
+}
+
+#listAllVehicles 
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#listLogin 
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#formLogin
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#submitLogin
+{
+    margin-top: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color : #FF9900;
+    border-color: #FF9900 !important;
+}
+
+#listSignIn 
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitSignIn
+{
+    margin-top: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+#listUser 
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitUserOption 
+{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+#listRentUserVehicles
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#listAdminRent 
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#registerRent 
+{
+    margin-bottom: 2%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+#registerReturn 
+{
+    margin-bottom: 2%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+#searchAdminRentDiv
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2%;
+}
+
+#searchAdminRentButton
+{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+#listAllClient
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#searchClientDiv 
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2%;
+}
+
+#searchClientButton 
+{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
+
+#listAllVehicle
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#searchVehicleDiv 
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2%;
+}
+
+#searchVehicleButton 
+{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
