@@ -26,4 +26,15 @@ class CarManager extends CI_Model {
         // $this->db->or_where('id',$id);
         // return $this->db->get($this->table);
     }
+
+    public function updateCar(int $id, array $data) {
+        $this->db->where('id',$id);
+        $this->db->update($this->table,$data);
+    }
+
+	public function deleteCar(int $id) {
+        $this->db->where('id',$id);
+        $this->db->delete($this->table);  
+    }
+
 }
