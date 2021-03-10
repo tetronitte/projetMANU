@@ -37,7 +37,7 @@
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitUserOption']); ?>
 	<?= form_close() ?>
 			<div class="text-center">
-				<?= anchor("'url'", "Changer de mot de passe ?",['class' => 'btn btn-warning', 'id' => 'submitUserOption']); ?>
+				<?= anchor("'url'", "Changer de mot de passe ?",['class' => 'btn btn-warning', 'id' => 'redirectUpdatePassword']); ?>
 			</div>
 		</div>
 	</div>
