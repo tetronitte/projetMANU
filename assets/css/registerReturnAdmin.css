@@ -1,0 +1,23 @@
+#formReturnAdmin 
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#registerReturnAdmin
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitReturnAdmin
+{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}

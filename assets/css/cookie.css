@@ -1,0 +1,26 @@
+#cookie
+{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#yesCookie
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    background-color : #FF9900;
+    height: 50px;
+    border-color: #FF9900 !important;
+}
+
+#noCookie
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    background-color : #FF9900;
+    height: 50px;
+    border-color: #FF9900 !important;
+}
