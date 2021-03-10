@@ -5,33 +5,33 @@ $config = array(
         array(
             'field' => 'lastname',
             'label' => 'lastname',
-            'rules' => 'required'
+            'rules' => 'required|regexName'
         ),
         array(
             'field' => 'firstname',
             'label' => 'firstname',
-            'rules' => 'required'
+            'rules' => 'required|regexName'
         ),
         array(
             'field' => 'birthdate',
             'label' => 'birthdate',
-            'rules' => 'required'
+            'rules' => 'required|regexDate|checkMajority'
         ),
         array(
             'field' => 'phone',
             'label' => 'phone',
-            'rules' => 'required|regex_match[/^[0-9]{10}/]'
+            'rules' => 'required|regexPhone'
         ),
         array(
             'field' => 'mail',
             'label' => 'mail',
-            'rules' => 'valid_email|is_unique[patients.mail]|required'
+            'rules' => 'valid_email|is_unique[users.mail]|required'
         )
         ,
         array(
             'field' => 'city',
             'label' => 'city',
-            'rules' => 'required'
+            'rules' => 'required|regexName'
         )
         ,
         array(
@@ -43,25 +43,37 @@ $config = array(
         array(
             'field' => 'pwd',
             'label' => 'pwd',
-            'rules' => 'required'
+            'rules' => 'required|sizePassword|regexPassword'
         )
         ,
         array(
             'field' => 'verifPwd',
             'label' => 'verifPwd',
-            'rules' => 'required'
+            'rules' => 'required|sizePassword|regexPassword|isEqualPassword[pwd]'
         )
         ,
         array(
-            'field' => 'drivingLicence',
-            'label' => 'drivingLicence',
-            'rules' => 'required'
+            'field' => 'drivingLicense',
+            'label' => 'drivingLicense',
+            'rules' => 'required|regexDrivingLicense'
         )
         ,
         array(
-            'field' => 'drivingLicenceObtainDate',
-            'label' => 'drivingLicenceObtainDate',
-            'rules' => 'required'
+            'field' => 'drivingLicenseObtainDate',
+            'label' => 'drivingLicenseObtainDate',
+            'rules' => 'required|regexDate'
+        )
+    ),
+    'login' => array(
+        array(
+            'field' => 'mail',
+            'label' => 'mail',
+            'rules' => 'required|valid_email'
+        ),
+        array(
+            'field' => 'pwd',
+            'label' => 'pwd',
+            'rules' => 'required|sizePassword|regexPassword'
         )
     )
 );

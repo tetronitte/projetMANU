@@ -1,6 +1,6 @@
 <?php
 
-class OptionsManager extends CI_Models {
+class OptionsManager extends CI_Model {
 
     private $table;
 

@@ -1,12 +1,12 @@
 <?php
 
-class ProfilManager extends CI_Models {
+class UserManager extends CI_Model {
     
     private $table;
 
     public function __construct() {
         parent::__construct();
-        $this->table = 'profils';
+        $this->table = 'users';
     }
 
     public function getAllProfil() {
@@ -29,7 +29,7 @@ class ProfilManager extends CI_Models {
         $this->db->delete($this->table);
     }
 
-    public function insertProfil() {
+    public function insertProfil($data) {
         $this->db->insert($this->table,$data);
         return $this->db->insert_id();
     }
