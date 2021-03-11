@@ -7,7 +7,7 @@
 			<?php if(isset($_SESSION['id'])){?>
 
 			<li class="nav-item col-lg-2">
-				<?= anchor("CarContoller/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+				<?= anchor("UserController/listCar", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 
 			<li class="nav-item col offset-sm-5">
@@ -24,16 +24,16 @@
 			<?php}if($_SESSION['admin'] == 1){?>
 
 			<li class="nav-item col-lg-2">
-				<?= anchor("CarContoller/list", "Infos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+				<?= anchor("UserController/listCar", "Infos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 
 			<li class="nav-item col-lg-2">
-				<?= anchor("CarContoller/list", "Infos clients",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+				<?= anchor("UserController/listCar", "Infos clients",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 
 			
 			<li class="nav-item col-lg-2">
-				<?= anchor("CarContoller/list", "Liste locations",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+				<?= anchor("UserController/listCar", "Liste locations",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 
 			<li class="nav-item offset-sm-1">
@@ -50,7 +50,7 @@
 
 			<?php } else { ?>
 			<li class="nav-item col-lg-2">
-				<?= anchor("CarContoller/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+				<?= anchor("UserController/listCar", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 
 			<li class="nav-item col offset-sm-6">
