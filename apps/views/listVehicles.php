@@ -10,9 +10,10 @@
 
 	<div id="listAllVehicles" class="row">
 		<div id="hrbar" class="col-12"></div>
-			<?php //foreach(){
-				//avec scroll dans la div
-			//}
+			<?php 
+				foreach($cars as $car) {
+					//echo $car->getAttributAfficher();
+				}
 			?>
 	</div>
 

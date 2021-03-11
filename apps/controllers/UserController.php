@@ -4,7 +4,7 @@ class UserController extends CI_Controller {
 
     public function signin() {
         $dataContent['title'] = 'Inscription';
-        $dataContent['css'] = 'style';
+        $dataContent['css'] = 'signin';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataUser = array(
                 "firstname" => $this->input->post('firstname'),
@@ -41,7 +41,7 @@ class UserController extends CI_Controller {
 
     public function login() {
         $dataContent['title'] = 'Connexion';
-        $dataContent['css'] = 'style';
+        $dataContent['css'] = 'login';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataUser = array(
                 "mail" => $this->input->post('mail'),
@@ -108,8 +108,8 @@ class UserController extends CI_Controller {
         $dataContent['css'] = 'userProfil';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataUser = array(
-                "firstname" => $this->input->post('firstname'),
-                "lastname" => $this->input->post('lastname'),
+                "firstname" => $this->session->firstname,
+                "lastname" => $this->session->lastname,
                 "birthdate" => $this->input->post('birthdate'),
                 "phone" => $this->input->post('phone'),
                 "mail" => $this->input->post('mail'),
@@ -120,7 +120,7 @@ class UserController extends CI_Controller {
                 "drivingLicenseObtainDate" => $this->input->post('drivingLicenseObtainDate')
             );
             if($this->form_validation->run('update')) {
-                $this->UserManager->update($dataUser);
+                $this->UserManager->updateUser($dataUser,(int)$this->session->id);
                 redirect('UserController/profil');
             }
             else {
@@ -173,9 +173,38 @@ class UserController extends CI_Controller {
         }
     }
 
+    public function listCar() {
+        $dataContent['title'] = 'Notre catalogue';
+        $dataContent['css'] = 'listVehicles';
+        $req = $this->CarManager->getAllCars();
+        foreach ($req->result() as $row) {
+            $req2 = $this->ModelManager->getModel($row->id);
+            $row->model = new Model($req2->result()[0]);
+            $cars[] = new Car($row);
+        }
+        $dataContent['cars'] = $cars;
+        $this->render('listVehicles',$dataContent);
+    }
+
     public function index() {
         $dataContent['title'] = 'index';
         $dataContent['css'] = 'style';
+        $cookie = get_cookie('autolog');
+        if (!empty($cookie)) {
+            $req = $this->UserManager->getToken();
+            foreach($req->result() as $token) {
+                if ($token == $cookie) {
+                    $this->session->set_userdata('id',$user->getId());
+                    $this->session->set_userdata('firstname',$user->getFirstname());
+                    $this->session->set_userdata('lastname',$user->getLastname());
+                    //Si admin
+                    if ($user->getAdmin()) {
+                        $this->session->set_userdata('admin',1);
+                    }
+                    break;
+                }
+            }
+        }    
         $this->render('index',$dataContent);
     }
 

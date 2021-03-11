@@ -47,4 +47,9 @@ class UserManager extends CI_Model {
         $this->db->where('id',$id);
         $this->db->update($this->table,['pwd' => $password]);
     }
+
+    public function getToken() {
+        $this->db->select('tokenAutolog');
+        $this->db->get($this->table);
+    }
 }
