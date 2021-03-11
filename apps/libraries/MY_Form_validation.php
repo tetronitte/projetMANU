@@ -46,6 +46,6 @@ class MY_Form_validation extends CI_Form_validation {
     }
 
     public function regexPostal(string $postal) {
-        return preg_match('/^[0-9]{5}$/',$pwd);
+        return preg_match('/^[0-9]{5}$/',$postal);
     }
 }
