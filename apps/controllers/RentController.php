@@ -3,7 +3,6 @@
 class RentController extends CI_Controller {
 
     public function list() {
-        $this->load->model('RentManager');
         $dataContent['title'] = 'Nos locations';
         $dataContent['css'] = 'style';
         $rents = $this->RentManager->getAllRents();
@@ -12,7 +11,6 @@ class RentController extends CI_Controller {
     }
 
     public function add() {
-        $this->load->model('UserManager');
         $dataContent['title'] = 'Nouvelle location';
         $dataContent['css'] = 'style';
         $users = $this->UserManager->getAllUser();
@@ -27,7 +25,7 @@ class RentController extends CI_Controller {
     }
 
     public function cancelRent() {
-        
+
     }
 
     private function render($file, $data) {

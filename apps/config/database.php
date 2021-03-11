@@ -76,8 +76,8 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> 'mysql:host=localhost; dbname=locaauto; charset=utf8;',
 	'hostname' => 'localhost',
-	'username' => 'phpmyadmin',
-	'password' => 'root',
+	'username' => 'root',
+	'password' => '',
 	'database' => 'locaauto',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
