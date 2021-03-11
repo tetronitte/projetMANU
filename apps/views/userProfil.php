@@ -2,8 +2,18 @@
 	<div id="listUser" class="row">
 	<?= form_open('UserController/update','class="col-12"'); ?>
 
-		<?php //foreach{}
-		?>
+	<div class="text-center col-12">
+		<p><?= $user->getLastname(); ?></p>
+		<p><?= $user->getFirstname(); ?></p>
+		<p><?= $user->getMail(); ?></p>
+		<p><?= $user->getPhone(); ?></p>
+		<p><?= $user->getCity(); ?></p>
+		<p><?= $user->getPostal(); ?></p>
+		<p><?= $user->getAddress(); ?></p>
+		<p><?= $user->getDrivingLicense(); ?></p>
+		<p><?= $user->getDrivingLicenseObtainDate() ?></p>
+	</div>
+
 
 		<div class="form-group text-center" id="formUser">
 			<label>Changer d'email :</label>
