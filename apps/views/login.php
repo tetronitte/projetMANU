@@ -13,12 +13,12 @@
 			<span class="help-block"><?= form_error('pwd') ?></span>
 
 			<?= form_checkbox('autolog', 'accept', TRUE);?><label>rester connecté</label>
-			<?= $errors ?><!-- FAIRE UN BEAU MESSAGE d'ERREUR -->
+			<?php if(isset($errors)){ echo '?> <p class="text-danger">L\'email et le mot de passe ne sont pas valide !</p><?php' ; } ?>
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitLogin']); ?>
 	<?= form_close() ?>
 		</div>
 	</div>
-	<div class="text-center">
-		<?= anchor("UserController/register", "Vous n'êtes pas inscrit ?",['class' => 'btn text-info', 'id' => 'redirectSignIn']); ?>
+	<div class="text-center" id="redirectSignInDiv">
+		<?= anchor("UserController/signin", "Vous n'êtes pas inscrit ?",['class' => 'btn text-info', 'id' => 'redirectSignIn']); ?>
 	</div>
 </div>
