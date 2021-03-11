@@ -19,7 +19,6 @@ class Rent Manager extends CI_Model {
         $this->db->join('models', 'models.id = cars.modelsId');
         $this->db->join('users', 'users.id = rents.usersId');
         return $this->db->get($this->table);
-        return $this->db->get($this->table);
     }
 
     public function deleteRent(int $id) {
