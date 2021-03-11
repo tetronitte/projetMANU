@@ -53,12 +53,12 @@ class UserController extends CI_Controller {
                 if ($req->num_rows() == 1) {
                     $user = new User($req->result()[0]);
                     if (password_verify($dataUser['pwd'],$user->getPwd())) {
-                        //CrÃ©ation du token si autoload check
+                        //Création du token si autoload check
                         if ($dataUser['autolog'] == 'accept') {
                             $token = $this->createToken($user->getId());
                             $user->setToken($token);
                         }
-                        //CrÃ©er la session
+                        //Créer la session
                         $this->session->set_userdata('id',$user->getId());
                         $this->session->set_userdata('firstname',$user->getFirstname());
                         $this->session->set_userdata('lastname',$user->getLastname());

@@ -1,6 +1,5 @@
 <div class="container-fluid">
 	<h3 class="text-center">LOGIN</h3>
-
 	<div id="listLogin" class="row">
 		<div id="hrbar" class="col-12"></div>
 	<?= form_open('UserController/login','class="col-12"'); ?>
@@ -13,12 +12,12 @@
 			<span class="help-block"><?= form_error('pwd') ?></span>
 
 			<?= form_checkbox('autolog', 'accept', TRUE);?><label>rester connecté</label>
-			<?= $errors ?><!-- FAIRE UN BEAU MESSAGE d'ERREUR -->
+			<p class="text-danger"><?php if(isset($error)){ echo $error; }?></p>
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitLogin']); ?>
 	<?= form_close() ?>
 		</div>
 	</div>
-	<div class="text-center">
-		<?= anchor("UserController/register", "Vous n'êtes pas inscrit ?",['class' => 'btn text-info', 'id' => 'redirectSignIn']); ?>
+	<div class="text-center" id="redirectSignInDiv">
+		<?= anchor("UserController/signin", "Vous n'êtes pas inscrit ?",['class' => 'btn text-info', 'id' => 'redirectSignIn']); ?>
 	</div>
 </div>

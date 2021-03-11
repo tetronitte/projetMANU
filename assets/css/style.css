@@ -44,10 +44,7 @@ h3 {
     background-color : #FF9900;
 }
 
-/* index */
-
-#linkVehicle
-{
+#linkVehicle {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
 }
@@ -128,6 +125,10 @@ h3 {
     color: black;
     background-color : #FF9900;
     border-color: #FF9900 !important;
+}
+
+#redirectSignIn {
+    margin-bottom: 5%;
 }
 
 /* signin */

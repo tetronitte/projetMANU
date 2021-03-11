@@ -12,7 +12,12 @@
 		<div id="hrbar" class="col-12"></div>
 			<?php 
 				foreach($cars as $car) {
-					//echo $car->getAttributAfficher();
+					?><div class="col-6">
+					<p><?= $car->getModel() ?></p>
+					<p><?= $car->getDetails() ?></p>
+					<p><?= $car->getDisponibility() ?></p>
+					</div>
+					<img src="<?= $car->getPicture ?>" class="col-6" alter="img_vehicles"><?php
 				}
 			?>
 	</div>
