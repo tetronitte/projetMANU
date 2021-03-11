@@ -1,5 +1,5 @@
 <?php
-class Rent extends CI_Model {
+class RentManager extends CI_Model {
 
     private $table;
 
@@ -18,6 +18,11 @@ class Rent extends CI_Model {
         $this->db->join('cars', 'cars.id = rents.carsId');
         $this->db->join('models', 'models.id = cars.modelsId');
         $this->db->join('users', 'users.id = rents.usersId');
+        return $this->db->get($this->table);
+    }
+
+    public function getRentById(int $id) {
+        $this->db->select('id',$id);
         return $this->db->get($this->table);
     }
 

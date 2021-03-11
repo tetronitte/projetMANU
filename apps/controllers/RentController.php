@@ -3,7 +3,6 @@
 class RentController extends CI_Controller {
 
     public function list() {
-        $this->load->model('RentManager');
         $dataContent['title'] = 'Nos locations';
         $dataContent['css'] = 'style';
         $rents = $this->RentManager->getAllRents();
@@ -26,9 +25,17 @@ class RentController extends CI_Controller {
         $this->render('newRent', $dataContent);
     }
 
-    public function cancelRent() {
+    // public function cancelRent(int $id) {
+    //     $req = $this->RentManager($id);
+    //     $rent = new Rent($req->result()[0]);
+    //     $today = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
+    //     $rentStart = $rent->getDateStart();
+    //     if ($today < $rentStart) {
+    //         $this->RentManager->deleteRent($id);
+    //     }
         
-    }
+    //     redirect('RentController/lists');
+    // }
 
     private function render($file, $data) {
         $this->load->view('templates/header',$data);

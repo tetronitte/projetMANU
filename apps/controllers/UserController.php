@@ -173,18 +173,10 @@ class UserController extends CI_Controller {
         }
     }
 
-    public function listCar() {
-        $dataContent['title'] = 'Notre catalogue';
-        $dataContent['css'] = 'listVehicles';
-        $req = $this->CarManager->getAllCars();
-        foreach ($req->result() as $row) {
-            $req2 = $this->ModelManager->getModel($row->id);
-            $row->model = new Model($req2->result()[0]);
-            $cars[] = new Car($row);
-        }
-        $dataContent['cars'] = $cars;
-        $this->render('listVehicles',$dataContent);
-    }
+    // public function deleteUser() {
+    //     if (isset($this->session->admin)) {
+    //     }
+    // }
 
     public function index() {
         $dataContent['title'] = 'index';
