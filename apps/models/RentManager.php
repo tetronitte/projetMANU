@@ -21,4 +21,9 @@ class Rent extends CI_Model {
         return $this->db->get($this->table);
     }
 
+    public function deleteRent(int $id) {
+        $this->db->where('id',$id);
+        $this->db->delete($this->table);
+    }
+
 }

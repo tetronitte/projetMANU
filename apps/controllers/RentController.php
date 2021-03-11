@@ -26,6 +26,10 @@ class RentController extends CI_Controller {
         $this->render('newRent', $dataContent);
     }
 
+    public function cancelRent() {
+        
+    }
+
     private function render($file, $data) {
         $this->load->view('templates/header',$data);
         $this->load->view('templates/navbar',$data);
