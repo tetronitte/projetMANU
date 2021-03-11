@@ -8,16 +8,23 @@
 		</div>
 	<?= form_close() ?>
 
-	<div id="listAllVehicles" class="row">
+	<div id="listAllVehicles" class="row overflow-auto">
 		<div id="hrbar" class="col-12"></div>
-			<?php 
+			<?php
+
 				foreach($cars as $car) {
 					?><div class="col-6">
-					<p><?= $car->getModel() ?></p>
-					<p><?= $car->getDetails() ?></p>
-					<p><?= $car->getDisponibility() ?></p>
+						<!--<?php// var_dump($car->getModel()); //c'est un model pas un array
+						die();?>
+						<p><?php //echo $car->getModel(); ?></p>-->
+						<h2>Description du vehicule :</h2>
+						<p><?= $car->getDetails(); ?></p>
+						<h2>Disponibilité :</h2>
+						<?php if($car->getDisponibility() == 1){$Disponibility = 'oui'; } else {$Disponibility = 'non';}?>
+						<p><?= $Disponibility;?></p>
 					</div>
-					<img src="<?= $car->getPicture ?>" class="col-6" alter="img_vehicles"><?php
+					<img id="imgVehicles" src="<?= $car->getPicture(); ?>" class="col-6" alter="img_vehicles">
+					<div id="hrbar" class="col-8"></div><?php
 				}
 			?>
 	</div>
