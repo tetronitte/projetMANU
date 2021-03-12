@@ -4,7 +4,7 @@ class CarController extends CI_Controller {
     
     public function list() {
         $dataContent['title'] = 'Notre garage';
-        $dataContent['css'] = 'style';
+        $dataContent['css'] = 'listVehicles';
         $req = $this->CarManager->getAllCars();
         foreach ($req->result() as $row) {
             $req2 = $this->ModelManager->getModel($row->id);
@@ -12,7 +12,7 @@ class CarController extends CI_Controller {
             $cars[] = new Car($row);
         }
         $dataContent['cars'] = $cars;
-        $this->render('list',$dataContent);
+        $this->render('listVehicles',$dataContent);
     }
 
     private function render($file, $data) {
