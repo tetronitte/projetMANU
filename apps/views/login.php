@@ -13,7 +13,6 @@
 			<span class="help-block"><?= form_error('pwd') ?></span>
 
 			<?= form_checkbox('autolog', 'accept', TRUE);?><label>rester connecté</label>
-			<?= $errors ?><!-- FAIRE UN BEAU MESSAGE d'ERREUR -->
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitLogin']); ?>
 	<?= form_close() ?>
 		</div>
