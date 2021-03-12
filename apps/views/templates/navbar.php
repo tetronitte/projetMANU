@@ -10,7 +10,7 @@
 				<?= anchor("CarController/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 
-			<li class="nav-item col offset-sm-5">
+			<li class="nav-item col offset-lg-5">
 				<?= anchor("UserController/index", "Liste Location",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 			</li>
 
@@ -36,7 +36,7 @@
 				<?= anchor("CarController/list", "Liste locations",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 
-			<li class="nav-item offset-sm-1">
+			<li class="nav-item offset-lg-1">
 				<h2>Admin Mode</h2>
 			</li>
 
@@ -53,7 +53,7 @@
 				<?= anchor("CarController/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 			</li>
 
-			<li class="nav-item col offset-sm-6">
+			<li class="nav-item col offset-lg-6">
 				<?= anchor("UserController/login", "Inscription/Login",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 			</li>
 			<?php } ?>
