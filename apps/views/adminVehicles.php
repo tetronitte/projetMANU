@@ -10,11 +10,24 @@
 
 	<div id="listAllVehicle" class="row">
 		<div id="hrbar" class="col-12"></div>
-			<?php //foreach(){
-				//avec scroll dans la div et un bouton pour supprimer le client
-			//}
+			<?php
+				foreach($cars as $car) {
+					?><div class="col-6">
+						<h2>Détails du vehicule :</h2>
+						<p>Nom : <?= $car->getModel()->getName(); ?></p>
+						<p> Marque : <?= $car->getModel()->getBrand(); ?></p>
+						<p>Type de consommation : <?= $car->getModel()->getFueltype(); ?></p>
+						<p>catégorie : <?= $car->getModel()->getCategory(); ?></p>
+						<p>nombres de portes : <?= $car->getModel()->getDoors(); ?></p>
+						<h2>Description du vehicule :</h2>
+						<p><?= $car->getDetails(); ?></p>
+						<h2>Disponibilité :</h2>
+						<?php if($car->getDisponibility() == 1){$Disponibility = 'oui'; } else {$Disponibility = 'non';}?>
+						<p><?= $Disponibility;?></p>
+					</div>
+					<img id="imgVehicles" src="<?= base_url('assets/img/') . $car->getPicture(); ?>" class="col-6 h-60 w-100" alter="img_vehicles">
+					<div id="hrbar" class="col-8"></div><?php
+				}
 			?>
 	</div>
-
-	<!-- ajouter pagination -->
 </div>
