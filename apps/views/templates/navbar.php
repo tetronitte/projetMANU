@@ -27,7 +27,7 @@
 				</li>
 
 				<li class="nav-item col-lg-2">
-					<?= anchor("CarController/list", "Infos clients",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+					<?= anchor("UserController/listUser", "Infos clients",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
 
 			
