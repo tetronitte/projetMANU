@@ -7,7 +7,7 @@ class CarController extends CI_Controller {
         $dataContent['css'] = 'listVehicles';
         $req = $this->CarManager->getAllCars();
         foreach ($req->result() as $row) {
-            $req2 = $this->ModelManager->getModel($row->id);
+            $req2 = $this->ModelManager->getModel($row->model);
             $row->model = new Model($req2->result()[0]);
             $cars[] = new Car($row);
         }
