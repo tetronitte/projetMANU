@@ -48,4 +48,8 @@ class MY_Form_validation extends CI_Form_validation {
     public function regexPostal(string $postal) {
         return preg_match('/^[0-9]{5}$/',$postal);
     }
+
+    public function regexLicensePlate(string $licensePlate) {
+        return preg_match('/^[A-Z]{2}[-][0-9]{3}[-][A-Z]{2}$/',$licensePlate);
+    }
 }

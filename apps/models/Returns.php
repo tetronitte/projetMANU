@@ -1,9 +1,9 @@
 <?php
 
-class Return {
+class Returns {
     
     private $id;
-    private $date;
+    private $dateReturn;
     private $rentid;
 
     public function __construct($data = null) {
@@ -26,8 +26,8 @@ class Return {
     public function setId(int $id) {
         $this->id = $id;
     }
-    public function setDate(date $date) {
-        $this->date = $date;
+    public function setDateReturn(string $dateReturn) {
+        $this->dateReturn = $dateReturn;
     }
     public function setRentId(int $rentid) {
         $this->rentid = $rentid;
@@ -40,8 +40,8 @@ class Return {
     public function getId() {
         return $this->id;
     }
-    public function getDate() {
-        return $this->date;
+    public function getDateReturn() {
+        return $this->dateReturn;
     }
     public function getRentId() {
         return $this->rentid;

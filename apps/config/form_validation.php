@@ -1,7 +1,7 @@
 <?php
 
 $config = array(
-    'register' => array(
+    'signin' => array(
         array(
             'field' => 'lastname',
             'label' => 'lastname',
@@ -74,7 +74,7 @@ $config = array(
             'rules' => 'required|sizePassword|regexPassword'
         )
     ),
-    'update' => array(
+    'updateUser' => array(
         array(
             'field' => 'mail',
             'rules' => 'required|valid_email|is_unique[users.mail]'
@@ -126,5 +126,52 @@ $config = array(
             'label' => 'verifPwd',
             'rules' => 'required|sizePassword|regexPassword|isEqualPassword[pwd]'
         )
-    )
+    ),
+    'updateCar' => array(
+        array(
+            'field' => 'picture',
+            'label' => 'picture',
+            'rules' => 'required|regexLicensePlate'
+        ),
+        array(
+            'field' => 'licensePlate',
+            'label' => 'licensePlate',
+            'rules' => 'required|regexLicensePlate'
+        ),
+        array(
+            'field' => 'mileage',
+            'label' => 'mileage',
+            'rules' => 'required|integer'
+        ),
+        array(
+            'field' => 'details',
+            'label' => 'details',
+            'rules' => 'required|regexName'
+        ),
+        array(
+            'field' => 'name',
+            'label' => 'name',
+            'rules' => 'required|regexName'
+        ),
+        array(
+            'field' => 'brand',
+            'label' => 'brand',
+            'rules' => 'required|regexName'
+        ),
+        array(
+            'field' => 'fueltype',
+            'label' => 'fueltype',
+            'rules' => 'required|regexName'
+        ),
+        array(
+            'field' => 'category',
+            'label' => 'category',
+            'rules' => 'required|regexName'
+        ),
+        array(
+            'field' => 'doors',
+            'label' => 'doors',
+            'rules' => 'required|integer'
+        )
+    )    
 );

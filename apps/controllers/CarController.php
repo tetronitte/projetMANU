@@ -12,7 +12,65 @@ class CarController extends CI_Controller {
             $cars[] = new Car($row);
         }
         $dataContent['cars'] = $cars;
-        $this->render('listVehicles',$dataContent);
+        if (isset($this->session->admin)) {
+            $this->render('adminVehicles',$dataContent);
+        }
+        else {
+            $this->render('listVehicles',$dataContent);
+        }
+    }
+
+    public function updateCar(int $id) {
+        if (isset($this->session->admin)) {
+            $dataContent['title'] = 'Modifer voiture';
+            $dataContent['css'] = 'adminVehicles';
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $dataCar = array(
+                    "picture" => $this->input->post('picture'),
+                    "licensePlate" => $this->input->post('licensePlate'),
+                    "mileage" => $this->input->post('mileage'),
+                    "details" => $this->input->post('details')                    
+                );
+                $dataModel = array(
+                    "name" => $this->input->post('name'),
+                    "brand" => $this->input->post('brand'),
+                    "fueltype" => $this->input->post('fueltype'),
+                    "category" => $this->input->post('category'),
+                    "doors" => $this->input->post('doors')
+                );
+                if($this->form_validation->run('updateCar')) {
+                    $modelId = $this->CarManager->getCarModelId($id);
+                    $this->ModelManager->updateModel($modelId, $dataModel);
+                    $this->CarManager->updateCar($id, $dataCar);
+                    $this->render('adminVehicles',$dataContent);
+                }
+                else {
+                    $this->render('adminVehicles',$dataContent);
+                }
+            }
+            else {
+                $this->render('adminVehicles',$dataContent);
+            }
+        }
+        else {
+            redirect('UserController.index');
+        }
+    }
+
+    public function deleteCar(int $id) {
+        if(isset($this->session->admin)) {
+            $dispo = $this->CarManager->getDisponibility($id);
+            if ($dispo) {
+                $this->CarManager->deleteCar($id);
+            }
+            else {
+                $this->session->set_userdata('errorDeleteCar','Cette voiture n\a pas encore été retournée.');
+            }
+            redirect('CarController/list');
+        }
+        else {
+            redirect('UserController/index');
+        }
     }
 
     private function render($file, $data) {
