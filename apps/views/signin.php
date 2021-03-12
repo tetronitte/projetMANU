@@ -1,9 +1,6 @@
 <div class="container-fluid">
-
 	<h3 class="text-center">INSCRIPTION</h3>
-
 	<div id="listSignIn" class="row">
-
 	<?= form_open('UserController/signin','class="col-12"'); ?>
 		<?= validation_errors() ?>
 		<div class="form-group text-center" id="formLogin">

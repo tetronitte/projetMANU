@@ -37,13 +37,14 @@ class RentController extends CI_Controller {
                 "CarsId" => $this->input->post('car'),
                 "usersId" => $this->input->post('user')
             );
-            $this->form_validation->set_rules('start', 'date deb', 'required');
-            $this->form_validation->set_rules('end', 'date deb', 'required');
-            $this->form_validation->set_rules('car', 'date deb', 'required');
-            $this->form_validation->set_rules('user', 'date deb', 'required');
+            $this->form_validation->set_rules('start', 'Date deb', 'required');
+            $this->form_validation->set_rules('end', 'Date fin', 'required');
+            $this->form_validation->set_rules('car', 'Voiture', 'required');
+            $this->form_validation->set_rules('user', 'Client', 'required');
             if($this->form_validation->run('')) {
-                var_dump($dataRent);
+                 var_dump($dataRent);
                 $this->RentManager->newRent($dataRent);
+                $this->CarManager->notDispo($dataRent['CarsId']);
                 redirect('UserController/index');
             }
             else {
