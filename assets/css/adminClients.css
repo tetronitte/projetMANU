@@ -1,5 +1,6 @@
 #listAllClient
 {
+    height: 500px;
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -18,4 +19,14 @@
     color: black;
     background-color: #FF9900;
     border-color: #FF9900 !important;
+}
+
+#deleteClientButton
+{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: white;
+    background-color: #ff0000;
+    border-color: #ff0000 !important;
+    margin-bottom: 5%;
 }

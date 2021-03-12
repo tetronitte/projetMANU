@@ -1,8 +1,8 @@
 <?php
 
-class Return extends CI_Model {
+class ReturnManager extends CI_Model {
 
-	public function saveReturn(array $data) {
+	public function addReturn(array $data) {
         $this->db->insert($this->table,$data);
         return $this->db->insert_id();
     }

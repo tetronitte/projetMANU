@@ -14,12 +14,11 @@ class RentManager extends CI_Model {
     }
 
     public function getAllRents() {
-
         return $this->db->get($this->table);
     }
 
     public function getRentById(int $id) {
-        $this->db->select('id',$id);
+        $this->db->where('id',$id);
         return $this->db->get($this->table);
     }
 
@@ -28,4 +27,9 @@ class RentManager extends CI_Model {
         $this->db->delete($this->table);
     }
 
+    public function getRentByUserAndCar(int $userId, int $carId) {
+        $this->db->where('userId',$userId);
+        $this->db->where('carId',$carId);
+        return $this->db->get($this->table);
+    }
 }

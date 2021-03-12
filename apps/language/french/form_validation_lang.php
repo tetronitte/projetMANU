@@ -46,4 +46,5 @@ $lang['form_validation_regexPassword'] = 'Le format de mot de passe n\'est pas v
 $lang['form_validation_regexDrivingLicense'] = 'Le format du permis n\'est pas valide.';
 $lang['form_validation_sizePassword'] = 'Le mot de passe doit contenir entre 8 et 16 caractères.';
 $lang['form_validation_isEqualPassword'] = 'La vérification de mot de passe est incorrect.';
-$lang['form_validation_regexPostal'] = 'Le format de code postal n\'est pas bon.';
+$lang['form_validation_regexPostal'] = 'Le format de code postal n\'est pas valide.';
+$lang['form_validation_regexLicensePlate'] = 'Le format de la plaque d\'immatriculation n\'est pas valide.';
