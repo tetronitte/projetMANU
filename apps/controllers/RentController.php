@@ -19,6 +19,20 @@ class RentController extends CI_Controller {
         $this->render('listRents',$dataContent);
     }
 
+    public function deleteRent(int $id) {
+        $req = $this->UserManager->getRentById($id);
+        $rent = new Rent($req->result()[0]);
+        $today = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
+        $rentStart = $rent->getDateStart();
+        if ($today < $rentStart) {
+            $this->RentManager->deleteRent($id);
+        }
+        else {
+            $this->session->set_userdata('errorDeleteRent','Cette location est en cours.');
+        }
+        redirect('RentController/list');
+    }
+
     public function insert() {
         $dataContent['title'] = 'Nos locations';
         $dataContent['css'] = 'style';
@@ -53,19 +67,6 @@ class RentController extends CI_Controller {
             $this->render('add',$dataContent);
         }
     }
-
-    // public function cancelRent(int $id) {
-    //     $req = $this->RentManager($id);
-    //     $rent = new Rent($req->result()[0]);
-    //     $today = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
-    //     $rentStart = $rent->getDateStart();
-    //     if ($today < $rentStart) {
-    //         $this->RentManager->deleteRent($id);
-    //     }
-        
-    //     redirect('RentController/lists');
-    // }
-
 
     private function render($file, $data) {
         $this->load->view('templates/header',$data);

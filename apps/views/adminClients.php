@@ -17,5 +17,15 @@
 			?>
 	</div>
 
-	<!-- ajouter pagination -->
+	<!-- PAGINATION -->
+	<?php
+        if ($count > 0 && ($count/10) > 1) {
+            $nb = $count/10;
+            echo '<div class="pagination">';
+            for ($i = 0 ; $i < $nb ; $i++) {
+                echo '<button class="page" id="page'.($i+1).'">'.($i+1).'</button>';
+            }
+            echo '</div>';
+        }
+    ?>
 </div>

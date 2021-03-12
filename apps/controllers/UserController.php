@@ -20,7 +20,7 @@ class UserController extends CI_Controller {
                 "drivingLicense" => $this->input->post('drivingLicense'),
                 "drivingLicenseObtainDate" => $this->input->post('drivingLicenseObtainDate')
             );
-            if($this->form_validation->run('register')) {
+            if($this->form_validation->run('signin')) {
                 $password = password_hash($dataUser['pwd'],PASSWORD_DEFAULT);
                 $dataUser['pwd'] = $password;
                 unset($dataUser['verifPwd']);
@@ -120,7 +120,7 @@ class UserController extends CI_Controller {
                 "drivingLicense" => $this->input->post('drivingLicense'),
                 "drivingLicenseObtainDate" => $this->input->post('drivingLicenseObtainDate')
             );
-            if($this->form_validation->run('update')) {
+            if($this->form_validation->run('updateUser')) {
                 $this->UserManager->updateUser($dataUser,(int)$this->session->id);
                 redirect('UserController/profil');
             }
@@ -211,7 +211,7 @@ class UserController extends CI_Controller {
         if (isset($this->session->admin)) {
             $count = $this->UserManager->countRentInProgress();
             if ($count == 0) {
-                $this->USerManager->deleteUser($id);
+                $this->UserManager->deleteUser($id);
             }
             else {
                 $this->session->set_userdata('errorDeleteUser','Cet utilisateur à au moins une location en cours.');

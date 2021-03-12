@@ -19,4 +19,9 @@ class ModelManager extends CI_Model {
         $this->db->where('models.id',$id);
         return $this->db->get();
     }
+
+    public function updateModel(int $id, array $data) {
+        $this->db->where('id',$id);
+        $this->db->update($this->table,$data);
+    }
 }
