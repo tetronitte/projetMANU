@@ -31,6 +31,4 @@
 				}
 			?>
 	</div>
-
-	<!-- ajouter pagination -->
 </div>
