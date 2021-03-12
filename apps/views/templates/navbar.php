@@ -11,7 +11,7 @@
 			</li>
 
 			<li class="nav-item col offset-lg-5">
-				<?= anchor("UserController/index", "Liste Location",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
+				<?= anchor("UserController/index", "Location",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 			</li>
 
 			<li class="nav-item col">
@@ -41,11 +41,11 @@
 			</li>
 
 			<li class="nav-item col">
-				<?= anchor("AdminController/profil", "Option",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
+				<?= anchor("UserController/profil", "Option",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 			</li>
 
 			<li class="nav-item col">
-				<?= anchor("AdminController/signout", "Déconnexion",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
+				<?= anchor("UserController/signout", "Déconnexion",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 			</li>
 
 			<?php } else { ?>
