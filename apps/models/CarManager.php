@@ -17,7 +17,11 @@ class CarManager extends CI_Model {
     public function getCar(int $id = null, string $model = '') {
         $this->db->join('models', 'models.id = cars.modelsId');
         $this->db->where('models.name',$model);
-        $this->db->or_where('id',$id);
+        $this->db->or_where('cars.id',$id);
+        return $this->db->get($this->table);
+    }
+
+    public function getCarById(int $id = null) {
         return $this->db->get($this->table);
     }
 

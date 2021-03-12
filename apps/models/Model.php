@@ -52,7 +52,7 @@ class Model {
     public function getId() {
         return $this->id;
     }
-	    public function getName() {
+    public function getName() {
         return $this->name;
     }
     public function getBrand() {

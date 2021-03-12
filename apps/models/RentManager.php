@@ -14,10 +14,7 @@ class RentManager extends CI_Model {
     }
 
     public function getAllRents() {
-        $this->db->select('rents.id, rents.dateStart, rents.dateEnd, models.name as car, users.lastname as user');
-        $this->db->join('cars', 'cars.id = rents.carsId');
-        $this->db->join('models', 'models.id = cars.modelsId');
-        $this->db->join('users', 'users.id = rents.usersId');
+
         return $this->db->get($this->table);
     }
 

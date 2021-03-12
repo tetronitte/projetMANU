@@ -5,12 +5,11 @@ class Rent {
     private $id;
     private $dateStart;
     private $dateEnd;
-    private $price;
-    private $userid;
-    private $carid;
+    private $user;
+    private $car;
 
     public function __construct($data = null) {
-        if ($data != null) hydrate($data);        
+        if ($data != null) $this->hydrate($data);        
     }
 
     private function hydrate($data) {
@@ -29,27 +28,24 @@ class Rent {
     public function setId(int $id) {
         $this->id = $id;
     }
-    public function setDateStart(date $dateStart) {
+    public function setDateStart(string $dateStart) {
         $this->dateStart = $dateStart;
     }
-    public function setDateEnd(date $dateEnd) {
-        $this->dateEnd = $DateEnd;
+    public function setDateEnd(string $dateEnd) {
+        $this->dateEnd = $dateEnd;
     }
-    public function setPrice(string $price) {
-        $this->price = $price;
+    public function setUser(User $user) {
+        $this->user = $user;
     }
-    public function setUserId(string $userid) {
-        $this->userid = $userid;
-    }
-    public function setCarId(int $carid) {
-        $this->carid = $carid;
+    public function setCar(Car $car) {
+        $this->car = $car;
     }
 
     // =======================================================
     //                         GETTERS
     // =======================================================
 
-    public function getId(int $id) {
+    public function getId() {
         return $this->id;
     }
     public function getDateStart() {
@@ -58,13 +54,10 @@ class Rent {
     public function getDateEnd() {
         return $this->dateEnd;
     }
-    public function getPrice() {
-        return $this->price;
+    public function getUser() {
+        return $this->user;
     }
-    public function getUserId() {
-        return $this->userid;
-    }
-    public function getCarId() {
-        return $this->carid;
+    public function getCar() {
+        return $this->car;
     }
 }
