@@ -9,7 +9,7 @@ class Rent {
     private $car;
 
     public function __construct($data = null) {
-        if ($data != null) hydrate($data);        
+        if ($data != null) $this->hydrate($data);        
     }
 
     private function hydrate($data) {
@@ -32,7 +32,7 @@ class Rent {
         $this->dateStart = $dateStart;
     }
     public function setDateEnd(string $dateEnd) {
-        $this->dateEnd = $DateEnd;
+        $this->dateEnd = $dateEnd;
     }
     public function setUser(User $user) {
         $this->user = $user;
@@ -57,7 +57,7 @@ class Rent {
     public function getUser() {
         return $this->user;
     }
-    public function getCarId() {
+    public function getCar() {
         return $this->car;
     }
 }
