@@ -21,6 +21,11 @@ class RentManager extends CI_Model {
         return $this->db->get($this->table);
     }
 
+    public function getRentById(int $id) {
+        $this->db->select('id',$id);
+        return $this->db->get($this->table);
+    }
+
     public function deleteRent(int $id) {
         $this->db->where('id',$id);
         $this->db->delete($this->table);

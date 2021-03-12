@@ -13,6 +13,16 @@ class UserManager extends CI_Model {
         return $this->db->get($this->table);
     }
 
+    public function getAllUserNotAdmin(string $search = '',int $offset = 0) {
+        $this->db->from($this->table);
+        $this->db->where('admin',0);
+        $this->db->where("(lastname LIKE '%".$search."%' OR firstname LIKE '%".$search."%')");
+        $this->db->order_by('lastname', 'ASC');
+        $this->db->limit(5);
+        $this->db->offset($offset);
+        return $this->db->get();
+    }
+
     public function getUserById(int $id) {
         $this->db->where('id',$id);
         return $this->db->get($this->table);
@@ -51,5 +61,21 @@ class UserManager extends CI_Model {
     public function getToken() {
         $this->db->select('tokenAutolog');
         $this->db->get($this->table);
+    }
+
+    public function count(string $search = '') {
+        $this->db->select('CEIL(COUNT(id)) AS count');
+        $this->db->from($this->table);
+        $this->db->where('admin',0);
+        $this->db->where("(lastname LIKE '%".$search."%' OR firstname LIKE '%".$search."%')");
+        return $this->db->get();
+    }
+
+    public function countRentInProgress(int $id) {
+        $this->db->select('CEIL(COUNT(rents.id)) AS count');
+        $this->db->from($this->table);
+        $this->db->join('rents', 'rents.usersId = '.$this->table.'.id');
+        $this->db-where('users.id',$id);
+        $this->db->where('CURRENT_DATE <= rents.dateStart');
     }
 }

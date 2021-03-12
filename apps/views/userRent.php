@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<h3 class="text-center">Véhicules loués :</h3>
+	<h3 class="text-center">VÃ©hicules louÃ©s :</h3>
 	<div id="listRentUserVehicles" class="row">
 		<div id="hrbar" class="col-12"></div>
 			<?= anchor("", "Supprimer la location",['class' => 'btn btn-danger', 'id' => 'DeleteRent']); ?>
