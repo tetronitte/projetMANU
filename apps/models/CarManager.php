@@ -14,6 +14,13 @@ class CarManager extends CI_Model {
         return $this->db->get($this->table);
     }
 
+    public function getAllCarsDispo() {
+        $this->db->select('cars.id, cars.picture, cars.licensePlate, cars.mileage, cars.disponibility, cars.details, cars.modelsId, models.name');
+        $this->db->join('models', 'models.id = cars.modelsId');
+        $this->db->where('cars.disponibility','1');
+        return $this->db->get($this->table);
+    }
+
     public function getCar(int $id = null, string $model = '') {
         $this->db->join('models', 'models.id = cars.modelsId');
         $this->db->where('models.name',$model);

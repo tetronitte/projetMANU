@@ -229,16 +229,18 @@ class UserController extends CI_Controller {
         $cookie = get_cookie('autolog');
         if (!empty($cookie)) {
             $req = $this->UserManager->getToken();
-            foreach($req->result() as $token) {
-                if ($token == $cookie) {
-                    $this->session->set_userdata('id',$user->getId());
-                    $this->session->set_userdata('firstname',$user->getFirstname());
-                    $this->session->set_userdata('lastname',$user->getLastname());
-                    //Si admin
-                    if ($user->getAdmin()) {
-                        $this->session->set_userdata('admin',1);
+            if($req!=null) {
+                foreach($req->result() as $token) {
+                    if ($token == $cookie) {
+                        $this->session->set_userdata('id',$user->getId());
+                        $this->session->set_userdata('firstname',$user->getFirstname());
+                        $this->session->set_userdata('lastname',$user->getLastname());
+                        //Si admin
+                        if ($user->getAdmin()) {
+                            $this->session->set_userdata('admin',1);
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         }    
