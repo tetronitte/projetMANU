@@ -53,12 +53,12 @@ class UserController extends CI_Controller {
                 if ($req->num_rows() == 1) {
                     $user = new User($req->result()[0]);
                     if (password_verify($dataUser['pwd'],$user->getPwd())) {
-                        //Création du token si autoload check
+                        //CrÃ©ation du token si autoload check
                         if ($dataUser['autolog'] == 'accept') {
                             $token = $this->createToken($user->getId());
                             $user->setToken($token);
                         }
-                        //Créer la session
+                        //CrÃ©er la session
                         $this->session->set_userdata('id',$user->getId());
                         $this->session->set_userdata('firstname',$user->getFirstname());
                         $this->session->set_userdata('lastname',$user->getLastname());
@@ -97,7 +97,8 @@ class UserController extends CI_Controller {
         unset(
             $_SESSION['id'],
             $_SESSION['firstname'],
-            $_SESSION['lastname']
+            $_SESSION['lastname'],
+            $_SESSION['admin']
         );
         delete_cookie('autolog');
         redirect('UserController/index');
@@ -173,14 +174,58 @@ class UserController extends CI_Controller {
         }
     }
 
-    // public function deleteUser() {
-    //     if (isset($this->session->admin)) {
-    //     }
-    // }
+    public function listUser(int $page = 1) {
+        if (isset($this->session->admin)) {
+            $dataContent['title'] = "Liste des utilisateurs";
+            $dataContent['css'] = 'listUser';
+            if ($page == 1) $offset = 0;
+            else $offset = 10*($page-1);
+            $count = $this->UserManager->count()->result()[0]->count;
+            $dataContent["count"] = $count;
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $search = $this->input->post('search');
+            }
+            else {
+                if (isset($this->session->search)) {
+                    $search = $this->session->search;                    
+                }
+                else {
+                    $search = '';
+                }
+            }
+            $req = $this->UserManager->getAllUserNotAdmin($search,$offset);
+            foreach ($req->result() as $row) {
+                $users[] = new User($row);
+            }
+            if (!empty($users)) $dataContent["users"] = $users;
+            else $dataContent["users"] = null;
+            $dataContent['search'] = $search;
+            $this->render('adminClients',$dataContent);
+        }            
+        else {
+            redirect('UserController/index');
+        }
+    }
+
+    public function deleteUser(int $id) {
+        if (isset($this->session->admin)) {
+            $count = $this->UserManager->countRentInProgress();
+            if ($count == 0) {
+                $this->USerManager->deleteUser($id);
+            }
+            else {
+                $this->session->set_userdata('errorDeleteUser','Cet utilisateur Ã  au moins une location en cours.');
+            }
+            redirect('UserController/listUser');
+        }
+        else {
+            redirect('UserController/index');
+        }
+    }
 
     public function index() {
         $dataContent['title'] = 'index';
-        $dataContent['css'] = 'style';
+        $dataContent['css'] = 'index';
         $cookie = get_cookie('autolog');
         if (!empty($cookie)) {
             $req = $this->UserManager->getToken();

@@ -1,8 +1,8 @@
 <div class="container-fluid">
-	<?= form_open('url'); ?>
+	<?= form_open('USerController/listUser'); ?>
 		<div class="form-group input-group">
 			<div  id="searchClientDiv" class="input-group-prepend">
-				<input type="text" id="searchClient" name="searchClient" class="form-control" value="<?= '';?>">
+				<input type="text" id="searchClient" name="searchClient" class="form-control" value="<?php if(isset($search)) {echo $search;} else if(isset($this->session->search)) { echo $this->session->search; unset($this->session->search);} ?>">
 				<?= form_submit("send", "chercher",['class' => 'btn btn-warning', 'id' => 'searchClientButton']); ?>
 			</div>
 		</div>
@@ -10,9 +10,10 @@
 
 	<div id="listAllClient" class="row">
 		<div id="hrbar" class="col-12"></div>
-			<?php //foreach(){
-				//avec scroll dans la div et un bouton pour supprimer le client
-			//}
+			<?php 
+				var_dump($search);
+				var_dump($users);
+				if(isset($this->session->errorDeleteUser)) var_dump($this->session->errorDeleteUser);
 			?>
 	</div>
 
