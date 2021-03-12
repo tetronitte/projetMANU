@@ -177,7 +177,7 @@ class UserController extends CI_Controller {
     public function listUser(int $page = 1) {
         if (isset($this->session->admin)) {
             $dataContent['title'] = "Liste des utilisateurs";
-            $dataContent['css'] = 'listUser';
+            $dataContent['css'] = 'adminClients';
             if ($page == 1) $offset = 0;
             else $offset = 10*($page-1);
             $count = $this->UserManager->count()->result()[0]->count;
