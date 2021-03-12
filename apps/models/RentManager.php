@@ -1,5 +1,5 @@
 <?php
-class Rent extends CI_Model {
+class RentManager extends CI_Model {
 
     private $table;
 
