@@ -14,9 +14,12 @@
 
 				foreach($cars as $car) {
 					?><div class="col-6">
-						<!--<?php// var_dump($car->getModel()); //c'est un model pas un array
-						die();?>
-						<p><?php //echo $car->getModel(); ?></p>-->
+						<h2>Détails du vehicule :</h2>
+						<p>Nom : <?= $car->getModel()->getName(); ?></p>
+						<p> Marque : <?= $car->getModel()->getBrand(); ?></p>
+						<p>Type de consommation : <?= $car->getModel()->getFueltype(); ?></p>
+						<p>catégorie : <?= $car->getModel()->getCategory(); ?></p>
+						<p>nombres de portes : <?= $car->getModel()->getDoors(); ?></p>
 						<h2>Description du vehicule :</h2>
 						<p><?= $car->getDetails(); ?></p>
 						<h2>Disponibilité :</h2>
