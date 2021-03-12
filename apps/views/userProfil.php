@@ -2,21 +2,6 @@
 	<div id="listUser" class="row">
 	<?= form_open('UserController/update','class="col-12"'); ?>
 
-	<div class="text-center col-12">
-		<?php if(isset($user)) {?>
-		<p><?= $user->getLastname(); ?></p>
-		<p><?= $user->getFirstname(); ?></p>
-		<p><?= $user->getMail(); ?></p>
-		<p><?= $user->getPhone(); ?></p>
-		<p><?= $user->getCity(); ?></p>
-		<p><?= $user->getPostal(); ?></p>
-		<p><?= $user->getAddress(); ?></p>
-		<p><?= $user->getDrivingLicense(); ?></p>
-		<p><?= $user->getDrivingLicenseObtainDate() ?></p>
-		<?php } ?>
-	</div>
-
-
 		<div class="form-group text-center" id="formUser">
 			<label>Changer d'email :</label>
 				<input type="email" class="form-control" id="mail" name="mail" value="<?php if(isset($user)) echo $user->getMail() ?>">
