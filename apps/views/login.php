@@ -12,7 +12,6 @@
 			<span class="help-block"><?= form_error('pwd') ?></span>
 
 			<?= form_checkbox('autolog', 'accept', TRUE);?><label>rester connecté</label>
-			<p class="text-danger"><?php if(isset($error)){ echo $error; }?></p>
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitLogin']); ?>
 	<?= form_close() ?>
 		</div>
