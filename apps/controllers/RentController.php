@@ -68,7 +68,7 @@ class RentController extends CI_Controller {
      */
     public function add() {
         $dataContent['title'] = 'Nouvelle location';
-        $dataContent['css'] = 'newRent';
+        $dataContent['css'] = 'registerRentAdmin';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataRent = array(
                 "dateStart" => $this->input->post('start'),
@@ -88,11 +88,11 @@ class RentController extends CI_Controller {
             }
             else {
                 $dataContent['rent'] = $dataRent;
-                $this->render('newRent',$dataContent);
+                $this->render('registerRentAdmin',$dataContent);
             }
         }
         else {
-            $this->render('newRent',$dataContent);
+            $this->render('registerRentAdmin',$dataContent);
         }
     }
   
