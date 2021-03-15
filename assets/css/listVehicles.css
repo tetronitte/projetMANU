@@ -21,6 +21,16 @@
     margin-right: 10%;
 }
 
+@media screen and (max-width: 1920px) {
+
+    #listAllVehicles
+    {
+        height: 600px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
 @media screen and (max-width: 990px) {
 
     #listAllVehicles
