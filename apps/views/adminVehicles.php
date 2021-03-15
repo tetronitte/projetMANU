@@ -30,6 +30,7 @@
 						<p><?= $Disponibility;?></p>
 					</div>
 					<img id="imgVehicles" src="<?= base_url('assets/img/') . $car->getPicture(); ?>" class="col-6 h-60 w-100" alter="img_vehicles">
+					<p class="col-12 text-danger"><?php if(isset($this->session->errorDeleteCar)){echo $this->session->errorDeleteCar;}?></p>
 					<?= anchor("CarController/deleteCar/$id", "Supprimer véhicule",['class' => 'btn btn-danger col-6']);?>
 					<?= anchor("CarController/updateCar/$id", "Modifier véhicule",['class' => 'btn btn-primary col-6']);?>
 					<div id="hrbar" class="col-8"></div><?php
