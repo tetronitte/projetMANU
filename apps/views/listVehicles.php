@@ -14,17 +14,21 @@
 
 				foreach($cars as $car) {
 					?><div class="col-6">
-						<h2>DÈtails du vehicule :</h2>
+						<h2>D√©tails du vehicule :</h2>
 						<p>Nom : <?= $car->getModel()->getName(); ?></p>
-						<p> Marque : <?= $car->getModel()->getBrand(); ?></p>
+						<p>Marque : <?= $car->getModel()->getBrand(); ?></p>
 						<p>Type de consommation : <?= $car->getModel()->getFueltype(); ?></p>
-						<p>catÈgorie : <?= $car->getModel()->getCategory(); ?></p>
-						<p>nombres de portes : <?= $car->getModel()->getDoors(); ?></p>
-						<h2>Description du vehicule :</h2>
+						<p>Cat√©gorie : <?= $car->getModel()->getCategory(); ?></p>
+						<p>Nombre de portes : <?= $car->getModel()->getDoors(); ?></p>
+						<h2>Description du v√©hicule :</h2>
 						<p><?= $car->getDetails(); ?></p>
-						<h2>DisponibilitÈ :</h2>
+						<?php
+						/*
+						<h2>Disponibilit√© :</h2>
 						<?php if($car->getDisponibility() == 1){$Disponibility = 'oui'; } else {$Disponibility = 'non';}?>
 						<p><?= $Disponibility;?></p>
+						*/
+						?>
 					</div>
 					<img id="imgVehicles" src="<?= base_url('assets/img/') . $car->getPicture(); ?>" class="col-6 h-60 w-100" alter="img_vehicles">
 					<div id="hrbar" class="col-8"></div><?php
