@@ -3,35 +3,42 @@
 class ReturnController extends CI_Controller {
 
     public function addReturn() {
-        if(isser($this->session->admin)) {
+        if(isset($this->session->admin)) {
             $dataContent['title'] = 'Ajouter un retour';
             $dataContent['css'] = 'style';
-
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if($this->form_validation->run('signin')) {
                     $dateReturn = $this->input->post('dateReturn');
-                    $user = $this->input->post('user');
-                    $car = $this->input->post('car');
-                    $req = $this->RentManager($user,$car);
+                    $userId = $this->input->post('user');
+                    $carId = $this->input->post('car');
+                    $req = $this->RentManager($userId,$carId);
                     $rent = new Rent($req->result()[0]);
                     $dataReturn = array(
                         'dateReturn' => $dateReturn,
                         'rentsId' => $rent->getId()
                     );
-                    $this->RentManager->insertRent($dataReturn);
-                    
-                    redirect('ReturnController/addReturn');
+                    $this->RentManager->insertReturn($dataReturn);
+                    $data['disponibility'] = false;
+                    $this->CarManager->updateCar($carId, $data);
+                    redirect('ReturnController/registerReturnAdmin');
                 }
                 else {
-                    $this->render('addReturn',$dataContent);
+                    $this->render('registerReturnAdmin',$dataContent);
                 }
             }
             else {
-                $this->render('addReturn',$dataContent);
+                $this->render('registerReturnAdmin',$dataContent);
             }
         }
         else {
             redirect('UserController/index');
         }
+    }
+
+    private function render($file, $data) {
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/navbar',$data);
+        $this->load->view($file,$data);
+        $this->load->view('templates/footer',$data);
     }
 }

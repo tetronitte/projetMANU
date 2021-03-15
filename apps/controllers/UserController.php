@@ -11,7 +11,7 @@ class UserController extends CI_Controller {
                 "lastname" => $this->input->post('lastname'),
                 "birthdate" => $this->input->post('birthdate'),
                 "phone" => $this->input->post('phone'),
-                "mail" => $this->input->post('mail'),
+                "mail" => strtolower($this->input->post('mail')),
                 "pwd" => $this->input->post('pwd'),
                 "verifPwd" => $this->input->post('verifPwd'),
                 "address" => $this->input->post('address'),
@@ -44,10 +44,11 @@ class UserController extends CI_Controller {
         $dataContent['css'] = 'login';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataUser = array(
-                "mail" => $this->input->post('mail'),
+                "mail" => strtolower($this->input->post('mail')),
                 "pwd" => $this->input->post('pwd'),
                 "autolog" => $this->input->post('autolog')
             );
+            // var_dump($this->form_validation->run('login'));die();
             if($this->form_validation->run('login')) {
                 $req = $this->UserManager->getUserByMail($dataUser['mail']);
                 if ($req->num_rows() == 1) {
@@ -125,7 +126,8 @@ class UserController extends CI_Controller {
                 redirect('UserController/profil');
             }
             else {
-                $dataContent['user'] = $dataUser;
+                $user = new User($dataUser);
+                $dataContent['user'] = $user;
                 $this->render('userProfil',$dataContent);
             }
         }
@@ -209,13 +211,13 @@ class UserController extends CI_Controller {
 
     public function deleteUser(int $id) {
         if (isset($this->session->admin)) {
-            $count = $this->UserManager->countRentInProgress();
-            if ($count == 0) {
-                $this->UserManager->deleteUser($id);
-            }
-            else {
-                $this->session->set_userdata('errorDeleteUser','Cet utilisateur à au moins une location en cours.');
-            }
+            // $count = $this->UserManager->countRentInProgress($id);
+            // if ($count == 0) {
+            //     $this->UserManager->deleteUser($id);
+            // }
+            // else {
+            //     $this->session->set_userdata('errorDeleteUser','Cet utilisateur à au moins une location en cours.');
+            // }
             redirect('UserController/listUser');
         }
         else {
@@ -229,16 +231,18 @@ class UserController extends CI_Controller {
         $cookie = get_cookie('autolog');
         if (!empty($cookie)) {
             $req = $this->UserManager->getToken();
-            foreach($req->result() as $token) {
-                if ($token == $cookie) {
-                    $this->session->set_userdata('id',$user->getId());
-                    $this->session->set_userdata('firstname',$user->getFirstname());
-                    $this->session->set_userdata('lastname',$user->getLastname());
-                    //Si admin
-                    if ($user->getAdmin()) {
-                        $this->session->set_userdata('admin',1);
+            if($req != null) {
+                foreach($req->result() as $token) {
+                    if ($token == $cookie) {
+                        $this->session->set_userdata('id',$user->getId());
+                        $this->session->set_userdata('firstname',$user->getFirstname());
+                        $this->session->set_userdata('lastname',$user->getLastname());
+                        //Si admin
+                        if ($user->getAdmin()) {
+                            $this->session->set_userdata('admin',1);
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         }    

@@ -4,7 +4,6 @@ class CarController extends CI_Controller {
     
     public function list() {
         $dataContent['title'] = 'Notre garage';
-        $dataContent['css'] = 'listVehicles';
         $req = $this->CarManager->getAllCars();
         foreach ($req->result() as $row) {
             $req2 = $this->ModelManager->getModel($row->model);
@@ -13,9 +12,11 @@ class CarController extends CI_Controller {
         }
         $dataContent['cars'] = $cars;
         if (isset($this->session->admin)) {
+            $dataContent['css'] = 'adminVehicles';
             $this->render('adminVehicles',$dataContent);
         }
         else {
+            $dataContent['css'] = 'listVehicles';
             $this->render('listVehicles',$dataContent);
         }
     }

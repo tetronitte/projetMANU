@@ -15,7 +15,7 @@ class User {
     private $token;
     private $drivingLicense;
     private $drivingLicenseObtainDate;
-    public $admin;
+    private $admin;
 
     public function __construct($data = null) {
         if ($data != null) $this->hydrate($data);        
@@ -34,43 +34,43 @@ class User {
     //                         SETTERS
     // =======================================================
 
-    public function setId(int $id) {
+    public function setId(int $id = null) {
         $this->id = $id;
     }
-    public function setLastname(string $lastname) {
+    public function setLastname(string $lastname = null) {
         $this->lastname = $lastname;
     }
-    public function setFirstname(string $firstname) {
+    public function setFirstname(string $firstname = null) {
         $this->firstname = $firstname;
     }
-    public function setDrivingLicense(string $drivingLicense) {
+    public function setDrivingLicense(string $drivingLicense = null) {
         $this->drivingLicense = $drivingLicense;
     }
-    public function setMail(string $mail) {
+    public function setMail(string $mail = null) {
         $this->mail = $mail;
     }
-    public function setAddress(string $address) {
+    public function setAddress(string $address = null) {
         $this->address = $address;
     }
-    public function setPostal(string $postal) {
+    public function setPostal(string $postal = null) {
         $this->postal = $postal;
     }
-    public function setCity(string $city) {
+    public function setCity(string $city = null) {
         $this->city = $city;
     }
-    public function setBirthdate(string $birthdate) {
+    public function setBirthdate(string $birthdate = null) {
         $this->birthdate = $birthdate;
     }
-    public function setPwd(string $pwd) {
+    public function setPwd(string $pwd = null) {
         $this->pwd = $pwd;
     }
-    public function setPhone(string $phone) {
+    public function setPhone(string $phone = null) {
         $this->phone = $phone;
     }
-    public function setToken(string $token) {
+    public function setToken(string $token = null) {
         $this->token = $token;
     }
-    public function setDrivingLicenseObtainDate(string $drivingLicenseObtainDate) {
+    public function setDrivingLicenseObtainDate(string $drivingLicenseObtainDate = null) {
         $this->drivingLicenseObtainDate = $drivingLicenseObtainDate;
     }
     public function setAdmin(bool $admin) {
