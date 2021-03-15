@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<?= form_open('url'); ?>
+	<?= form_open('CarController/list'); ?>
 		<div class="form-group input-group">
 			<div  id="searchVehiclesDiv" class="input-group-prepend">
 				<input type="text" id="searchVehicle" name="searchVehicle" class="form-control" value="<?= '';?>">
