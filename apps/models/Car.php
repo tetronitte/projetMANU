@@ -9,6 +9,7 @@ class Car {
     private $licensePlate;
     private $disponibility;
     private $model;
+    private $archived;
 
     public function __construct($data = null) {
         if ($data != null) $this->hydrate($data);        
@@ -48,6 +49,9 @@ class Car {
     public function setDisponibility(bool $disponibility) {
         $this->disponibility = $disponibility;
     }
+    public function setArchived(bool $archived) {
+        $this->archived = $archived;
+    }
 
     // =======================================================
     //                         GETTERS
@@ -73,5 +77,8 @@ class Car {
     }
     public function getDisponibility() {
         return $this->disponibility;
+    }
+    public function getArchived() {
+        return$this->archived;
     }
 }

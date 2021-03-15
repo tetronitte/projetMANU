@@ -29,7 +29,8 @@ class CarController extends CI_Controller {
             $row->model = new Model($req2->result()[0]);
             $cars[] = new Car($row);
         }
-        $dataContent['cars'] = $cars;
+        if (!empty($cars))$dataContent['cars'] = $cars;
+        $dataContent['search'] = $search;
         if (isset($this->session->admin)) {
 			$dataContent['css'] = 'adminVehicles';
             $this->render('adminVehicles',$dataContent);
@@ -91,8 +92,8 @@ class CarController extends CI_Controller {
      */
     public function deleteCar(int $id) {
         if(isset($this->session->admin)) {
-            $dispo = $this->CarManager->getDisponibility($id);
-            if ($dispo) {
+            $req = $this->CarManager->getDisponibility($id);
+            if ($req->result()[0]->disponibility) {
                 $this->CarManager->deleteCar($id);
             }
             else {

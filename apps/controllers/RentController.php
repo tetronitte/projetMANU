@@ -12,19 +12,30 @@ class RentController extends CI_Controller {
      */
     public function list() {
         $dataContent['title'] = 'Nos locations';
-        $dataContent['css'] = 'listRents';
-        $req = $this->RentManager->getAllRents();
-        foreach ($req->result() as $row) {
-            $req2 = $this->CarManager->getCar($row->carsId);
-            $req3 = $this->ModelManager->getModel($req2->result()[0]->modelsId);
-            $req2->result()[0]->model = new Model($req3->result()[0]);
-            $req4 = $this->UserManager->getUserById($row->usersId);
-            $row->user = new User($req4->result()[0]);
-            $row->car = new Car($req2->result()[0]);
+        if(isset($this->session->admin)){
+            $dataContent['css'] = 'adminRent';
+            $reqRent = $this->RentManager->getAllRents();
+        }
+        else {
+            $dataContent['css'] = 'userRent';
+            $reqRent = $this->RentManager->getRentByUser((int)$this->session->id);
+        }
+        foreach ($reqRent->result() as $row) {
+            $reqCar = $this->CarManager->getCarById($row->carsId);
+            $reqModel = $this->ModelManager->getModel($reqCar->result()[0]->modelsId);
+            $reqCar->result()[0]->model = new Model($reqModel->result()[0]);
+            $reqUser = $this->UserManager->getUserById($row->usersId);
+            $row->user = new User($reqUser->result()[0]);
+            $row->car = new Car($reqCar->result()[0]);
             $rents[] = new Rent($row);
         }
-        $dataContent['rents'] = $rents;
-        $this->render('listRents',$dataContent);
+        if(!empty($rents)) $dataContent['rents'] = $rents;
+        if(isset($this->session->admin)){
+            $this->render('adminRent',$dataContent);
+        }
+        else {
+            $this->render('userRent',$dataContent);
+        }
     }
     
     /**
@@ -34,11 +45,14 @@ class RentController extends CI_Controller {
      * @return void
      */
     public function deleteRent(int $id) {
-        $req = $this->UserManager->getRentById($id);
+        $req = $this->RentManager->getRentById($id);
+        $reqCar = $this->CarManager->getCarById($req->result()[0]->carsId);
+        $req->result()[0]->car = new Car($reqCar->result()[0]);
         $rent = new Rent($req->result()[0]);
         $today = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
-        $rentStart = $rent->getDateStart();
-        if ($today < $rentStart) {
+        $rentStart = strtotime($rent->getDateStart());
+        $disponibility = $rent->getCar()->getDisponibility();
+        if ($disponibility && $today < $rentStart) {
             $this->RentManager->deleteRent($id);
         }
         else {

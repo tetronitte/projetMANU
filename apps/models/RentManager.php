@@ -14,23 +14,26 @@ class RentManager extends CI_Model {
     }
 
     public function getAllRents() {
-        $this->db->order_by('dateStart');
+        $this->db->where('archived',0);
+        $this->db->order_by('dateStart','DESC');
         return $this->db->get($this->table);
     }
 
     public function getRentById(int $id) {
+        $this->db->where('archived',0);
         $this->db->where('id',$id);
         return $this->db->get($this->table);
     }
 
     public function deleteRent(int $id) {
+        $this->db->where('archived',0);
         $this->db->where('id',$id);
-        $this->db->delete($this->table);
+        $this->db->update($this->table,['archived' => 1]);
     }
 
-    public function getRentByUserAndCar(int $userId, int $carId) {
-        $this->db->where('userId',$userId);
-        $this->db->where('carId',$carId);
+    public function getRentByUser(int $userId) {
+        $this->db->where('archived',0);
+        $this->db->where('usersId',$userId);
         return $this->db->get($this->table);
     }
 }
