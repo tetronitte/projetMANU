@@ -9,7 +9,7 @@
 	<?= form_close() ?>
 	<div class="text-center">
 		<?= anchor("RentController/", "Enregistrer une location",['class' => 'btn btn-warning', 'id' => 'registerRent']); ?>
-		<?= anchor("ReturnController/", "Enregistrer un retour",['class' => 'btn btn-warning', 'id' => 'registerReturn']); ?>
+		<?= anchor("ReturnController/addReturn", "Enregistrer un retour",['class' => 'btn btn-warning', 'id' => 'registerReturn']); ?>
 	</div>
 	<div id="listAdminRent" class="row">
 		<div id="hrbar" class="col-12"></div>
