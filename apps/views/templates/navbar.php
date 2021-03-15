@@ -47,7 +47,7 @@
 				<li class="nav-item col">
 					<?= anchor("UserController/signout", "Déconnexion",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
-		<?php } else { ?>
+		<?php } if (empty($this->session->id)) { ?>
 
 				<li class="nav-item col-lg-2">
 					<?= anchor("CarController/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
