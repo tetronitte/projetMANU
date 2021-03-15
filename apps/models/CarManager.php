@@ -69,4 +69,11 @@ class CarManager extends CI_Model {
         $this->db->where('id',$id);
         $this->db->update($this->table,['archived' => 1]);  
     }
+
+    public function getCarByLicensePlate(string $licensePlate) {
+        $this->db->where('licensePlate',$licensePlate);
+        $this->db->where('archived',0);
+        $this->db->from($this->table);
+        return $this->db->get();
+    }
 }

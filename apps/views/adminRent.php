@@ -8,7 +8,7 @@
 		</div>
 	<?= form_close() ?>
 	<div class="text-center">
-		<?= anchor("RentController/add", "Enregistrer une location",['class' => 'btn btn-warning', 'id' => 'registerRent']); ?>
+		<?= anchor("RentController/addRent", "Enregistrer une location",['class' => 'btn btn-warning', 'id' => 'registerRent']); ?>
 		<?= anchor("ReturnController/addReturn", "Enregistrer un retour",['class' => 'btn btn-warning', 'id' => 'registerReturn']); ?>
 	</div>
 	<div id="listAdminRent" class="row overflow-auto">
@@ -18,9 +18,9 @@
 				foreach($rents as $rent) {
 					$id = $rent->getId();
 					?><div class="col-12 col-sm-6">
-						<h2>D�tails du vehicule :</h2>
+						<h2>Détails du vehicule :</h2>
 						<p>Utilisateur : <?= $rent->getUser()->getLastname().' '.$rent->getUser()->getFirstname(); ?></p>
-						<p>Date de d�but : <?= $rent->getDateStart(); ?></p>
+						<p>Date de début : <?= $rent->getDateStart(); ?></p>
 						<p>Date de fin : <?= $rent->getDateEnd(); ?></p>
 						<p>Vehicule : <?= $rent->getCar()->getModel()->getName(); ?></p>
 						<p>Status : <?php if($rent->getArchived()) echo 'annulée'; else echo 'valide' ?></p>

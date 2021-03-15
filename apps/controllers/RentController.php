@@ -10,7 +10,7 @@ class RentController extends CI_Controller {
      *
      * @return void
      */
-    public function list() {
+    public function list() {//TODO SEARCH
         $dataContent['title'] = 'Nos locations';
         if(isset($this->session->admin)){
             $dataContent['css'] = 'adminRent';
@@ -66,36 +66,55 @@ class RentController extends CI_Controller {
      *
      * @return void
      */
-    public function add() {
-        $dataContent['title'] = 'Nouvelle location';
-        $dataContent['css'] = 'newRent';
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $dataRent = array(
-                "dateStart" => $this->input->post('start'),
-                "dateEnd" => $this->input->post('end'),
-                "CarsId" => $this->input->post('car'),
-                "usersId" => $this->input->post('user')
-            );
-            $this->form_validation->set_rules('start', 'Date deb', 'required');
-            $this->form_validation->set_rules('end', 'Date fin', 'required');
-            $this->form_validation->set_rules('car', 'Voiture', 'required');
-            $this->form_validation->set_rules('user', 'Client', 'required');
-            if($this->form_validation->run('')) {
-                 var_dump($dataRent);
-                $this->RentManager->newRent($dataRent);
-                $this->CarManager->notDispo($dataRent['CarsId']);
-                redirect('UserController/index');
+    public function addRent() {//TODO VÉRIFICATION FORMULAIRE
+        if(isset($this->session->admin)) {
+            $dataContent['title'] = 'Nouvelle location';
+            $dataContent['css'] = 'registerRentAdmin';
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $dataRent = array(
+                    "dateStart" => $this->input->post('dateStart'),
+                    "dateEnd" => $this->input->post('dateEnd'),
+                    "licensePlate" => $this->input->post('licensePlate'),
+                    "mail" => $this->input->post('mail')
+                );
+                if($this->form_validation->run('addRent')) {
+                    $reqUser = $this->UserManager->getUserByMail($dataRent['mail']);
+                    $user = new User($reqUser->result()[0]);
+                    $reqCar = $this->CarManager->getCarByLicensePlate($dataRent['licensePlate']);
+                    $reqModel = $this->ModelManager->getModel($reqCar->result()[0]->modelsId);
+                    $reqCar->result()[0]->model = new Model($reqModel->result()[0]);
+                    $car = new Car($reqCar->result()[0]);
+                    $dataRent['carsId'] = $car->getId();
+                    $dataRent['usersId'] = $user->getId();
+                    unset($dataRent['licensePlate']);
+                    unset($dataRent['mail']);
+                    $id = $this->RentManager->insertRent($dataRent);
+                    $numRent = $this->generateNumRent($car,$user,$id);
+                    $this->RentManager->updateNumRent($numRent,$id);
+                    redirect('RentControlelr/addRent');
+                }
+                else {
+                    $dataContent['rent'] = $dataRent;
+                    $this->render('registerRentAdmin',$dataContent);
+                }
             }
             else {
-                $dataContent['rent'] = $dataRent;
-                $this->render('newRent',$dataContent);
+                $this->render('registerRentAdmin',$dataContent);
             }
         }
         else {
-            $this->render('newRent',$dataContent);
+            redirect('UserController/index');
         }
     }
   
+    private function generateNumRent(Car $car, User $user,int $id) {
+        $prefixUser = strtoupper(substr($user->getMail(),0,3));
+        $prefixBrand = strtoupper(substr($car->getModel()->getBrand(),0,3));
+        $padding = str_pad($id, 5, "0", STR_PAD_LEFT);
+        $numRent = $prefixBrand.$padding.$prefixUser;
+        return $numRent;
+    }
+
     /**
      * render
      *

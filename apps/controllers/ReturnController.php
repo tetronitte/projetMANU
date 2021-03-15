@@ -13,24 +13,21 @@ class ReturnController extends CI_Controller {
     public function addReturn() {
         if(isset($this->session->admin)) {
             $dataContent['title'] = 'Ajouter un retour';
-            $dataContent['css'] = 'style';
+            $dataContent['css'] = 'registerReturnAdmin';
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if($this->form_validation->run('signin')) {
-                    $dateReturn = $this->input->post('dateReturn');
-                    $userId = $this->input->post('user');
-                    $carId = $this->input->post('car');
-                    $req = $this->RentManager($userId,$carId);
-                    $rent = new Rent($req->result()[0]);
-                    $dataReturn = array(
-                        'dateReturn' => $dateReturn,
-                        'rentsId' => $rent->getId()
-                    );
-                    $this->RentManager->insertReturn($dataReturn);
-                    $data['disponibility'] = true;
-                    $this->CarManager->updateCar($carId, $data);
-                    redirect('ReturnController/registerReturnAdmin');
+                $dataReturn = array(
+                    'dateReturn' => $this->input->post('dateReturn'),
+                    'numRent' => $this->input->post('numRent')
+                );
+                if($this->form_validation->run('addReturn')) {
+                    $req = $this->RentManager->getRentByNum($dataReturn['numRent']);
+                    $dataReturn['rentsId'] = $req->result()[0]->id;
+                    unset($dataReturn['numRent']);
+                    $this->ReturnManager->insertReturn($dataReturn);
+                    redirect('ReturnController/addReturn');
                 }
                 else {
+                    $dataContent['return'] = $dataReturn;
                     $this->render('registerReturnAdmin',$dataContent);
                 }
             }
