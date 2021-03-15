@@ -22,6 +22,7 @@
 						<p> Date de début : <?= $car->getDateStart(); ?></p>
 						<p> Date de fin : <?= $car->getDateEnd(); ?></p>
 						<p>Vehicule : <?= $car->getCar(); ?></p>
+						<p><?php if($rent->getArchived){ echo 'annuler' ; }?></p>
 					</div>
 					<img id="imgVehicles" src="<?= base_url('assets/img/') . $car->getPicture(); ?>" class="col-6 h-60 w-100" alter="img_vehicles">
 					<?= anchor("RentController/deleteRent/$id", "Supprimer véhicule",['class' => 'btn btn-danger col-6']);?>
