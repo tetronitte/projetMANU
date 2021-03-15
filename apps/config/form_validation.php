@@ -151,11 +151,11 @@ $config = array(
         )
     ),
     'updateCar' => array(
-        array(
-            'field' => 'picture',
-            'label' => 'picture',
-            'rules' => 'required|regexLicensePlate'
-        ),
+        // array(
+        //     'field' => 'picture',
+        //     'label' => 'picture',
+        //     'rules' => 'required|regexLicensePlate'
+        // ),
         array(
             'field' => 'licensePlate',
             'label' => 'licensePlate',

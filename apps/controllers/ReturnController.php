@@ -26,7 +26,7 @@ class ReturnController extends CI_Controller {
                         'rentsId' => $rent->getId()
                     );
                     $this->RentManager->insertReturn($dataReturn);
-                    $data['disponibility'] = false;
+                    $data['disponibility'] = true;
                     $this->CarManager->updateCar($carId, $data);
                     redirect('ReturnController/registerReturnAdmin');
                 }

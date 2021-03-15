@@ -51,36 +51,32 @@ class CarController extends CI_Controller {
         if (isset($this->session->admin)) {
             $dataContent['title'] = 'Modifer voiture';
             $dataContent['css'] = 'adminVehicles';
+            $req = $this->CarManager->getCarById($id);
+            $reqModel = $this->ModelManager->getModel($req->result()[0]->modelsId);
+            $req->result()[0]->model = new Model($reqModel->result()[0]);
+            $car = new Car($req->result()[0]);
+            $dataContent['car'] = $car;
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $dataCar = array(
-                    "picture" => $this->input->post('picture'),
+                    //"picture" => $this->input->post('picture'),
                     "licensePlate" => $this->input->post('licensePlate'),
                     "mileage" => $this->input->post('mileage'),
                     "details" => $this->input->post('details')                    
                 );
-                $dataModel = array(
-                    "name" => $this->input->post('name'),
-                    "brand" => $this->input->post('brand'),
-                    "fueltype" => $this->input->post('fueltype'),
-                    "category" => $this->input->post('category'),
-                    "doors" => $this->input->post('doors')
-                );
                 if($this->form_validation->run('updateCar')) {
-                    $modelId = $this->CarManager->getCarModelId($id);
-                    $this->ModelManager->updateModel($modelId, $dataModel);
                     $this->CarManager->updateCar($id, $dataCar);
-                    $this->render('adminVehicles',$dataContent);
+                    redirect('CarController/list');
                 }
                 else {
-                    $this->render('adminVehicles',$dataContent);
+                    $this->render('updateVehicles',$dataContent);
                 }
             }
             else {
-                $this->render('adminVehicles',$dataContent);
+                $this->render('updateVehicles',$dataContent);
             }
         }
         else {
-            redirect('UserController.index');
+            redirect('UserController/index');
         }
     }
       

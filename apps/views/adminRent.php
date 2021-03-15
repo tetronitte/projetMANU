@@ -8,7 +8,7 @@
 		</div>
 	<?= form_close() ?>
 	<div class="text-center">
-		<?= anchor("RentController/", "Enregistrer une location",['class' => 'btn btn-warning', 'id' => 'registerRent']); ?>
+		<?= anchor("RentController/add", "Enregistrer une location",['class' => 'btn btn-warning', 'id' => 'registerRent']); ?>
 		<?= anchor("ReturnController/addReturn", "Enregistrer un retour",['class' => 'btn btn-warning', 'id' => 'registerReturn']); ?>
 	</div>
 	<div id="listAdminRent" class="row">
@@ -23,7 +23,7 @@
 						<p>Date de début : <?= $rent->getDateStart(); ?></p>
 						<p>Date de fin : <?= $rent->getDateEnd(); ?></p>
 						<p>Vehicule : <?= $rent->getCar()->getModel()->getName(); ?></p>
-						<p>Status : <?php if(!$rent->getCar()->getDisponibility()) echo 'annulée'; else echo 'valide' ?></p>
+						<p>Status : <?php if($rent->getArchived()) echo 'annulée'; else echo 'valide' ?></p>
 					</div>
 					<img id="imgVehicles" src="<?= base_url('assets/img/') . $rent->getCar()->getPicture(); ?>" class="col-6 h-60 w-100" alter="img_vehicles">
 					<div id="hrbar" class="col-8"></div><?php
