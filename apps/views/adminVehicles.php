@@ -14,7 +14,7 @@
 			<?php
 				foreach($cars as $car) {
 					$id = $car->getId();
-					?><div class="col-6">
+					?><div class="col-12 col-sm-6">
 						<h2>Détails du vehicule :</h2>
 						<p>Nom : <?= $car->getModel()->getName(); ?></p>
 						<p>Marque : <?= $car->getModel()->getBrand(); ?></p>
@@ -29,7 +29,7 @@
 						<?php if($car->getDisponibility() == 1){$Disponibility = 'oui'; } else {$Disponibility = 'non';}?>
 						<p><?= $Disponibility;?></p>
 					</div>
-					<img id="imgVehicles" src="<?= base_url('assets/img/') . $car->getPicture(); ?>" class="col-6 h-60 w-100" alter="img_vehicles">
+					<img id="imgVehicles" src="<?= base_url('assets/img/') . $car->getPicture(); ?>" class="col-12 col-sm-6 h-60 w-100" alter="img_vehicles">
 					<p class="col-12 text-danger"><?php if(isset($this->session->errorDeleteCar)){echo $this->session->errorDeleteCar;}?></p>
 					<?= anchor("CarController/deleteCar/$id", "Supprimer véhicule",['class' => 'btn btn-danger col-6']);?>
 					<?= anchor("CarController/updateCar/$id", "Modifier véhicule",['class' => 'btn btn-primary col-6']);?>
