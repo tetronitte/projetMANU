@@ -16,6 +16,7 @@ class User {
     private $drivingLicense;
     private $drivingLicenseObtainDate;
     private $admin;
+    private $archived;
 
     public function __construct($data = null) {
         if ($data != null) $this->hydrate($data);        
@@ -76,6 +77,9 @@ class User {
     public function setAdmin(bool $admin) {
         $this->admin = $admin;
     }
+    public function setArchived(bool $archived) {
+        $this->archived = $archived;
+    }
 
     // =======================================================
     //                         GETTERS
@@ -122,5 +126,8 @@ class User {
     }
     public function getAdmin( ) {
         return $this->admin;
+    }
+    public function getArchived() {
+        return$this->archived;
     }
 }

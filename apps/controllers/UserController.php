@@ -238,7 +238,6 @@ class UserController extends CI_Controller {
                 $users[] = new User($row);
             }
             if (!empty($users)) $dataContent["users"] = $users;
-            else $dataContent["users"] = null;
             $dataContent['search'] = $search;
             $this->render('adminClients',$dataContent);
         }            

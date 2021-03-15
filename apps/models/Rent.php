@@ -7,6 +7,7 @@ class Rent {
     private $dateEnd;
     private $user;
     private $car;
+    private $archived;
 
     public function __construct($data = null) {
         if ($data != null) $this->hydrate($data);        
@@ -40,6 +41,9 @@ class Rent {
     public function setCar(Car $car) {
         $this->car = $car;
     }
+    public function setArchived(bool $archived) {
+        $this->archived = $archived;
+    }
 
     // =======================================================
     //                         GETTERS
@@ -59,5 +63,8 @@ class Rent {
     }
     public function getCar() {
         return $this->car;
+    }
+    public function getArchived() {
+        return$this->archived;
     }
 }
