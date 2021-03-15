@@ -166,5 +166,61 @@ $config = array(
             'label' => 'details',
             'rules' => 'required|regexName'
         )
-    )    
+    ),
+    'addRent' => array(
+        array(
+            'field' => 'licensePlate',
+            'label' => 'licensePlate',
+            'rules' => 'required|regexLicensePlate'
+        ),
+        array(
+            'field' => 'mail',
+            'label' => 'mail',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'dateStart',
+            'label' => 'dateStart',
+            'rules' => 'required|regexDate'
+        ),
+        array(
+            'field' => 'dateEnd',
+            'label' => 'dateEnd',
+            'rules' => 'required|regexDate'
+        ),
+    ),
+    'addRent' => array(
+        array(
+            'field' => 'licensePlate',
+            'label' => 'licensePlate',
+            'rules' => 'required|regexLicensePlate'
+        ),
+        array(
+            'field' => 'mail',
+            'label' => 'mail',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'dateStart',
+            'label' => 'dateStart',
+            'rules' => 'required|regexDate'
+        ),
+        array(
+            'field' => 'dateEnd',
+            'label' => 'dateEnd',
+            'rules' => 'required|regexDate'
+        )
+    ),
+    'addReturn' => array(
+        array(
+            'field' => 'numRent',
+            'label' => 'numRent',
+            'rules' => 'required|min_length[11]|max_length[11]'
+        ),
+        array(
+            'field' => 'dateReturn',
+            'label' => 'dateReturn',
+            'rules' => 'required'
+        )
+    )
 );

@@ -15,7 +15,7 @@
 				<input type="text" class="form-control" id="mileage" name="mileage" value="<?php if(isset($car)) echo $car->getMileage() ?>">
 			<span class="help-block"><?= form_error('mileage') ?></span>
 
-			<label class="col-12">Plaque Immat :</label>
+			<label class="col-12">Plaque d'immatriculation :</label>
 				<input type="text" class="form-control" id="licensePlate" name="licensePlate" value="<?php if(isset($car)) echo $car->getLicensePlate() ?>">
 			<span class="help-block"><?= form_error('licensePlate') ?></span>
 

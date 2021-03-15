@@ -136,5 +136,6 @@ $autoload['model'] = array(
     'User','UserManager',
     'Model','ModelManager',
     'Car','CarManager'  ,
-    'Rent', 'RentManager'
+    'Rent', 'RentManager',
+    'ReturnManager'
 );
