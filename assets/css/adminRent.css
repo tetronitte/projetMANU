@@ -1,5 +1,6 @@
 #listAdminRent 
 {
+    height : 700px;
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -38,4 +39,15 @@
     color: black;
     background-color: #FF9900;
     border-color: #FF9900 !important;
+}
+
+@media screen and (max-width: 990px) {
+
+    #listAdminRent
+    {
+        height: inherit;
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-bottom: 10%;
+    }
 }
