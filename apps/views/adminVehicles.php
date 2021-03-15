@@ -21,6 +21,7 @@
 						<p>Type de consommation : <?= $car->getModel()->getFueltype(); ?></p>
 						<p>Catégorie : <?= $car->getModel()->getCategory(); ?></p>
 						<p>Nombres de portes : <?= $car->getModel()->getDoors(); ?></p>
+						<p>Kilométrage : <?= $car->getMileage(); ?></p>
 						<p>Plaque Immat : <?= $car->getLicensePlate(); ?></p>
 						<h2>Description du vehicule :</h2>
 						<p><?= $car->getDetails(); ?></p>
