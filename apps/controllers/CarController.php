@@ -31,11 +31,11 @@ class CarController extends CI_Controller {
         }
         $dataContent['cars'] = $cars;
         if (isset($this->session->admin)) {
-            $dataContent['css'] = 'adminVehicles';
+			$dataContent['css'] = 'adminVehicles';
             $this->render('adminVehicles',$dataContent);
         }
         else {
-            $dataContent['css'] = 'listVehicles';
+		    $dataContent['css'] = 'listVehicles';
             $this->render('listVehicles',$dataContent);
         }
     }

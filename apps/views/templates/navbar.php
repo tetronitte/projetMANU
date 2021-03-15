@@ -5,13 +5,13 @@
 <div class="collapse navbar-collapse row" id="navbarNav">
 		<ul class="navbar-nav col-12">
 
-			<?php if(isset($_SESSION['id'])){?>
+		<?php if (isset($this->session->id) && empty($this->session->admin)){ ?>
 				<li class="nav-item col-lg-2">
 					<?= anchor("CarController/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
 
 				<li class="nav-item col offset-lg-5">
-					<?= anchor("UserController/index", "Location",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
+					<?= anchor("RentController/list", "Location",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
 
 				<li class="nav-item col">
@@ -21,18 +21,19 @@
 				<li class="nav-item col">
 					<?= anchor("UserController/signout", "Déconnexion",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
-			<?php}if($_SESSION['admin'] == 1){?>
+		<?php } if (isset($this->session->admin)){  ?>
+
 				<li class="nav-item col-lg-2">
 					<?= anchor("CarController/list", "Infos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
 
 				<li class="nav-item col-lg-2">
-					<?= anchor("CarController/list", "Infos clients",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+					<?= anchor("UserController/listUser", "Infos clients",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
 
 			
 				<li class="nav-item col-lg-2">
-					<?= anchor("CarController/list", "Liste locations",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+					<?= anchor("RentController/list", "Liste locations",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
 
 				<li class="nav-item offset-lg-1">
@@ -46,7 +47,8 @@
 				<li class="nav-item col">
 					<?= anchor("UserController/signout", "Déconnexion",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
-			<?php } else { ?>
+		<?php } if (empty($this->session->id)) { ?>
+
 				<li class="nav-item col-lg-2">
 					<?= anchor("CarController/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
@@ -54,7 +56,8 @@
 				<li class="nav-item col offset-lg-6">
 					<?= anchor("UserController/login", "Inscription/Login",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
-			<?php } ?>
+
+		<?php } ?>
 
 	    </ul>
 </div>

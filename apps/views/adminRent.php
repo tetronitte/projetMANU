@@ -8,16 +8,25 @@
 		</div>
 	<?= form_close() ?>
 	<div class="text-center">
-		<?= anchor("'url'", "Enregistrer une location",['class' => 'btn btn-warning', 'id' => 'registerRent']); ?>
-		<?= anchor("'url'", "Enregistrer un retour",['class' => 'btn btn-warning', 'id' => 'registerReturn']); ?>
+		<?= anchor("RentController/", "Enregistrer une location",['class' => 'btn btn-warning', 'id' => 'registerRent']); ?>
+		<?= anchor("ReturnController/addReturn", "Enregistrer un retour",['class' => 'btn btn-warning', 'id' => 'registerReturn']); ?>
 	</div>
 	<div id="listAdminRent" class="row">
 		<div id="hrbar" class="col-12"></div>
-			<?php //foreach(){
-				//avec scroll dans la div
-			//}
+			<?php
+				foreach($rents as $rent) {
+					$id = $rent->getId();
+					?><div class="col-6">
+						<h2>Détails du vehicule :</h2>
+						<p>Utilisateur <?= $rent->getUser(); ?></p>
+						<p> Date de début : <?= $car->getDateStart(); ?></p>
+						<p> Date de fin : <?= $car->getDateEnd(); ?></p>
+						<p>Vehicule : <?= $car->getCar(); ?></p>
+					</div>
+					<img id="imgVehicles" src="<?= base_url('assets/img/') . $car->getPicture(); ?>" class="col-6 h-60 w-100" alter="img_vehicles">
+					<?= anchor("RentController/deleteRent/$id", "Supprimer véhicule",['class' => 'btn btn-danger col-6']);?>
+					<div id="hrbar" class="col-8"></div><?php
+				}
 			?>
 	</div>
-
-	<!-- ajouter pagination -->
 </div>

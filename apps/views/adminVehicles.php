@@ -8,10 +8,12 @@
 		</div>
 	<?= form_close() ?>
 
-	<div id="listAllVehicle" class="row">
+
+	<div id="listAllVehicle" class="row overflow-auto">
 		<div id="hrbar" class="col-12"></div>
 			<?php
 				foreach($cars as $car) {
+					$id = $car->getId();
 					?><div class="col-6">
 						<h2>Détails du vehicule :</h2>
 						<p>Nom : <?= $car->getModel()->getName(); ?></p>
@@ -26,6 +28,8 @@
 						<p><?= $Disponibility;?></p>
 					</div>
 					<img id="imgVehicles" src="<?= base_url('assets/img/') . $car->getPicture(); ?>" class="col-6 h-60 w-100" alter="img_vehicles">
+					<?= anchor("CarController/deleteCar/$id", "Supprimer véhicule",['class' => 'btn btn-danger col-6']);?>
+					<?= anchor("CarController/updateCar/$id", "Modifier véhicule",['class' => 'btn btn-primary col-6']);?>
 					<div id="hrbar" class="col-8"></div><?php
 				}
 			?>

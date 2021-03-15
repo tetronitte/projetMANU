@@ -48,19 +48,6 @@ class RentController extends CI_Controller {
     }
     
     /**
-     * insert
-     *
-     * @return void
-     */
-    public function insert() {
-        $dataContent['title'] = 'Nouvelle location';
-        $dataContent['css'] = 'newRent';
-        $dataContent['cars'] = $this->CarManager->getAllCarsDispo()->result();
-        $dataContent['users'] = $this->UserManager->getAllUser()->result();
-        $this->render('newRent', $dataContent );
-    }
-    
-    /**
      * add
      *
      * @return void
