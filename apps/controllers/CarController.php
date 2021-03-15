@@ -1,10 +1,29 @@
 <?php
 
+/**
+ * CarController
+ */
 class CarController extends CI_Controller {
-    
+        
+    /**
+     * list
+     *
+     * @return void
+     */
     public function list() {
         $dataContent['title'] = 'Notre garage';
-        $req = $this->CarManager->getAllCars();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $search = $this->input->post('search');
+        }
+        else {
+            if (isset($this->session->search)) {
+                $search = $this->session->search;                    
+            }
+            else {
+                $search = '';
+            }
+        }
+        $req = $this->CarManager->getAllCars($search);
         foreach ($req->result() as $row) {
             $req2 = $this->ModelManager->getModel($row->model);
             $row->model = new Model($req2->result()[0]);
@@ -20,7 +39,13 @@ class CarController extends CI_Controller {
             $this->render('listVehicles',$dataContent);
         }
     }
-
+    
+    /**
+     * updateCar
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function updateCar(int $id) {
         if (isset($this->session->admin)) {
             $dataContent['title'] = 'Modifer voiture';
@@ -57,7 +82,13 @@ class CarController extends CI_Controller {
             redirect('UserController.index');
         }
     }
-
+      
+    /**
+     * deleteCar
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function deleteCar(int $id) {
         if(isset($this->session->admin)) {
             $dispo = $this->CarManager->getDisponibility($id);
@@ -73,8 +104,15 @@ class CarController extends CI_Controller {
             redirect('UserController/index');
         }
     }
-
-    private function render($file, $data) {
+    
+    /**
+     * render
+     *
+     * @param  mixed $file
+     * @param  mixed $data
+     * @return void
+     */
+    private function render(string $file, array $data) {
         $this->load->view('templates/header',$data);
         $this->load->view('templates/navbar',$data);
         $this->load->view($file,$data);

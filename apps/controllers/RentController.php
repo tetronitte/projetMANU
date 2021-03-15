@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * RentController
+ */
 class RentController extends CI_Controller {
-
+    
+    /**
+     * list
+     *
+     * @return void
+     */
     public function list() {
         $dataContent['title'] = 'Nos locations';
         $dataContent['css'] = 'listRents';
@@ -18,12 +26,18 @@ class RentController extends CI_Controller {
         $dataContent['rents'] = $rents;
         $this->render('listRents',$dataContent);
     }
-
+    
+    /**
+     * deleteRent
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function deleteRent(int $id) {
-        $req = $this->RentManager->getRentById($id);
+        $req = $this->UserManager->getRentById($id);
         $rent = new Rent($req->result()[0]);
         $today = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
-        $rentStart = strtotime($rent->getDateStart());
+        $rentStart = $rent->getDateStart();
         if ($today < $rentStart) {
             $this->RentManager->deleteRent($id);
         }
@@ -32,7 +46,12 @@ class RentController extends CI_Controller {
         }
         redirect('RentController/list');
     }
-
+    
+    /**
+     * insert
+     *
+     * @return void
+     */
     public function insert() {
         $dataContent['title'] = 'Nouvelle location';
         $dataContent['css'] = 'newRent';
@@ -40,7 +59,12 @@ class RentController extends CI_Controller {
         $dataContent['users'] = $this->UserManager->getAllUser()->result();
         $this->render('newRent', $dataContent );
     }
-
+    
+    /**
+     * add
+     *
+     * @return void
+     */
     public function add() {
         $dataContent['title'] = 'Nouvelle location';
         $dataContent['css'] = 'newRent';
@@ -55,8 +79,8 @@ class RentController extends CI_Controller {
             $this->form_validation->set_rules('end', 'Date fin', 'required');
             $this->form_validation->set_rules('car', 'Voiture', 'required');
             $this->form_validation->set_rules('user', 'Client', 'required');
-            if($this->form_validation->run('newRent')) {
-                var_dump($dataRent);
+            if($this->form_validation->run('')) {
+                 var_dump($dataRent);
                 $this->RentManager->newRent($dataRent);
                 $this->CarManager->notDispo($dataRent['CarsId']);
                 redirect('UserController/index');
@@ -70,8 +94,15 @@ class RentController extends CI_Controller {
             $this->render('newRent',$dataContent);
         }
     }
-
-    private function render($file, $data) {
+  
+    /**
+     * render
+     *
+     * @param  mixed $file
+     * @param  mixed $data
+     * @return void
+     */
+    private function render(string $file, array $data) {
         $this->load->view('templates/header',$data);
         $this->load->view('templates/navbar',$data);
         $this->load->view($file,$data);

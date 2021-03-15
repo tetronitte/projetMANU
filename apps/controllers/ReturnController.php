@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * ReturnController
+ */
 class ReturnController extends CI_Controller {
-
+    
+    /**
+     * addReturn
+     *
+     * @return void
+     */
     public function addReturn() {
         if(isset($this->session->admin)) {
             $dataContent['title'] = 'Ajouter un retour';
@@ -34,8 +42,15 @@ class ReturnController extends CI_Controller {
             redirect('UserController/index');
         }
     }
-
-    private function render($file, $data) {
+    
+    /**
+     * render
+     *
+     * @param  mixed $file
+     * @param  mixed $data
+     * @return void
+     */
+    private function render(string $file, array $data) {
         $this->load->view('templates/header',$data);
         $this->load->view('templates/navbar',$data);
         $this->load->view($file,$data);
