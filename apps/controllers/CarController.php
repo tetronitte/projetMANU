@@ -58,12 +58,14 @@ class CarController extends CI_Controller {
             $dataContent['car'] = $car;
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $dataCar = array(
-                    //"picture" => $this->input->post('picture'),
+                    "picture" => $this->input->post('picture'),
                     "licensePlate" => $this->input->post('licensePlate'),
                     "mileage" => $this->input->post('mileage'),
                     "details" => $this->input->post('details')                    
                 );
                 if($this->form_validation->run('updateCar')) {
+                    $explode = explode('.',$dataCar['picture']);
+                    $dataCar['picture'] = $dataCar['licensePlate'].'.'.$explode[1];
                     $this->CarManager->updateCar($id, $dataCar);
                     redirect('CarController/list');
                 }
