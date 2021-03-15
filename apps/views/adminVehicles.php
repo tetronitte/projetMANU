@@ -20,13 +20,13 @@
 						<p>Nom : <?= $car->getModel()->getName(); ?></p>
 						<p>Marque : <?= $car->getModel()->getBrand(); ?></p>
 						<p>Type de consommation : <?= $car->getModel()->getFueltype(); ?></p>
-						<p>CatÃ©gorie : <?= $car->getModel()->getCategory(); ?></p>
+						<p>Catégorie : <?= $car->getModel()->getCategory(); ?></p>
 						<p>Nombres de portes : <?= $car->getModel()->getDoors(); ?></p>
-						<p>KilomÃ©trage : <?= $car->getMileage(); ?></p>
+						<p>Kilométrage : <?= $car->getMileage(); ?></p>
 						<p>Plaque Immat : <?= $car->getLicensePlate(); ?></p>
-						<h2>Description du vehicule :</h2>
+						<h2>Description du véhicule :</h2>
 						<p><?= $car->getDetails(); ?></p>
-						<h2>DisponibilitÃ© :</h2>
+						<h2>Disponibilité :</h2>
 						<?php if($car->getDisponibility() == 1){$Disponibility = 'oui'; } else {$Disponibility = 'non';}?>
 						<p><?= $Disponibility;?></p>
 					</div>
