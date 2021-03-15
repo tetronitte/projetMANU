@@ -18,9 +18,9 @@
 				foreach($rents as $rent) {
 					$id = $rent->getId();
 					?><div class="col-6">
-						<h2>DÃ©tails du vehicule :</h2>
+						<h2>Détails du vehicule :</h2>
 						<p>Utilisateur : <?= $rent->getUser()->getLastname().' '.$rent->getUser()->getFirstname(); ?></p>
-						<p>Date de dÃ©but : <?= $rent->getDateStart(); ?></p>
+						<p>Date de début : <?= $rent->getDateStart(); ?></p>
 						<p>Date de fin : <?= $rent->getDateEnd(); ?></p>
 						<p>Vehicule : <?= $rent->getCar()->getModel()->getName(); ?></p>
 						<p>Status : <?php if(!$rent->getCar()->getDisponibility()) echo 'annulée'; else echo 'valide' ?></p>
