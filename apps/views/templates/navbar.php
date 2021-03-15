@@ -11,7 +11,7 @@
 				</li>
 
 				<li class="nav-item col offset-lg-5">
-					<?= anchor("UserController/index", "Location",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
+					<?= anchor("RentController/list", "Location",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
 
 				<li class="nav-item col">
@@ -33,7 +33,7 @@
 
 			
 				<li class="nav-item col-lg-2">
-					<?= anchor("CarController/list", "Liste locations",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
+					<?= anchor("RentController/list", "Liste locations",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
 
 				<li class="nav-item offset-lg-1">
