@@ -14,6 +14,7 @@ class RentManager extends CI_Model {
     }
 
     public function getAllRents() {
+        $this->db->orderBy('DateStart');
         return $this->db->get($this->table);
     }
 

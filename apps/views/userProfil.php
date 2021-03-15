@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div id="listUser" class="row">
 	<?= form_open('UserController/update','class="col-12"'); ?>
-
+	<div class="text-center col-12">
 		<div class="form-group text-center" id="formUser">
 			<label>Changer d'email :</label>
 				<input type="email" class="form-control" id="mail" name="mail" value="<?php if(isset($user)) echo $user->getMail() ?>">

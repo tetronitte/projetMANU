@@ -14,16 +14,16 @@
 				?><div class="col-6"><?php
 			if(isset($users)){
 				foreach($users as $user){
-				$id = $user->getId();
+					$id = $user->getId();
 					?><p>Nom : <?= $user->getFirstName();?></p>
-					<p>Prénom : <?= $user->getLastName();?></p>
+					<p>Prï¿½nom : <?= $user->getLastName();?></p>
 					<p>Email : <?= $user->getMail();?></p>
-					<p>Année de naissance : <?= $user->getBirthdate();?></p>
-					<p>Numéro de téléphone : <?= $user->getPhone();?></p>
+					<p>Annï¿½e de naissance : <?= $user->getBirthdate();?></p>
+					<p>Numï¿½ro de tï¿½lï¿½phone : <?= $user->getPhone();?></p>
 					<p>Ville : <?= $user->getCity();?></p>
 					<p>Code postal : <?= $user->getPostal();?></p>
 					<p>Adresse : <?= $user->getAddress();?></p>
-					<p>Numéro de permis de conduire : <?= $user->getDrivingLicense();?></p>
+					<p>Numï¿½ro de permis de conduire : <?= $user->getDrivingLicense();?></p>
 					<p>Date de l'obtention du permis : <?= $user->getdrivingLicenseObtainDate();?></p>
 					<?= anchor("UserController/deleteUser/$id", "Supprimer utilisateur",['class' => 'btn btn-warning col-6', 'id' => 'deleteClientButton']);?>
 
@@ -31,7 +31,7 @@
 					<?php
 				}
 			}else{
-				?><p>Il n'y a pas d'utilisateur à ce nom</p><?php
+				?><p>Il n'y a pas d'utilisateur ï¿½ ce nom</p><?php
 			}
 			?></div><?php
 				if(isset($this->session->errorDeleteUser)) var_dump($this->session->errorDeleteUser);

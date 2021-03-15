@@ -1,25 +1,6 @@
 <div class="container-fluid">
+<?= var_dump($_SESSION); ?>
 	<h1 class='text-center'>Loca-Auto</h1>
-
-
-
-
-
-
-	<?php
-	/***************************** A SUPPRIMER *****************************************/
-	?>
-	<a href="<?= base_url('index.php/RentController/list') ?>">Liste des locations</a>
-	<a href="<?= base_url('index.php/RentController/insert') ?>">Nouvelle location</a>
-	<?php
-	/************************************************************************************/
-	?>
-
-
-
-
-
-
 	<div class='row'>
 		<div id="carouselIndexControls" class="carousel slide col-6 offset-3" data-ride="carousel">
 			<div class="carousel-inner">
