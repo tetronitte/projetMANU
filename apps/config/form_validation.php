@@ -74,6 +74,28 @@ $config = array(
             'rules' => 'required|sizePassword|regexPassword'
         )
     ),
+    'newRent' => array(
+        array(
+            'field' => 'start',
+            'label' => 'start',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'end',
+            'label' => 'end',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'car',
+            'label' => 'car',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'user',
+            'label' => 'user',
+            'rules' => 'required'
+        )
+    ),
     'updateUser' => array(
         array(
             'field' => 'mail',
