@@ -1,0 +1,23 @@
+#formCar
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#listCar
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#submitCarOption 
+{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    background-color: #FF9900;
+    border-color: #FF9900 !important;
+}
