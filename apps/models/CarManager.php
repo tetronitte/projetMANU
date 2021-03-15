@@ -59,6 +59,13 @@ class CarManager extends CI_Model {
         $this->db->update($this->table);
     }
 
+    public function Dispo(int $id) {
+        $this->db->set('disponibility','1');
+        $this->db->where('id',$id);
+        $this->db->where('archived',0);
+        $this->db->update($this->table);
+    }
+
     public function updateCar(int $id, array $data) {
         $this->db->where('id',$id);
         $this->db->where('archived',0);

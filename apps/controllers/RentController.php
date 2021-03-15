@@ -68,31 +68,33 @@ class RentController extends CI_Controller {
      */
     public function add() {
         $dataContent['title'] = 'Nouvelle location';
-        $dataContent['css'] = 'newRent';
+        $dataContent['css'] = 'registerRentAdmin';
+        $dataContent['cars'] = $this->CarManager->getAllCarsDispo()->result();
+        $dataContent['users'] = $this->UserManager->getAllUser()->result();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataRent = array(
-                "dateStart" => $this->input->post('start'),
-                "dateEnd" => $this->input->post('end'),
-                "CarsId" => $this->input->post('car'),
-                "usersId" => $this->input->post('user')
+                "dateStart" => $this->input->post('dateStart'),
+                "dateEnd" => $this->input->post('dateEnd'),
+                "carsId" => $this->input->post('cardId'),
+                "usersId" => $this->input->post('usersId')
             );
-            $this->form_validation->set_rules('start', 'Date deb', 'required');
-            $this->form_validation->set_rules('end', 'Date fin', 'required');
-            $this->form_validation->set_rules('car', 'Voiture', 'required');
-            $this->form_validation->set_rules('user', 'Client', 'required');
-            if($this->form_validation->run('')) {
+            $this->form_validation->set_rules('dateStart', 'Date deb', 'required');
+            $this->form_validation->set_rules('dateEnd', 'Date fin', 'required');
+            $this->form_validation->set_rules('cardId', 'Voiture', 'required');
+            $this->form_validation->set_rules('usersId', 'Client', 'required');
+            if($this->form_validation->run('registerRentAdmin')) {
                  var_dump($dataRent);
                 $this->RentManager->newRent($dataRent);
-                $this->CarManager->notDispo($dataRent['CarsId']);
+                // $this->CarManager->notDispo($dataRent['CarsId']);
                 redirect('UserController/index');
             }
             else {
                 $dataContent['rent'] = $dataRent;
-                $this->render('newRent',$dataContent);
+                $this->render('registerRentAdmin',$dataContent);
             }
         }
         else {
-            $this->render('newRent',$dataContent);
+            $this->render('registerRentAdmin',$dataContent);
         }
     }
   
