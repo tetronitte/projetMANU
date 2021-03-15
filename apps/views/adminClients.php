@@ -11,7 +11,7 @@
 	<div id="listAllClient" class="row overflow-auto">
 		<div id="hrbar" class="col-12"></div>
 			<?php 
-				?><div class="col-6"><?php
+				?><div class="col-12 col-sm-6"><?php
 				if(isset($users)){
 					foreach($users as $user){
 						$id = $user->getId();
@@ -25,7 +25,7 @@
 						<p>Adresse : <?= $user->getAddress();?></p>
 						<p>Numéro de permis de conduire : <?= $user->getDrivingLicense();?></p>
 						<p>Date de l'obtention du permis : <?= $user->getdrivingLicenseObtainDate();?></p>
-						<?= anchor("UserController/deleteUser/$id", "Supprimer utilisateur",['class' => 'btn btn-warning col-6', 'id' => 'deleteClientButton']);?>
+						<?= anchor("UserController/deleteUser/$id", "Supprimer utilisateur",['class' => 'btn btn-warning col-12 col-sm-6', 'id' => 'deleteClientButton']);?>
 
 						<div id="hrbar" class="col-8"></div>
 						<?php

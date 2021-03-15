@@ -36,7 +36,7 @@
 					<?= anchor("RentController/list", "Liste locations",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
 
-				<li class="nav-item offset-lg-1">
+				<li class="nav-item offset-lg-1 text-center">
 					<h2>Admin Mode</h2>
 				</li>
 

@@ -30,3 +30,14 @@
     border-color: #ff0000 !important;
     margin-bottom: 5%;
 }
+
+@media screen and (max-width: 990px) {
+
+    ##listAllClient
+    {
+        height: inherit;
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-bottom: 10%;
+    }
+}
