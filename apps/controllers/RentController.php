@@ -33,17 +33,11 @@ class RentController extends CI_Controller {
         redirect('RentController/list');
     }
 
-    public function insert() {
+    public function add() {
         $dataContent['title'] = 'Nouvelle location';
         $dataContent['css'] = 'newRent';
         $dataContent['cars'] = $this->CarManager->getAllCarsDispo()->result();
         $dataContent['users'] = $this->UserManager->getAllUser()->result();
-        $this->render('newRent', $dataContent );
-    }
-
-    public function add() {
-        $dataContent['title'] = 'Nouvelle location';
-        $dataContent['css'] = 'newRent';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataRent = array(
                 "dateStart" => $this->input->post('start'),
