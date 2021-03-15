@@ -11,6 +11,7 @@
 	<div id="listAllVehicles" class="row overflow-auto">
 		<div id="hrbar" class="col-12"></div>
 			<?php
+<<<<<<< HEAD
 				if(isset($cars)) {
 					foreach($cars as $car) {
 						?><div class="col-12 col-sm-6">
