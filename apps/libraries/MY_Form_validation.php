@@ -7,12 +7,14 @@ class MY_Form_validation extends CI_Form_validation {
     }
 
     public function regexName(string $str) {
-        if (preg_match('/^([0-9a-zA-ZàáâäæçéèêëîïôœùûüÿÀÂÄÆÇÉÈÊËÎÏÖÔŒÙÛÜŸ \-\']+)$/',$str)) return true;
+        $preg = preg_match('/^([0-9a-zA-ZàáâäæçéèêëîïôœùûüÿÀÂÄÆÇÉÈÊËÎÏÖÔŒÙÛÜŸ \-\']+)$/',$str);
+        if ($preg) return true;
         else return false;
     }
 
     public function regexDate(string $date) {
-        if (preg_match('/^(19|20)\d\d[- \/.](0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])$/',$date)) return true;
+        $preg = preg_match('/^(19|20)\d\d[- \/.](0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])$/',$date);
+        if ($preg) return true;
         else return false;
     }
 
@@ -20,19 +22,25 @@ class MY_Form_validation extends CI_Form_validation {
         $majorityDate = strtotime(date('d-m-Y', strtotime('-18 year')));
         $date = strtotime($date);
         if($date < $majorityDate) return true;
-        else false;
+        else return false;
     }
 
     public function regexPhone(string $phone) {
-        return preg_match('/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/',$phone);
+        $preg = preg_match('/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/',$phone);
+        if($preg) return true;
+        else return false; 
     }
 
     public function regexPassword(string $pwd) {
-        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,18}$/',$pwd);
+        $preg = preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,18}$/',$pwd);
+        if ($preg) return true;
+        else return false;
     }
 
     public function regexDrivingLicense(string $str) {
-        return preg_match('/^[0-9]{12}$/',$str);
+        $preg = preg_match('/^[0-9]{12}$/',$str);
+        if($preg) return true;
+        else return false;
     }
 
     public function sizePassword(string $pwd) {
@@ -46,10 +54,14 @@ class MY_Form_validation extends CI_Form_validation {
     }
 
     public function regexPostal(string $postal) {
-        return preg_match('/^[0-9]{5}$/',$postal);
+        $preg = preg_match('/^[0-9]{5}$/',$postal);
+        if($preg) return true;
+        else return false; 
     }
 
     public function regexLicensePlate(string $licensePlate) {
-        return preg_match('/^[A-Z]{2}[-][0-9]{3}[-][A-Z]{2}$/',$licensePlate);
+        $preg = preg_match('/^[A-Z]{2}[-][0-9]{3}[-][A-Z]{2}$/',$licensePlate);
+        if($preg) return true;
+        else return false; 
     }
 }

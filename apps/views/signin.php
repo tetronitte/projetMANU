@@ -7,23 +7,23 @@
 			<h3>informations de base :</h3>
 
 				<label>Nom :</label>
-					<input type="text" class="form-control" id="firstname" name="firstname" value="<?php if(isset($profil)) echo $profil['firstname']?>">
+					<input type="text" class="form-control" id="firstname" name="firstname" value="<?php if(isset($user)) echo $user['firstname']?>">
 				<span class="help-block"><?= form_error('firstname') ?></span>
 
 				<label class="col-12">Prénom :</label>
-					<input type="text" class="form-control" id="lastname" name="lastname" value="<?php if(isset($profil)) echo $profil['lastname']?>">
+					<input type="text" class="form-control" id="lastname" name="lastname" value="<?php if(isset($user)) echo $user['lastname']?>">
 				<span class="help-block"><?= form_error('lastname') ?></span>
 
 				<label class="col-12">Email :</label>
-					<input type="text" class="form-control" id="email" name="mail" value="<?php if(isset($profil)) echo $profil['mail']?>">
+					<input type="text" class="form-control" id="email" name="mail" value="<?php if(isset($user)) echo $user['mail']?>">
 				<span class="help-block"><?= form_error('mail') ?></span>
 
 				<label class="col-12">Date de naissance :</label>
-					<input type="date" class="form-control" id="birthdate" name="birthdate" value="<?php if(isset($profil)) echo $profil['birthdate']?>">
+					<input type="date" class="form-control" id="birthdate" name="birthdate" value="<?php if(isset($user)) echo $user['birthdate']?>">
 				<span class="help-block"><?= form_error('birthdate') ?></span>
 
 				<label class="col-12">Votre numéro de téléphone :</label>
-					<input type="tel" class="form-control" id="phone" name="phone" value="<?php if(isset($profil)) echo $profil['phone']?>">
+					<input type="tel" class="form-control" id="phone" name="phone" value="<?php if(isset($user)) echo $user['phone']?>">
 				<span class="help-block"><?= form_error('phone') ?></span>
 
 				<label class="col-12">Votre ville :</label>

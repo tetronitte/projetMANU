@@ -16,6 +16,9 @@
 	<?= form_close() ?>
 		</div>
 	</div>
+	<div>
+		<?php if(isset($errors)) echo $errors ?>
+	</div>
 	<div class="text-center" id="redirectSignInDiv">
 		<?= anchor("UserController/signin", "Vous n'êtes pas inscrit ?",['class' => 'btn text-info', 'id' => 'redirectSignIn']); ?>
 	</div>

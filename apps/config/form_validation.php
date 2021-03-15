@@ -18,7 +18,8 @@ $config = array(
             'rules' => 'required|regexDate|checkMajority'
         ),
         array(
-            'fiabel' => 'mail',
+            'field' => 'mail',
+            'label' => 'birthdate',
             'rules' => 'required|valid_email|is_unique[users.mail]'
         ),
         array(
@@ -72,6 +73,28 @@ $config = array(
             'field' => 'pwd',
             'label' => 'pwd',
             'rules' => 'required|sizePassword|regexPassword'
+        )
+    ),
+    'newRent' => array(
+        array(
+            'field' => 'start',
+            'label' => 'start',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'end',
+            'label' => 'end',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'car',
+            'label' => 'car',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'user',
+            'label' => 'user',
+            'rules' => 'required'
         )
     ),
     'updateUser' => array(

@@ -12,29 +12,32 @@
 		<div id="hrbar" class="col-12"></div>
 			<?php 
 				?><div class="col-6"><?php
-			if(isset($users)){
-				foreach($users as $user){
-					$id = $user->getId();
-					?><p>Nom : <?= $user->getFirstName();?></p>
-					<p>Pr�nom : <?= $user->getLastName();?></p>
-					<p>Email : <?= $user->getMail();?></p>
-					<p>Ann�e de naissance : <?= $user->getBirthdate();?></p>
-					<p>Num�ro de t�l�phone : <?= $user->getPhone();?></p>
-					<p>Ville : <?= $user->getCity();?></p>
-					<p>Code postal : <?= $user->getPostal();?></p>
-					<p>Adresse : <?= $user->getAddress();?></p>
-					<p>Num�ro de permis de conduire : <?= $user->getDrivingLicense();?></p>
-					<p>Date de l'obtention du permis : <?= $user->getdrivingLicenseObtainDate();?></p>
-					<?= anchor("UserController/deleteUser/$id", "Supprimer utilisateur",['class' => 'btn btn-warning col-6', 'id' => 'deleteClientButton']);?>
+				if(isset($users)){
+					foreach($users as $user){
+						$id = $user->getId();
+						?><p>Nom : <?= $user->getFirstName();?></p>
+						<p>Prénom : <?= $user->getLastName();?></p>
+						<p>Email : <?= $user->getMail();?></p>
+						<p>Année de naissance : <?= $user->getBirthdate();?></p>
+						<p>Numéro de téléphone : <?= $user->getPhone();?></p>
+						<p>Ville : <?= $user->getCity();?></p>
+						<p>Code postal : <?= $user->getPostal();?></p>
+						<p>Adresse : <?= $user->getAddress();?></p>
+						<p>Numéro de permis de conduire : <?= $user->getDrivingLicense();?></p>
+						<p>Date de l'obtention du permis : <?= $user->getdrivingLicenseObtainDate();?></p>
+						<?= anchor("UserController/deleteUser/$id", "Supprimer utilisateur",['class' => 'btn btn-warning col-6', 'id' => 'deleteClientButton']);?>
 
-					<div id="hrbar" class="col-8"></div>
-					<?php
+						<div id="hrbar" class="col-8"></div>
+						<?php
+					}
+				}else{
+					?><p>Il n'y a pas d'utilisateur à ce nom</p><?php
 				}
-			}else{
-				?><p>Il n'y a pas d'utilisateur � ce nom</p><?php
-			}
 			?></div><?php
-				if(isset($this->session->errorDeleteUser)) var_dump($this->session->errorDeleteUser);
+				if(isset($this->session->errorDeleteUser)) {
+					echo $this->session->errorDeleteUser;
+					unset($_SESSION['errorDeleteUser']);
+				}
 			?>
 	</div>
 </div>

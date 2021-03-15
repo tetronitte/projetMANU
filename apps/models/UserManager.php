@@ -72,13 +72,13 @@ class UserManager extends CI_Model {
     }
 
     public function countRentInProgress(int $id) {
-        $this->db->query('CEIL(COUNT(rents.id)) AS count FROM rents INNER JOIN rents ON rents.usersId = '.$this->table.'.id WHERE users.id = '.$id.' AND CURRENT_DATE <= rents.dateStart');
-        // $currentDate = date('Y-m-d');
-        // $this->db->select('CEIL(COUNT(rents.id)) AS count');
-        // $this->db->from($this->table);
-        // $this->db->join('rents', 'rents.usersId = '.$this->table.'.id');
-        // $this->db->where('users.id',$id);
-        // $this->db->where('rents.dateStart <= '.$currentDate);
+        $currentDate = date('Y-m-d');
+        $this->db->select('CEIL(COUNT(rents.id)) AS count');
+        $this->db->from($this->table);
+        $this->db->join('rents', 'rents.usersId = '.$this->table.'.id');
+        $this->db->where('users.id',$id);
+        $this->db->where('rents.dateStart <= ',$currentDate);
+        $this->db->where('rents.dateEnd >= ',$currentDate);
         return $this->db->get();
     }
 }

@@ -48,7 +48,6 @@ class UserController extends CI_Controller {
                 "pwd" => $this->input->post('pwd'),
                 "autolog" => $this->input->post('autolog')
             );
-            // var_dump($this->form_validation->run('login'));die();
             if($this->form_validation->run('login')) {
                 $req = $this->UserManager->getUserByMail($dataUser['mail']);
                 if ($req->num_rows() == 1) {
@@ -211,13 +210,13 @@ class UserController extends CI_Controller {
 
     public function deleteUser(int $id) {
         if (isset($this->session->admin)) {
-            // $count = $this->UserManager->countRentInProgress($id);
-            // if ($count == 0) {
-            //     $this->UserManager->deleteUser($id);
-            // }
-            // else {
-            //     $this->session->set_userdata('errorDeleteUser','Cet utilisateur à au moins une location en cours.');
-            // }
+            $req = $this->UserManager->countRentInProgress($id);
+            if ($req->result()[0]->count == 0) {
+                $this->UserManager->deleteUser($id);
+            }
+            else {
+                $this->session->set_userdata('errorDeleteUser','Cet utilisateur à au moins une location en cours.');
+            }
             redirect('UserController/listUser');
         }
         else {
