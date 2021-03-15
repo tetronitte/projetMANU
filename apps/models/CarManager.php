@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * CarManager
+ */
 class CarManager extends CI_Model {
     
     private $table;
@@ -9,8 +12,13 @@ class CarManager extends CI_Model {
         $this->table = 'cars';
     }
 
-    public function getAllCars() {
-        $this->db->select('id, picture, licensePlate, mileage, disponibility, details, modelsId AS model');
+    public function getAllCars(string $search) {
+        $this->db->select('cars.id, picture, licensePlate, mileage, disponibility, details, modelsId AS model');
+        $this->db->join('models', 'models.id = cars.modelsId');
+        $this->db->join('brands', 'brands.id = models.brandsId');
+        $this->db->join('fueltype', 'fueltype.id = models.fueltypeId');
+        $this->db->join('categories', 'categories.id = models.categoriesId');
+        $this->db->where("(brands.name LIKE '%".$search."%' OR models.name LIKE '%".$search."%' OR fueltype.type LIKE '%".$search."%' OR categories.name LIKE '%".$search."%')");
         return $this->db->get($this->table);
     }
 

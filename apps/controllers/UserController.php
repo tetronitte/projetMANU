@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * UserController
+ */
 class UserController extends CI_Controller {
-
+    
+    /**
+     * signin
+     *
+     * @return void
+     */
     public function signin() {
         $dataContent['title'] = 'Inscription';
         $dataContent['css'] = 'signin';
@@ -38,7 +46,12 @@ class UserController extends CI_Controller {
             $this->render('signin',$dataContent);
         }
     }
-
+    
+    /**
+     * login
+     *
+     * @return void
+     */
     public function login() {
         $dataContent['title'] = 'Connexion';
         $dataContent['css'] = 'login';
@@ -92,7 +105,12 @@ class UserController extends CI_Controller {
             $this->render('login',$dataContent);
         }
     }
-
+    
+    /**
+     * signout
+     *
+     * @return void
+     */
     public function signout() {
         unset(
             $_SESSION['id'],
@@ -103,7 +121,12 @@ class UserController extends CI_Controller {
         delete_cookie('autolog');
         redirect('UserController/index');
     }
-
+    
+    /**
+     * update
+     *
+     * @return void
+     */
     public function update() {
         $dataContent['title'] = 'Profil';
         $dataContent['css'] = 'userProfil';
@@ -134,7 +157,12 @@ class UserController extends CI_Controller {
             redirect('UserController/profil');
         }
     }
-
+    
+    /**
+     * profil
+     *
+     * @return void
+     */
     public function profil() {
         $dataContent['title'] = 'Profil';
         $dataContent['css'] = 'userProfil';
@@ -143,7 +171,12 @@ class UserController extends CI_Controller {
         $dataContent['user'] = $user;
         $this->render('userProfil',$dataContent);
     }
-
+    
+    /**
+     * updatePassword
+     *
+     * @return void
+     */
     public function updatePassword() {
         $dataContent['title'] = 'Modification mot de passe';
         $dataContent['css'] = 'updatePassword';
@@ -174,7 +207,13 @@ class UserController extends CI_Controller {
             $this->render('updatePassword',$dataContent);
         }
     }
-
+    
+    /**
+     * listUser
+     *
+     * @param  mixed $page
+     * @return void
+     */
     public function listUser(int $page = 1) {
         if (isset($this->session->admin)) {
             $dataContent['title'] = "Liste des utilisateurs";
@@ -207,7 +246,13 @@ class UserController extends CI_Controller {
             redirect('UserController/index');
         }
     }
-
+    
+    /**
+     * deleteUser
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function deleteUser(int $id) {
         if (isset($this->session->admin)) {
             $req = $this->UserManager->countRentInProgress($id);
@@ -223,7 +268,12 @@ class UserController extends CI_Controller {
             redirect('UserController/index');
         }
     }
-
+    
+    /**
+     * index
+     *
+     * @return void
+     */
     public function index() {
         $dataContent['title'] = 'index';
         $dataContent['css'] = 'index';
@@ -247,7 +297,13 @@ class UserController extends CI_Controller {
         }    
         $this->render('index',$dataContent);
     }
-
+    
+    /**
+     * createToken
+     *
+     * @param  mixed $id
+     * @return void
+     */
     private function createToken(int $id) {
         // $options = new Options();
         // $tokenSize = $options->getTokenSize();
@@ -259,8 +315,15 @@ class UserController extends CI_Controller {
         $this->UserManager->updateToken($id,$token);
         return $token;
     }
-
-    private function render($file, $data) {
+    
+    /**
+     * render
+     *
+     * @param  mixed $file
+     * @param  mixed $data
+     * @return void
+     */
+    private function render(string $file, array $data) {
         $this->load->view('templates/header',$data);
         $this->load->view('templates/navbar',$data);
         $this->load->view($file,$data);
