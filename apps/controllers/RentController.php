@@ -20,10 +20,10 @@ class RentController extends CI_Controller {
     }
 
     public function deleteRent(int $id) {
-        $req = $this->UserManager->getRentById($id);
+        $req = $this->RentManager->getRentById($id);
         $rent = new Rent($req->result()[0]);
         $today = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
-        $rentStart = $rent->getDateStart();
+        $rentStart = strtotime($rent->getDateStart());
         if ($today < $rentStart) {
             $this->RentManager->deleteRent($id);
         }
@@ -55,8 +55,8 @@ class RentController extends CI_Controller {
             $this->form_validation->set_rules('end', 'Date fin', 'required');
             $this->form_validation->set_rules('car', 'Voiture', 'required');
             $this->form_validation->set_rules('user', 'Client', 'required');
-            if($this->form_validation->run('')) {
-                 var_dump($dataRent);
+            if($this->form_validation->run('newRent')) {
+                var_dump($dataRent);
                 $this->RentManager->newRent($dataRent);
                 $this->CarManager->notDispo($dataRent['CarsId']);
                 redirect('UserController/index');
