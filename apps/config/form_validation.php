@@ -151,11 +151,6 @@ $config = array(
         )
     ),
     'updateCar' => array(
-        // array(
-        //     'field' => 'picture',
-        //     'label' => 'picture',
-        //     'rules' => 'required|regexLicensePlate'
-        // ),
         array(
             'field' => 'licensePlate',
             'label' => 'licensePlate',
@@ -170,31 +165,6 @@ $config = array(
             'field' => 'details',
             'label' => 'details',
             'rules' => 'required|regexName'
-        ),
-        array(
-            'field' => 'name',
-            'label' => 'name',
-            'rules' => 'required|regexName'
-        ),
-        array(
-            'field' => 'brand',
-            'label' => 'brand',
-            'rules' => 'required|regexName'
-        ),
-        array(
-            'field' => 'fueltype',
-            'label' => 'fueltype',
-            'rules' => 'required|regexName'
-        ),
-        array(
-            'field' => 'category',
-            'label' => 'category',
-            'rules' => 'required|regexName'
-        ),
-        array(
-            'field' => 'doors',
-            'label' => 'doors',
-            'rules' => 'required|integer'
         )
     )    
 );

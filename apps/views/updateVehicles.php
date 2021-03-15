@@ -1,14 +1,14 @@
 <div class="container-fluid">
 	<div id="listcar" class="row">
-	<?= form_open('CarController/updateCar/'.$car->getId(),'class="col-12"'); ?>
+	<?= form_open_multipart('CarController/updateCar/'.$car->getId(),'class="col-12"'); ?>
 	<div class="text-center col-12">
 		<div class="form-group text-center" id="formCar">
 			<label>Nom :</label>
-				<input type="name" class="form-control" id="name" name="name" value="<?php if(isset($car)) echo $car->getModel()->getName() ?>" disable>
+				<input type="name" class="form-control" id="name" name="name" value="<?php if(isset($car)) echo $car->getModel()->getName() ?>" disabled>
 			<span class="help-block"><?= form_error('name') ?></span>
 
 			<label class="col-12">Marque :</label>
-				<input type="text" class="form-control" id="brand" name="brand" value="<?php if(isset($car)) echo $car->getModel()->getBrand(); ?>" disable>
+				<input type="text" class="form-control" id="brand" name="brand" value="<?php if(isset($car)) echo $car->getModel()->getBrand(); ?>" disabled>
 			<span class="help-block"><?= form_error('brand') ?></span>
 
 			<label class="col-12">Kilométrage :</label>
