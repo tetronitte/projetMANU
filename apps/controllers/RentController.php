@@ -4,7 +4,7 @@ class RentController extends CI_Controller {
 
     public function list() {
         $dataContent['title'] = 'Nos locations';
-        $dataContent['css'] = 'style';
+        $dataContent['css'] = 'listRents';
         $req = $this->RentManager->getAllRents();
         foreach ($req->result() as $row) {
             $req2 = $this->CarManager->getCar($row->carsId);
@@ -34,37 +34,40 @@ class RentController extends CI_Controller {
     }
 
     public function insert() {
-        $dataContent['title'] = 'Nos locations';
-        $dataContent['css'] = 'style';
+        $dataContent['title'] = 'Nouvelle location';
+        $dataContent['css'] = 'newRent';
+        $dataContent['cars'] = $this->CarManager->getAllCarsDispo()->result();
+        $dataContent['users'] = $this->UserManager->getAllUser()->result();
         $this->render('newRent', $dataContent );
     }
 
     public function add() {
-        $dataContent['title'] = 'Inscription';
-        $dataContent['css'] = 'signin';
+        $dataContent['title'] = 'Nouvelle location';
+        $dataContent['css'] = 'newRent';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dataRent = array(
-                "dateStart" => $this->input->post('firstname'),
-                "dateEnd" => $this->input->post('lastname'),
-                "CarsId" => $this->input->post('birthdate'),
-                "usersId" => $this->input->post('phone')
+                "dateStart" => $this->input->post('start'),
+                "dateEnd" => $this->input->post('end'),
+                "CarsId" => $this->input->post('car'),
+                "usersId" => $this->input->post('user')
             );
-            if($this->form_validation->run('register')) {
-               /* $password = password_hash($dataUser['pwd'],PASSWORD_DEFAULT);
-                $dataUser['pwd'] = $password;
-                unset($dataUser['verifPwd']);*/
-
+            $this->form_validation->set_rules('start', 'Date deb', 'required');
+            $this->form_validation->set_rules('end', 'Date fin', 'required');
+            $this->form_validation->set_rules('car', 'Voiture', 'required');
+            $this->form_validation->set_rules('user', 'Client', 'required');
+            if($this->form_validation->run('')) {
+                 var_dump($dataRent);
                 $this->RentManager->newRent($dataRent);
-                
+                $this->CarManager->notDispo($dataRent['CarsId']);
                 redirect('UserController/index');
             }
             else {
                 $dataContent['rent'] = $dataRent;
-                $this->render('add',$dataContent);
+                $this->render('newRent',$dataContent);
             }
         }
         else {
-            $this->render('add',$dataContent);
+            $this->render('newRent',$dataContent);
         }
     }
 
