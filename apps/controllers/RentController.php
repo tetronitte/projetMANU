@@ -20,10 +20,10 @@ class RentController extends CI_Controller {
     }
 
     public function deleteRent(int $id) {
-        $req = $this->UserManager->getRentById($id);
+        $req = $this->RentManager->getRentById($id);
         $rent = new Rent($req->result()[0]);
         $today = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
-        $rentStart = $rent->getDateStart();
+        $rentStart = strtotime($rent->getDateStart());
         if ($today < $rentStart) {
             $this->RentManager->deleteRent($id);
         }

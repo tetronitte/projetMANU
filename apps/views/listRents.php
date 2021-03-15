@@ -10,26 +10,28 @@
 	<div id="listAllRents" class="row">
 		<div id="hrbar" class="col-12"></div>
 			<table class="table table-dark table-striped ">
-			<thead>
-				<tr>
-					<th>Deb</th>
-					<th>Fin</th>
-					<th>Voiture</th>
-					<th>Client</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php 
-				foreach($rents as $val) { ?>
+				<thead>
 					<tr>
-						<td><?= date('d/m/Y',strtotime($val->getDateStart())) ?></td>
-						<td><?= date('d/m/Y',strtotime($val->getDateEnd())) ?></td>
-						<td><?= $val->getCar()->getModel()->getName() ?></td>
-						<td><?= $val->getUser()->getFirstname()." ".$val->getUser()->getLastname() ?></td>
+						<th></th>
+						<th>Deb</th>
+						<th>Fin</th>
+						<th>Voiture</th>
+						<th>Client</th>
 					</tr>
-				<?php } ?>
-			</tbody>
-			</table>
+				</thead>
+				<tbody>
+					<?php 
+					foreach($rents as $val) { ?>
+						<tr>
+							<td><a href="<?= base_url('index.php/RentController/deleteRent/'.$val->getId())?>"><i class="fa fa-trash"></i></a></td>
+							<td><?= date('d/m/Y',strtotime($val->getDateStart())) ?></td>
+							<td><?= date('d/m/Y',strtotime($val->getDateEnd())) ?></td>
+							<td><?= $val->getCar()->getModel()->getName() ?></td>
+							<td><?= $val->getUser()->getFirstname()." ".$val->getUser()->getLastname() ?></td>
+						</tr>
+					<?php } ?>
+				</tbody>
+				</table>
 	</div>
 	<!-- ajouter pagination -->
 </div>
