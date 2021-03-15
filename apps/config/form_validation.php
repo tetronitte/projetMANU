@@ -18,7 +18,8 @@ $config = array(
             'rules' => 'required|regexDate|checkMajority'
         ),
         array(
-            'fiabel' => 'mail',
+            'field' => 'mail',
+            'label' => 'birthdate',
             'rules' => 'required|valid_email|is_unique[users.mail]'
         ),
         array(
