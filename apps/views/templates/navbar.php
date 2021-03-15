@@ -5,7 +5,7 @@
 <div class="collapse navbar-collapse row" id="navbarNav">
 		<ul class="navbar-nav col-12">
 
-			<?php if(isset($_SESSION['id'])){?>
+		<?php if (isset($this->session->id) && empty($this->session->admin)){ ?>
 				<li class="nav-item col-lg-2">
 					<?= anchor("CarController/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
@@ -21,7 +21,8 @@
 				<li class="nav-item col">
 					<?= anchor("UserController/signout", "Déconnexion",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
-			<?php}if($_SESSION['admin'] == 1){?>
+		<?php } if (isset($this->session->admin)){  ?>
+
 				<li class="nav-item col-lg-2">
 					<?= anchor("CarController/list", "Infos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
@@ -46,7 +47,8 @@
 				<li class="nav-item col">
 					<?= anchor("UserController/signout", "Déconnexion",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
-			<?php } else { ?>
+		<?php } else { ?>
+
 				<li class="nav-item col-lg-2">
 					<?= anchor("CarController/list", "Nos véhicules",['class' => 'btn nav-link', 'id' => 'linkVehicle']); ?>
 				</li>
@@ -54,7 +56,8 @@
 				<li class="nav-item col offset-lg-6">
 					<?= anchor("UserController/login", "Inscription/Login",['class' => 'btn btn-warning nav-link', 'id' => 'loginbutton']); ?>
 				</li>
-			<?php } ?>
+
+		<?php } ?>
 
 	    </ul>
 </div>
