@@ -79,19 +79,27 @@ class RentController extends CI_Controller {
                 );
                 if($this->form_validation->run('addRent')) {
                     $reqUser = $this->UserManager->getUserByMail($dataRent['mail']);
-                    $user = new User($reqUser->result()[0]);
                     $reqCar = $this->CarManager->getCarByLicensePlate($dataRent['licensePlate']);
-                    $reqModel = $this->ModelManager->getModel($reqCar->result()[0]->modelsId);
-                    $reqCar->result()[0]->model = new Model($reqModel->result()[0]);
-                    $car = new Car($reqCar->result()[0]);
-                    $dataRent['carsId'] = $car->getId();
-                    $dataRent['usersId'] = $user->getId();
-                    unset($dataRent['licensePlate']);
-                    unset($dataRent['mail']);
-                    $id = $this->RentManager->insertRent($dataRent);
-                    $numRent = $this->generateNumRent($car,$user,$id);
-                    $this->RentManager->updateNumRent($numRent,$id);
-                    redirect('RentControlelr/addRent');
+                    if($reqUser->result()==null || $reqCar->result()==null) {
+                        if($reqUser->result()==null) $dataContent['errorUser'] = "Utilisateur inconnu";
+                        if($reqCar->result()==null) $dataContent['errorCar'] = "Voiture inconnue";
+                        $this->render('registerRentAdmin',$dataContent);
+                    }
+                    else
+                    {
+                        $user = new User($reqUser->result()[0]);
+                        $reqModel = $this->ModelManager->getModel($reqCar->result()[0]->modelsId);
+                        $reqCar->result()[0]->model = new Model($reqModel->result()[0]);
+                        $car = new Car($reqCar->result()[0]);
+                        $dataRent['carsId'] = $car->getId();
+                        $dataRent['usersId'] = $user->getId();
+                        unset($dataRent['licensePlate']);
+                        unset($dataRent['mail']);
+                        $id = $this->RentManager->insertRent($dataRent);
+                        $numRent = $this->generateNumRent($car,$user,$id);
+                        $this->RentManager->updateNumRent($numRent,$id);
+                        redirect('RentController/addRent');
+                    }
                 }
                 else {
                     $dataContent['rent'] = $dataRent;

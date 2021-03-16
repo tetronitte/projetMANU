@@ -16,14 +16,12 @@
 				<label class="col-12">Date de fin :</label>
 					<input type="date" class="form-control" id="dateEnd" name="dateEnd" value="<?php if(isset($rent)) echo $rent['dateEnd'] ?>">
 				<span class="help-block"><?= form_error('dateEnd') ?></span>
-
 				<label class="col-12">Plaque d'immatriculation :</label>
 					<input type="text" class="form-control" id="cardId" name="licensePlate" value="<?php if(isset($rent)) echo $rent['licensePlate'] ?>">
-				<span class="help-block"><?= form_error('licensePlate') ?></span>
-
+				<span class="help-block"><?php if(isset($errorCar)) echo $errorCar; else echo form_error('licensePlate'); ?></span>
 				<label class="col-12">E-mail client :</label>
 					<input type="text" class="form-control" id="usersId" name="mail" value="<?php if(isset($rent)) echo $rent['mail'] ?>">
-				<span class="help-block"><?= form_error('mail') ?></span>
+				<span class="help-block"><?php if(isset($errorUser)) echo $errorUser; else echo form_error('mail'); ?></span>
 
 			<?= form_submit("send", "Valider",['class' => 'btn btn-warning col-12', 'id' => 'submitRentAdmin']); ?>
 	<?= form_close() ?>
