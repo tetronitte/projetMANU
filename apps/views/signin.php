@@ -4,7 +4,7 @@
 	<?= form_open('UserController/signin','class="col-12"'); ?>
 		<div class="form-group text-center" id="formLogin">
 			<div id="hrbar" class="col-12"></div>
-			<h3>informations de base :</h3>
+			<h3>Informations de base :</h3>
 
 				<label>Nom :</label>
 					<input type="text" class="form-control" id="firstname" name="firstname" value="<?php if(isset($user)) echo $user['firstname']?>">
@@ -47,7 +47,7 @@
 				<span class="help-block"><?= form_error('verifPwd') ?></span>
 
 			<div id="hrbar" class="col-12"></div>
-			<h3>informations supplémentaire :</h3>
+			<h3>Informations supplémentaires :</h3>
 
 				<label class="col-12">Votre numéro de permis :</label>
 					<input type="text" class="form-control" id="drivinglicense" name="drivingLicense" value="<?php if(isset($user)) echo $user['drivingLicense']?>">
