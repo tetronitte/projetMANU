@@ -1,8 +1,8 @@
 <div class="container-fluid">
-	<?= form_open('url'); ?>
+	<?= form_open('RentController/list'); ?>
 		<div class="form-group input-group">
 			<div  id="searchAdminRentDiv" class="input-group-prepend">
-				<input type="text" id="searchAdminRent" name="searchAdminRent" class="form-control" value="<?= '';?>">
+				<input type="text" id="searchAdminRent" name="search" class="form-control" value="<?php if(isset($search)) {echo $search;} else if(isset($this->session->search)) { echo $this->session->search; unset($this->session->search);} ?>">
 				<?= form_submit("send", "chercher",['class' => 'btn btn-warning', 'id' => 'searchAdminRentButton']); ?>
 			</div>
 		</div>

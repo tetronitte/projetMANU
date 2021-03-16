@@ -44,3 +44,11 @@ h3 {
     color: black;
     background-color : #FF9900;
 }
+
+#indexButton 
+{
+    height: 100px;
+    width: 100px;
+    background: url('../img/logo.png') no-repeat;
+    background-size: cover;
+}

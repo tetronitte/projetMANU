@@ -31,6 +31,24 @@
     margin-bottom: 5%;
 }
 
+@media screen and (max-width: 1920px) {
+
+    #listAllClient 
+    {
+        height: 600px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+
+    #listAllClient 
+    {
+        height: 500px;
+    }
+}
+
 @media screen and (max-width: 990px) {
 
     ##listAllClient

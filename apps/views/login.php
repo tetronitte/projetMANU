@@ -8,7 +8,7 @@
 				<input type="email" class="form-control" id="mail" name="mail" value="<?php if(isset($user)) echo $user['mail'] ?>">
 			<span class="help-block"><?= form_error('mail') ?></span>
 			<label class="col-12">Mot de passe :</label>
-				<input type="text" class="form-control" id="pwd" name="pwd" value="<?php if(isset($user)) echo $user['pwd'] ?>">
+				<input type="password" class="form-control" id="pwd" name="pwd" value="<?php if(isset($user)) echo $user['pwd'] ?>">
 			<span class="help-block"><?= form_error('pwd') ?></span>
 
 			<?= form_checkbox('autolog', 'accept', TRUE);?><label>Rester connecté</label>

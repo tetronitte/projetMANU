@@ -13,7 +13,11 @@ class RentManager extends CI_Model {
         return $this->db->insert_id();
     }
 
-    public function getAllRents() {
+    public function getAllRents(string $search) {
+        $this->db->join('users', 'users.id = rents.usersId');
+        $this->db->join('cars', 'cars.id = rents.carsId');
+        $this->db->join('models', 'models.id = cars.modelsId');
+        $this->db->where("(models.name LIKE '%".$search."%' OR users.firstname LIKE '%".$search."%' OR users.lastname LIKE '%".$search."%' OR rents.dateStart LIKE '%".$search."%' OR rents.dateEnd LIKE '%".$search."%')");
         $this->db->order_by('dateStart','DESC');
         return $this->db->get($this->table);
     }

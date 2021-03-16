@@ -21,10 +21,20 @@ class ReturnController extends CI_Controller {
                 );
                 if($this->form_validation->run('addReturn')) {
                     $req = $this->RentManager->getRentByNum($dataReturn['numRent']);
-                    $dataReturn['rentsId'] = $req->result()[0]->id;
-                    unset($dataReturn['numRent']);
-                    $this->ReturnManager->insertReturn($dataReturn);
-                    redirect('ReturnController/addReturn');
+                    if($req->result() == null) {
+                        $dataContent['errorNumRent'] = 'Le numéro de location est inéxistant.';
+                    }
+                    else if($dataReturn['dateReturn'] < $req->result()[0]->dateEnd) {
+                        $dataContent['errorDate'] = 'La date de retour n\'est pas bonne.';
+                    }
+                    else {
+                        $dataReturn['rentsId'] = $req->result()[0]->id;
+                        unset($dataReturn['numRent']);
+                        $this->ReturnManager->insertReturn($dataReturn);
+                        redirect('ReturnController/addReturn');
+                    }
+                    $dataContent['return'] = $dataReturn;
+                    $this->render('registerReturnAdmin',$dataContent);
                 }
                 else {
                     $dataContent['return'] = $dataReturn;

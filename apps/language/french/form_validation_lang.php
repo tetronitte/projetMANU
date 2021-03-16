@@ -47,3 +47,4 @@ $lang['form_validation_sizePassword']          = 'Le mot de passe doit contenir 
 $lang['form_validation_isEqualPassword']       = 'La vérification de mot de passe est incorrect.';
 $lang['form_validation_regexPostal']           = 'Le format de code postal n\'est pas valide.';
 $lang['form_validation_regexLicensePlate']     = 'Le format de la plaque d\'immatriculation n\'est pas valide.';
+$lang['form_validation_regexNumRent']          = 'Le format du numéro de location n\'est pas valide.';

@@ -39,11 +39,11 @@
 				<span class="help-block"><?= form_error('address') ?></span>
 
 				<label class="col-12">Mot de passe :</label>
-					<input type="text" class="form-control" id="password" name="pwd" value="<?php if(isset($user)) echo $user['pwd']?>">
+					<input type="password" class="form-control" id="password" name="pwd" value="<?php if(isset($user)) echo $user['pwd']?>">
 				<span class="help-block"><?= form_error('pwd') ?></span>
 
 				<label class="col-12">Confirmer votre mot de passe :</label>
-					<input type="text" class="form-control" id="confirmpassword" name="verifPwd" value="<?php if(isset($user)) echo $user['verifPwd']?>">
+					<input type="password" class="form-control" id="confirmpassword" name="verifPwd" value="<?php if(isset($user)) echo $user['verifPwd']?>">
 				<span class="help-block"><?= form_error('verifPwd') ?></span>
 
 			<div id="hrbar" class="col-12"></div>

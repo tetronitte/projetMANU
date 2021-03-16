@@ -28,9 +28,16 @@
         height: 600px;
         margin-left: 10%;
         margin-right: 10%;
-        margin-bottom: 10%;
     }
 
+}
+
+@media screen and (max-width: 1600px) {
+
+    #listAllVehicle 
+    {
+        height: 500px;
+    }
 }
 
 @media screen and (max-width: 990px) {
