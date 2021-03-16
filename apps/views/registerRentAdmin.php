@@ -9,7 +9,7 @@
 		<div class="form-group text-center" id="formRentAdmin">
 			<div id="hrbar" class="col-12"></div>
 
-				<label class="col-12">Date de d�but :</label>
+				<label class="col-12">Date de début :</label>
 					<input type="date" class="form-control" id="dateStart" name="dateStart" value="<?php if(isset($config['dateStart'])){ echo '';}?>">
 				<span class="help-block"><?= form_error('dateStart') ?></span>
 
