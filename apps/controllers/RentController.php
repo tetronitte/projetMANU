@@ -66,7 +66,6 @@ class RentController extends CI_Controller {
      *
      * @return void
      */
-<<<<<<< HEAD
     public function addRent() {//TODO VÉRIFICATION FORMULAIRE
         if(isset($this->session->admin)) {
             $dataContent['title'] = 'Nouvelle location';
@@ -100,41 +99,11 @@ class RentController extends CI_Controller {
                 }
             }
             else {
-=======
-    public function add() {
-        $dataContent['title'] = 'Nouvelle location';
-        $dataContent['css'] = 'registerRentAdmin';
-        $dataContent['cars'] = $this->CarManager->getAllCarsDispo()->result();
-        $dataContent['users'] = $this->UserManager->getAllUser()->result();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $dataRent = array(
-                "dateStart" => $this->input->post('dateStart'),
-                "dateEnd" => $this->input->post('dateEnd'),
-                "carsId" => $this->input->post('cardId'),
-                "usersId" => $this->input->post('usersId')
-            );
-            $this->form_validation->set_rules('dateStart', 'Date deb', 'required');
-            $this->form_validation->set_rules('dateEnd', 'Date fin', 'required');
-            $this->form_validation->set_rules('cardId', 'Voiture', 'required');
-            $this->form_validation->set_rules('usersId', 'Client', 'required');
-            if($this->form_validation->run('registerRentAdmin')) {
-                 var_dump($dataRent);
-                $this->RentManager->newRent($dataRent);
-                // $this->CarManager->notDispo($dataRent['CarsId']);
-                redirect('UserController/index');
-            }
-            else {
-                $dataContent['rent'] = $dataRent;
->>>>>>> aa10a8560cb9fb94a9fdbd6947f48c2f6f6876dd
                 $this->render('registerRentAdmin',$dataContent);
             }
         }
         else {
-<<<<<<< HEAD
-            redirect('UserController/index');
-=======
             $this->render('registerRentAdmin',$dataContent);
->>>>>>> aa10a8560cb9fb94a9fdbd6947f48c2f6f6876dd
         }
     }
   
