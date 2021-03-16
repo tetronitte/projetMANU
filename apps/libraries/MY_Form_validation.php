@@ -64,4 +64,10 @@ class MY_Form_validation extends CI_Form_validation {
         if($preg) return true;
         else return false; 
     }
+    
+    public function regexNumRent(string $numRent) {
+        $preg = preg_match('/^[A-Z]{3}[0-9]{5}[A-Z]{3}$/',$numRent);
+        if($preg) return true;
+        else return false;
+    }
 }

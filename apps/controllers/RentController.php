@@ -10,11 +10,22 @@ class RentController extends CI_Controller {
      *
      * @return void
      */
-    public function list() {//TODO SEARCH
+    public function list() {
         $dataContent['title'] = 'Nos locations';
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $search = $this->input->post('search');
+        }
+        else {
+            if (isset($this->session->search)) {
+                $search = $this->session->search;                    
+            }
+            else {
+                $search = '';
+            }
+        }
         if(isset($this->session->admin)){
             $dataContent['css'] = 'adminRent';
-            $reqRent = $this->RentManager->getAllRents();
+            $reqRent = $this->RentManager->getAllRents($search);
         }
         else {
             $dataContent['css'] = 'userRent';
@@ -31,6 +42,7 @@ class RentController extends CI_Controller {
         }
         if(!empty($rents)) $dataContent['rents'] = $rents;
         if(isset($this->session->admin)){
+            $dataContent['search'] = $search;
             $this->render('adminRent',$dataContent);
         }
         else {

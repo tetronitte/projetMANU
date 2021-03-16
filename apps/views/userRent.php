@@ -14,7 +14,6 @@
 							<p>Vehicule : <?= $rent->getCar()->getModel()->getName(); ?></p>
 						</div>
 						<p class="text-danger"><?php if(isset($rent->errorDeleteRent)){ echo $rent->errorDeleteRent;}?></p>
-						<!-- ERREUR errorDeleteRent -->
 					<img id="imgVehicles" src="<?= base_url('assets/img/') . $rent->getCar()->getPicture(); ?>" class="col-12 col-sm-6 h-60 w-100" alter="img_vehicles">
 					<?= anchor("RentController/deleteRent/$id", "Supprimer la location",['class' => 'btn btn-danger col-12 col-sm-6']);?>
 					<div id="hrbar" class="col-8"></div><?php

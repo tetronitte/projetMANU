@@ -215,7 +215,7 @@ $config = array(
         array(
             'field' => 'numRent',
             'label' => 'numRent',
-            'rules' => 'required|min_length[11]|max_length[11]'
+            'rules' => 'required|regexNumRent'
         ),
         array(
             'field' => 'dateReturn',
