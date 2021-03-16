@@ -78,7 +78,7 @@ class RentController extends CI_Controller {
      *
      * @return void
      */
-    public function addRent() {//TODO VÉRIFICATION FORMULAIRE
+    public function addRent() {
         if(isset($this->session->admin)) {
             $dataContent['title'] = 'Nouvelle location';
             $dataContent['css'] = 'registerRentAdmin';
@@ -97,8 +97,7 @@ class RentController extends CI_Controller {
                         if($reqCar->result()==null) $dataContent['errorCar'] = "Voiture inconnue";
                         $this->render('registerRentAdmin',$dataContent);
                     }
-                    else
-                    {
+                    else {
                         $user = new User($reqUser->result()[0]);
                         $reqModel = $this->ModelManager->getModel($reqCar->result()[0]->modelsId);
                         $reqCar->result()[0]->model = new Model($reqModel->result()[0]);
