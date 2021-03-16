@@ -14,7 +14,7 @@
 				if(isset($cars)) {
 					foreach($cars as $car) {
 						?><div class="col-12 col-sm-6">
-							<h2>Détails du vehicule :</h2>
+							<h2>Détails du véhicule :</h2>
 							<p>Nom : <?= $car->getModel()->getName(); ?></p>
 							<p>Marque : <?= $car->getModel()->getBrand(); ?></p>
 							<p>Type de consommation : <?= $car->getModel()->getFueltype(); ?></p>
