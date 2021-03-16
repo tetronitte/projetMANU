@@ -1,5 +1,4 @@
 <div class="container-fluid">
-<?= var_dump($_SESSION); ?>
 	<h1 class='text-center'>Loca-Auto</h1>
 	<div class='row'>
 		<div id="carouselIndexControls" class="carousel slide col-6 offset-3" data-ride="carousel">
